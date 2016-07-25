@@ -1,0 +1,11 @@
+.\UV4Build\OBJ\cmibnodeobject.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibNodeObject.cpp
+.\UV4Build\OBJ\cmibnodeobject.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibNodeObject.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\CSnmpVariable.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\CSnmpCell.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\Depend\CThreadTask.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\CSnmpVariableBinding.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\CSnmpCommand.h
+.\UV4Build\OBJ\cmibnodeobject.o: .\source\HIS\app\communication\SNMP\Depend\CUDPData.h

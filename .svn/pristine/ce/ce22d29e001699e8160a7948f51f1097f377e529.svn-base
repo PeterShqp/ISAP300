@@ -1,0 +1,67 @@
+/*
+ * PairClockSource.cpp
+ *
+ *  Created on: 2014��11��26��
+ *      Author: Administrator
+ */
+
+#include "PairClockSource.h"
+#include "ClockSourceManager.h"
+#include "XCPair.h"
+
+PairClockSource::PairClockSource(uint32 uid, PairResource* p) : ClockSource(uid), PairTool(uid) {
+
+//    ClockSourceManager::instance().addClockSource(this);
+    Port = p;
+
+}
+
+PairClockSource::~PairClockSource() {
+    // TODO Auto-generated destructor stub
+}
+
+bool PairClockSource::active(void) {
+    std::pair<PairClockSource*, PairClockSource*> p = PairTool.getParts<PairClockSource>();
+    if( p.first && p.second ) {
+        return p.first->active() &&
+                p.second->active();
+    }
+    else if( p.second ) {
+        return p.second->active();
+    }
+    else if( p.first ) {
+        return p.first->active();
+    }
+    return false;
+
+}
+
+CLOCK_STATUS_E PairClockSource::getStatus(void) {
+    std::pair<PairClockSource*, PairClockSource*> p = PairTool.getParts<PairClockSource>();
+    CLOCK_STATUS_E sta =  clock_failed;
+    if( p.first && p.second ) {
+        if( p.first->getStatus() == clock_ok || p.second->getStatus() == clock_ok ) {
+            sta = clock_ok;
+        }
+        return  sta;
+    }
+    else if( p.second ) {
+        return p.second->getStatus();
+    }
+    else if( p.first ) {
+        return p.first->getStatus();
+    }
+    return clock_failed;
+
+}
+
+std::string& PairClockSource::getPortName(void) {
+    static std::string s("");
+    if( Port ) {
+		s = "(" + Port->getName() + ")";
+    }
+    else {
+        s = "";
+    }
+    return s;
+}

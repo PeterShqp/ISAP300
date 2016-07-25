@@ -1,0 +1,9 @@
+.\UV4Build\OBJ\ethmemory.o: ./source/HIS/platform/tools/EthMemory.c
+.\UV4Build\OBJ\ethmemory.o: ./source/HIS/platform/tools/EthMemory.h
+.\UV4Build\OBJ\ethmemory.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\ethmemory.o: .\source\HIS\platform\os\include\os.h
+.\UV4Build\OBJ\ethmemory.o: .\source\HIS\platform\os\include\os_def.h
+.\UV4Build\OBJ\ethmemory.o: .\source\HIS\platform\os\include\rtl.h
+.\UV4Build\OBJ\ethmemory.o: .\source\HAL\lib\SYS_API\include\sysapi.h
+.\UV4Build\OBJ\ethmemory.o: .\source\HAL\lib\LPC\include\lpc_types.h
+.\UV4Build\OBJ\ethmemory.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h

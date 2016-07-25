@@ -1,0 +1,157 @@
+/*
+ * CLI_Upgrade_cmd_group.cpp
+ *
+ *  Created on: 2013-12-23
+ *      Author: Administrator
+ */
+
+#include "CLI_Upgrade_cmd_group.h"
+#include "s1l_cmds.h"
+#include "EZ_types.h"
+#include "CBaseSlot.h"
+#include "SlotModule.h"
+#include "ObjectReference.h"
+#include "CardTypeID_define.h"
+#include "CardXC.h"
+#include "ChipUOPTLogic.h"
+#include <iostream>
+#include <stdio.h>
+#include "Lpc3250upload.h"
+#include "Card24E1.h"
+#include "SyncFileAPI.h"
+
+/********************************* upgradefpga command ********************************************/
+static BOOL_32 cmd_upgradefpga (void);
+static UNS_32 cmd_upgrade_plist[] =
+{
+    (PARSE_TYPE_STR), /* The "upgradefpga" command */
+    (PARSE_TYPE_DEC | PARSE_TYPE_OPT),
+    (PARSE_TYPE_STR | PARSE_TYPE_OPT),
+    (PARSE_TYPE_STR | PARSE_TYPE_END)
+};
+static CMD_ROUTE_T fpga_upgrade_cmd =
+{
+    (UNS_8 *) "upfpga",
+    cmd_upgradefpga,
+    (UNS_8 *) "upgrade the fpga by slot and file specified",
+    (UNS_8 *) "upfpga [slot] [file]\r\n" \
+              "\t\t[slot] 0~6 \r\n"             \
+              "\t\t[file] file name for the fpga\r\n",
+    cmd_upgrade_plist,
+    (CMD_ROUTE_E*)NULL
+};
+
+BOOL_32 cmd_upgradefpga(void) {
+
+    uint8 slot =  cmd_get_field_val(1);
+    CBaseSlot* pslt = SlotModule::getSlot(slot);
+    if( !pslt || !pslt->cardExist()) {
+        std::cout << "!!!No Card!!!." << std::endl;
+        return FALSE;
+    }
+    if( pslt->GetCardType() == XC_CARD_TYPEID ) {
+        CardXC* pxc = ObjectReference::getPXCCard(slot);
+        if( pxc ) {
+
+            pxc->getChipUOPTLogic().updataTwoFPGA(true);
+            return TRUE;
+        }
+    }
+    else if( pslt->GetCardType() == E1_24_CARD_TYPEID ) {
+        Card24E1* pe1 = ObjectReference::get24E1Card(slot);
+        if( pe1 ) {
+            return pe1->getChipE1Logic().updataFPGA();
+        }
+    }
+    return FALSE;
+}
+/********************************* upgradefpga command end*****************************************/
+
+/********************************* upgrademain command ********************************************/
+static BOOL_32 cmd_upgrademain (void);
+static UNS_32 cmd_upgrade_main_plist[] =
+{
+    (PARSE_TYPE_STR | PARSE_TYPE_OPT), /* The "type" command */
+    (PARSE_TYPE_STR | PARSE_TYPE_END)
+};
+static CMD_ROUTE_T main_upgrade_cmd =
+{
+    (UNS_8 *) "upmain",
+    cmd_upgrademain,
+    (UNS_8 *) "upgrade the main by the file specified",
+    (UNS_8 *) "upmain [file]\r\n" \
+              "\t[file] : file name for the main\r\n",
+    cmd_upgrade_main_plist,
+    (CMD_ROUTE_E*)NULL
+};
+
+BOOL_32 cmd_upgrademain(void) {
+    char* fname = "main.bit";
+    if( parse_get_entry_count() > 1 ) {
+        fname = (char*)cmd_get_field_val(1);
+    }
+    if( updata_main(fname) < 0 ) {
+        std::cout << "!!!upgrade main failed!!!" << std::endl;
+        return FALSE;
+    }
+
+    std::cout << "upgrade main successful!!" << std::endl;
+    return TRUE;
+}
+
+/********************************* upgrademain command end*****************************************/
+
+/********************************* send file command ********************************************/
+static BOOL_32 cmd_sendfile (void);
+static UNS_32 cmd_send_file_plist[] =
+{
+    (PARSE_TYPE_STR | PARSE_TYPE_OPT), /* The "sdfile" command */
+    (PARSE_TYPE_STR | PARSE_TYPE_END)
+};
+static CMD_ROUTE_T send_file_cmd =
+{
+    (UNS_8 *) "sdfile",
+    cmd_sendfile,
+    (UNS_8 *) "send a file to bakup card.",
+    (UNS_8 *) "sdfile [file]\r\n" \
+              "\t[file] : file name for the transmited.\r\n",
+    cmd_send_file_plist,
+    (CMD_ROUTE_E*)NULL
+};
+
+BOOL_32 cmd_sendfile(void) {
+    char* fname = "main.bit";
+    if( parse_get_entry_count() > 1 ) {
+        fname = (char*)cmd_get_field_val(1);
+    }
+    if( SyncFileAPI::instance().sendAfileToRemote(fname) ) {
+        printf("file:%s send to backup card succeed.\n", fname);
+        return FALSE;
+    }
+    return TRUE;
+}
+
+/********************************* send file command end*****************************************/
+
+/*************** Debug group ******************************/
+static GROUP_LIST_T group =
+{
+    (UNS_8 *) "upgrade", /* File group */
+    (UNS_8 *) "ISAP300 upgrade command group",
+    (CMD_ROUTE_E*)NULL,
+    (GROUP_LIST_E*)NULL
+};
+
+void CLI_upgrade_add_commands(void) {
+    /* Add core group */
+    cmd_add_group(&group);
+
+    /* Add commands to the core group */
+     cmd_add_new_command(&group, &fpga_upgrade_cmd);
+     cmd_add_new_command(&group, &main_upgrade_cmd);
+     cmd_add_new_command(&group, &send_file_cmd);
+
+}//�����������ӵ�main��������Ҫ�ĸ�������
+
+
+

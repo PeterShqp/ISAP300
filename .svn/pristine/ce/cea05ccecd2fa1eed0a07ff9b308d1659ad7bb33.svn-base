@@ -1,0 +1,60 @@
+/*
+ * InnerDCCManager.h
+ *
+ *  Created on: 2013-7-1
+ *      Author: Administrator
+ */
+
+#ifndef INNERDCCMANAGER_H_
+#define INNERDCCMANAGER_H_
+
+#include "EZ_types.h"
+#include <vector>
+#include <map>
+
+typedef enum {
+    nm_ch_type_rcv,
+    nm_ch_type_snd
+}NM_CH_TYPE_E;
+
+typedef struct {
+	uint32 ch_index;
+	NM_CH_TYPE_E ch_type; //0 is recieve, 1 is send
+	uint8 port_index;
+}Inner_Port_Config;
+
+class DCCChannelSnd;
+class DCCChannelRcv;
+
+class InnerDCCManager {
+    InnerDCCManager();
+    InnerDCCManager(InnerDCCManager&);
+    InnerDCCManager& operator= (InnerDCCManager&);
+    virtual ~InnerDCCManager();
+    static InnerDCCManager dccmng;
+public:
+    static InnerDCCManager& instance(void) {
+        return dccmng;
+    };
+
+	void start(bool first = false);
+	void stop(bool first = false);
+
+	void join(DCCChannelSnd*, uint8 portid = 0);
+	void join(DCCChannelRcv*, uint8 portid = 0);
+
+	void leave(DCCChannelSnd*);
+	void leave(DCCChannelRcv*);
+
+	void processRemoteDevice(uint8* ip, DCCChannelRcv* ch);
+private:
+	std::vector<Inner_Port_Config> configData;
+	int getBelongInnerPort(DCCChannelSnd*);
+	int getBelongInnerPort(DCCChannelRcv*);
+	void RestoreDefaultConfig(void);
+	bool saveConfig(void);
+	bool fetchConfig(void);
+    std::map<uint32, uint32> DevicePool;
+};
+
+#endif /* INNERDCCMANAGER_H_ */

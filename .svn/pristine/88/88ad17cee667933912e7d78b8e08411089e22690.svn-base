@@ -1,0 +1,31 @@
+/*
+ * DCCTribRcv.h
+ *
+ *  Created on: 2014-5-19
+ *      Author: Administrator
+ */
+
+#ifndef DCCTRIBRCV_H_
+#define DCCTRIBRCV_H_
+
+#include "DCCChannelRcv.h"
+
+class Chip8STM1Logic2;
+
+class DCCTribRcv : public DCCChannelRcv {
+public:
+    DCCTribRcv(uint32 uid, uint32 optID, Chip8STM1Logic2& lgc);
+    virtual ~DCCTribRcv();
+
+    virtual bool havePacet(void);
+    virtual int getPacketLen(void);
+    virtual bool getPacketData(uint8* d, uint16 len = 0, uint16 startPos = 0);
+    virtual void discardPacket();
+
+private:
+    Chip8STM1Logic2& chip;
+    uint8 ch;
+
+};
+
+#endif /* DCCTRIBRCV_H_ */

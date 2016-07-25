@@ -1,0 +1,73 @@
+/*
+ * PCMXCAlarmModule.cpp
+ *
+ *  Created on: 2015年6月17日
+ *      Author: Administrator
+ */
+
+#include "PCMXCAlarmModule.h"
+#include "CardPCMXC.h"
+#include "SrcAlarmUpE1.h"
+#include "PortFE1.h"
+
+TASK void Do_PCMXC_LED(void* dxc);
+PCMXCAlarmModule::PCMXCAlarmModule(CardPCMXC* c) : BAlarmModule(c) {
+    // TODO Auto-generated constructor stub
+    XCCard = c;
+    dxc_alarm = os_tsk_create_ex(Do_PCMXC_LED, P_LED, this);
+}
+
+PCMXCAlarmModule::~PCMXCAlarmModule() {
+    os_tsk_delete(dxc_alarm);
+}
+
+void PCMXCAlarmModule::creatAlarmSource() {
+    for (int i = 0; i < 4; ++i) {
+        addAlmSrc( new SrcAlarmUpE1(i, this, static_cast<RealPortBase*>(XCCard->fe1_obj[i]),
+                &(XCCard->AlarmData.UpE1AlmData[i]), XCCard->fpga ) );
+    }
+}
+
+void PCMXCAlarmModule::turnLedMajOn(bool on) {
+    XCCard->fpga.turnOnLedMaj(on);
+}
+void PCMXCAlarmModule::turnLedMinOn(bool on) {
+    XCCard->fpga.turnOnLedMin(on);
+}
+
+
+TASK void Do_PCMXC_LED(void* pxc) {
+    PCMXCAlarmModule* xc = (PCMXCAlarmModule*)pxc;
+    while(1) {
+        os_dly_wait(300);
+        bool maj = false;
+        bool min = false;
+        BAlarmModule* mm = BAlarmModule::getFirstInstance();
+        while( mm ) {
+            if( !maj ) {
+                maj = mm->ifHaveMAJ();
+            }
+            if( !min ) {
+                min = mm->ifHaveMin();
+            }
+            mm = BAlarmModule::getNextInstance(mm->itsSn());
+        }
+        if( maj ) {
+            //�������澯��
+            xc->turnLedMajOn(true);
+        }
+        else {
+            //�����澯��
+            xc->turnLedMajOn(false);
+       }
+        if( min ) {
+            //������Ҫ�澯��
+            xc->turnLedMinOn(true);
+        }
+        else {
+            //���Ҫ�澯��
+            xc->turnLedMinOn(false);
+       }
+
+    }
+}

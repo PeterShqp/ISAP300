@@ -1,0 +1,79 @@
+/*
+ * DCCChannelRcv.cpp
+ *
+ *  Created on: 2013-6-28
+ *      Author: Administrator
+ */
+
+#include "DCCChannelRcv.h"
+#include "bsp_interrupt.h"
+#include "SwitchPortInner.h"
+#include "InnerDCCManager.h"
+#include <stdio.h>
+#include "PriPacket.h"
+#include <string.h>
+
+std::map<uint32, DCCChannelRcv*> DCCChannelRcv::DccRcvMap;
+
+DCCChannelRcv::DCCChannelRcv(uint32 id, uint32 realPortID) {
+	// TODO Auto-generated constructor stub
+	uid = id;
+	optPortuid = realPortID;
+	upstreamUid = 0;
+	memset(upstreamIP, 0, 4);
+	memset(upstreamIpMask, 0, 4);
+	DccRcvMap.insert( std::pair<uint32, DCCChannelRcv*>(uid, this) );
+	port = 0;
+	InnerDCCManager::instance().join(this);
+}
+
+DCCChannelRcv::~DCCChannelRcv() {
+	// TODO Auto-generated destructor stub
+    InnerDCCManager::instance().leave(this);
+	DccRcvMap.erase(uid);
+}
+
+/* ѭ���հ���DCC�հ������е���
+ *
+ */
+bool DCCChannelRcv::receivData(void) {
+	bool flag = false;
+	while( havePacet() ) {
+		int pkgLen = getPacketLen();
+		if( (pkgLen < 20)  || (pkgLen > MTU) || (port == 0)) {
+#ifdef EZ_DEBUG
+            printf("\nDCCChannelRcv len %d error\n", pkgLen);
+#endif
+			discardPacket();
+			continue;
+		}
+		LAYER2FRAME *frame = alloc_Eth_mem (pkgLen-4);
+		if (frame != NULL ) {
+			uint8* dp = frame->frame;
+			getPacketData(dp,pkgLen-4,4);
+            uint8 d[16] = {0};
+            getPacketData(d, 16);
+            Layer2Tag tag;
+            tag.sn = (d[0] << 24) | (d[1] << 16) | (d[2] << 8 ) | d[3];
+            memcpy( tag.decMAC, (d+4), 6);
+            memcpy( tag.srcMAC, (d+10), 6);
+			PriPacket* p = new PriPacket(tag, port->getPortSn(),frame);
+			if( p ) {
+#ifdef SW_DEBUG
+			    printf("DCCChannelRcv at %4d, len %d\n", p->getPrivateTag().sn, frame->length);
+#endif
+			    p->setRcvDCCChannel(this); //for topo
+			    port->inputPacket(p);
+                flag = true;
+			}
+		}
+		else {
+		    printf("\nDCCChannelRcv alloc error\n");
+		}
+		discardPacket();
+	}
+    return flag;
+}
+
+
+

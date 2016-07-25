@@ -1,0 +1,16 @@
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibTableColumn.cpp
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibTableColumn.h
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibColumn.h
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibNodeObject.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\CSnmpVariable.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/Mib_define.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\CSnmpCell.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\Depend\CThreadTask.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\CSnmpVariableBinding.h
+.\UV4Build\OBJ\cmibtablecolumn.o: .\source\HIS\app\communication\SNMP\Depend\CCommonDefine.h
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibTable.h
+.\UV4Build\OBJ\cmibtablecolumn.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibEntry.h
+.\UV4Build\OBJ\cmibtablecolumn.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h

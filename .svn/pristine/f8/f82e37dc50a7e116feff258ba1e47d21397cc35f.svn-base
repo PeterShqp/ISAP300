@@ -1,0 +1,43 @@
+/*
+ * DCCSdhRcv.cpp
+ *
+ *  Created on: 2013-6-28
+ *      Author: Administrator
+ */
+
+#include "DCCSdhRcv.h"
+
+DCCSdhRcv::DCCSdhRcv( uint32 id, uint32 OptPortID, DriverPCM& pcm ) : DCCChannelRcv( id, OptPortID ), chip(pcm){
+    int sn = id & 0xff;
+    if( sn == 0 ) {
+        ch = DCC_A;
+    }
+    else if( sn == 1 ) {
+        ch = DCC_B;
+    }
+}
+
+DCCSdhRcv::~DCCSdhRcv() {
+	// TODO Auto-generated destructor stub
+}
+
+bool DCCSdhRcv::havePacet(void) {
+    return chip.ifHavePacket(ch);
+}
+
+int DCCSdhRcv::getPacketLen(void) {
+    return chip.getPacketLen(ch);
+}
+bool DCCSdhRcv::getPacketData(uint8* d, uint16 len, uint16 startPos) {
+    if( len == 0 ) {
+        len = getPacketLen();
+    }
+    if( len == 0 ) {
+        return false;
+    }
+    chip.GetDCCPacket(ch,d,len, startPos);
+    return true;
+}
+void DCCSdhRcv::discardPacket() {
+    chip.clearDccRdBufForce(ch);
+}

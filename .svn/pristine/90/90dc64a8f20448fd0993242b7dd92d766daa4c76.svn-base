@@ -1,0 +1,34 @@
+/*
+ * DCCXe1Snd.cpp
+ *
+ *  Created on: 2013-7-17
+ *      Author: Administrator
+ */
+
+#include "DCCXe1Snd.h"
+#include "UID.h"
+#include "DriverPCM.h"
+#include <iostream>
+#include "SysError.h"
+
+DCCXe1Snd::DCCXe1Snd(uint32 uid, uint32 OptPortID, DriverPCM& pcm) : DCCChannelSnd(uid, OptPortID), chip(pcm) {
+	// TODO Auto-generated constructor stub
+
+}
+
+DCCXe1Snd::~DCCXe1Snd() {
+	// TODO Auto-generated destructor stub
+}
+
+void DCCXe1Snd::sendData(uint8* d, uint32 len) {
+	uint32 uid = getUID();
+	try {
+		UN_Info info = UID::breakUID(uid);
+		uint8 ch = info.nm.sn;
+		chip.sendSaPacket(ch, d, len);
+	}
+	catch(SysError& s) {
+	    std::cout << s.what() << std::endl;
+		return;
+	}
+}

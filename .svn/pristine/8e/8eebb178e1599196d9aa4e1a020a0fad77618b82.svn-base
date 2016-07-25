@@ -1,0 +1,24 @@
+/*
+ * CMidFileCfg.h
+ *
+ *  Created on: 2013-12-21
+ *      Author: Administrator
+ */
+
+#ifndef CMIDFILECFG_H_
+#define CMIDFILECFG_H_
+
+#include <string>
+
+class CMidFileCfg {
+public:
+    CMidFileCfg(const std::string& name);
+    CMidFileCfg(const char* name);
+    virtual ~CMidFileCfg();
+
+
+private:
+    std::string fname;
+};
+
+#endif /* CMIDFILECFG_H_ */

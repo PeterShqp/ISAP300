@@ -1,0 +1,30 @@
+/*
+ * CMidFileTxt.h
+ *
+ *  Created on: 2013-11-20
+ *      Author: Administrator
+ */
+
+#ifndef CMIDFILETXT_H_
+#define CMIDFILETXT_H_
+
+#include <string>
+//#include <fstream>
+#include "SysError.h"
+
+class CMidFileTxt {
+    CMidFileTxt();
+public:
+    CMidFileTxt(const std::string& name);
+    virtual ~CMidFileTxt();
+
+    int getTxtLine(int n, std::string& s);
+    void modifyTxtLine(int n, std::string& newline);
+    void appendTxtLine(std::string& newline);
+    int getLineCount(void);
+    void clearContent(void);
+private:
+    std::string fname;
+};
+
+#endif /* CMIDFILETXT_H_ */

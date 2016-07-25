@@ -1,0 +1,15 @@
+.\UV4Build\OBJ\cmibimpl.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibImpl.cpp
+.\UV4Build\OBJ\cmibimpl.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibImpl.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\cmibimpl.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibEntry.h
+.\UV4Build\OBJ\cmibimpl.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibNodeObject.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\CSnmpVariable.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CStdSystem.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\CMibColumn.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup\CMibNEStruct.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CMibAttribute.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CMibInterface.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup\CMibModule.h
+.\UV4Build\OBJ\cmibimpl.o: .\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup\CMibAlarm.h

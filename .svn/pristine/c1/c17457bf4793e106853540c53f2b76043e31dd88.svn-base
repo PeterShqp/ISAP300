@@ -1,0 +1,143 @@
+/*
+ * CardPCMXC.cpp
+ *
+ *  Created on: 2015年5月28日
+ *      Author: Administrator
+ */
+
+#include "CardPCMXC.h"
+#include "PCMXCAlarmModule.h"
+#include "XCPair.h"
+#include "UID.h"
+#include "SysError.h"
+#include "CExtE1.h"
+#include "CardTypeID_define.h"
+#include "CardCPU.h"
+#include "CrossConnectionManager.h"
+#include "DCCXe1Rcv.h"
+#include "DCCXe1Snd.h"
+#include "XcPCMClockSource.h"
+#include "PortFE1.h"
+#include "SlotModule.h"
+
+CardPCMXC::CardPCMXC(std::string& name, CBaseSlot* slot) : CBaseCard(name, slot), fpga(slot) {
+
+    Chip_INIT_RESULT rst = fpga.ChipInit();
+    if( rst == failed ) {
+        throw SysError("!!!Card EMUXC fpga init error!!!");
+    }
+
+    SlotModule::startExtChecking();
+    ST_Stbus sbInfo;
+    sbInfo.slot = 0;
+    sbInfo.xcsn = slot->GetSn();
+
+    for (int i = 0; i < 4; ++i) {
+        sbInfo.stbus = i;
+        exte1_obj[i] = new CExtE1(UID::makeUID(&sbInfo), XCPair::instance().getConfigSaver(), &fpga, true);
+    }
+
+    for( int i = 0; i < 5; i++ ) {
+        sbInfo.slot = i+2;
+        sbInfo.stbus = 0;
+        stbus_obj[i] = new CSTBus(UID::makeUID(&sbInfo), XCPair::instance().getConfigSaver(), &fpga, true);
+    }
+
+    ConfigData = (Card_ConfigData_XC*)XCPair::instance().getConfigSaver()->getConfigDataBuff();
+    ST_E1 e1info;
+    e1info.slot = slot->GetSn();
+    for (int i = 0; i < 4; ++i) {
+         e1info.E1 = i;
+         fe1_obj[i] = new PortFE1(UID::makeUID(&e1info), XCPair::instance().getConfigSaver(), &ConfigData->fe1port[i], fpga, true);
+    }
+
+    ST_NM_Channel nminfo;
+    nminfo.slot = slot->GetSn();
+    for (int i = 0; i < 4; ++i) {
+        nminfo.subtype = subtype_sabit;
+        nminfo.sn = i;
+        uint32 index = UID::makeUID(&nminfo);
+        dccxe1rcv_obj[i] = new DCCXe1Rcv(index, exte1_obj[i]->getUID(), fpga);
+        dccxe1snd_obj[i] = new DCCXe1Snd(index, exte1_obj[i]->getUID(), fpga);
+    }
+
+    ST_Clock_source clkinfo;
+    clkinfo.slot = slot->GetSn();
+    clkinfo.type = UID::type_pcm_main_clock;
+    clkinfo.sn = 0;
+    uint32 index = UID::makeUID(&clkinfo);
+
+    clkinfo.type = UID::type_pcm_recover_clock;
+    xcpcmLocal_obj = new XcPCMClockSource(index, 0, fpga);
+    for (int i = 0; i < 4; ++i) {
+        clkinfo.sn = i;
+        index = UID::makeUID(&clkinfo);
+        xcpcmclock_obj[i] = new XcPCMClockSource(index, i+1, fpga);
+    }
+
+    XCPair::instance().getPccManager()->restoreCorssConnect();
+    if( !fetchConfig() ) {
+        throw SysError("!!!DXC Card config data error!!!");
+    }
+     am = new PCMXCAlarmModule(this);
+     am->initModule();
+
+    cardversionInfo = \
+            CardCPU::GetVerInfo()+","\
+            +fpga.GetVerInfo();
+    fpga.sabitInterruptEnable(true);
+}
+
+CardPCMXC::~CardPCMXC() {
+    // TODO Auto-generated destructor stub
+    fpga.sabitInterruptEnable(false);
+    delete am;
+    for( int i = 0; i < 4; i++ ) {
+        delete xcpcmclock_obj[i];
+    }
+    delete xcpcmLocal_obj;
+    for (int i = 0; i < 4; ++i) {
+        delete dccxe1rcv_obj[i];
+        delete dccxe1snd_obj[i];
+    }
+    for (int i = 0; i < 4; ++i) {
+         delete fe1_obj[i];
+    }
+    for( int i = 0; i < 5; i++ ) {
+        delete stbus_obj[i];
+    }
+    for (int i = 0; i < 4; ++i) {
+        delete exte1_obj[i];
+    }
+
+}
+
+void CardPCMXC::loadDefaultData(void) {
+    ConfigCell::loadDefaultData();
+    for(int i = 0; i < 4; i++) {
+        for (int j = 0; j < UpE1_Signal_Count; ++j) {
+            AlarmData.UpE1AlmData[i].Property[j].level = 1;
+        }
+    }
+};
+
+/*virtual CBaseCard*/
+std::string& CardPCMXC::GetCardVerInfo() {
+    return cardversionInfo;
+}
+
+void CardPCMXC::closeInterrupt(void) {
+    fpga.sabitInterruptEnable(false);
+}
+
+int CardPCMXC::GetCartTypeID() {
+    return PCMXC_CARD_TYPEID;
+}
+
+void CardPCMXC::setWorkLED(bool on) {
+    fpga.turnOnledWorking(on);
+}
+
+void CardPCMXC::resetRemoteDevice(uint8 port) {
+    fpga.resetRemote(port);
+}

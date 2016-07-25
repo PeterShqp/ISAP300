@@ -1,0 +1,109 @@
+/*
+ * NMPort.h
+ *
+ *  Created on: 2015年10月12日
+ *      Author: Administrator
+ */
+
+#ifndef NMPORT_H_
+#define NMPORT_H_
+
+#include "NMChannel.h"
+#include <string>
+#include "Resource.h"
+
+class RealPortBase;
+class SwitchPortInner;
+
+class NMPort : public Resource {
+public:
+    NMPort(RealPortBase& phyPort);
+    virtual ~NMPort();
+
+    std::string& itsName(void);
+    NM_Port_Mode_E getMode(void) {
+        return ch.getMode();
+    };
+
+    /* data IO */
+    bool receivData(void);
+    void sendData(uint8* d, uint32 len);
+
+    /* config */
+    uint8 getType(void);
+    bool setType(uint8 ntype);
+
+    /* for Topo */
+    uint32 getUpStreamPortUid(void) {
+        return upstreamUid;
+    };
+
+    uint8* getUpStreamIP(void) {
+        return upstreamIP;
+    };
+
+    uint8* getUpStreamIpMask(void) {
+        return upstreamIpMask;
+    };
+
+    void setUpStreamPortUid(uint32 id) {
+        upstreamUid = id;
+    };
+
+    void setUpStreamIP(uint8* ip) {
+        for( int i = 0; i < 4; i++ ) {
+            upstreamIP[i] = ip[i];
+        }
+    };
+
+    void setUpStreamIpMask(uint8* mask) {
+        for( int i = 0; i < 4; i++ ) {
+            upstreamIpMask[i] = mask[i];
+        }
+    };
+
+    void setInnerPort(SwitchPortInner* p) {
+        port = p;
+    };
+
+    SwitchPortInner* getInnerPort(void) {
+        return port;
+    };
+private:
+    NMChannel& ch;
+    SwitchPortInner* port;
+    uint32 upstreamUid;
+    uint8 upstreamIP[4];
+    uint8 upstreamIpMask[4];
+
+    /* for group operation */
+    static std::map<uint32, NMPort*> NMPortMap;
+public:
+    static NMPort* getInstance(uint32 uid) {
+        std::map<uint32, NMPort*>::iterator it = NMPortMap.find(uid);
+        if( it != NMPortMap.end() ) {
+            return it->second;
+        }
+        return 0;
+    };
+
+    static NMPort* getFirstInstance(void) {
+        std::map<uint32, NMPort*>::iterator it = NMPortMap.begin();
+        if( it != NMPortMap.end() ) {
+            return it->second;
+        }
+        return 0;
+    };
+
+    static NMPort* getNextInstance(uint32 suid) {
+        std::map<uint32, NMPort*>::iterator it = NMPortMap.find(suid);
+        if( it != NMPortMap.end() ) {
+            it++;
+            if( it != NMPortMap.end() ) {
+                return it->second;
+            }
+        }
+        return 0;
+    };};
+
+#endif /* NMPORT_H_ */

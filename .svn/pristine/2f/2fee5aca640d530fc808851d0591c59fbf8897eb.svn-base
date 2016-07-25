@@ -1,0 +1,93 @@
+/*
+ * CMidFileTxt.cpp
+ *
+ *  Created on: 2013-11-20
+ *      Author: Administrator
+ */
+
+#include "CMidFileTxt.h"
+#include <sstream>
+#include <fstream>
+//#include "ProtectAssistCell.h"
+
+using namespace std;
+
+CMidFileTxt::CMidFileTxt(const string& name)  : fname(name)  {
+    // TODO Auto-generated constructor stub
+
+}
+
+CMidFileTxt::~CMidFileTxt() {
+    // TODO Auto-generated destructor stub
+}
+
+int CMidFileTxt::getTxtLine(int n, string& s) {
+    int lineCount = 0;
+    ifstream in(fname.c_str());
+    if( !in ) {
+        throw SysError("file not exist.");
+    }
+
+    while( getline(in, s) ) {
+        if( lineCount == n ) {
+            return 1;
+        }
+        ++lineCount;
+    }
+    throw SysError("Line number invalid.");
+//    return -1;
+}
+
+void CMidFileTxt::modifyTxtLine(int n, string& newline) {
+    ifstream in(fname.c_str());
+    stringstream edited;
+    if( !in ) {
+        throw SysError("Open file error!");
+    }
+    int lineCount = 0;
+    string s;
+    while( getline(in, s) ) {
+        if( lineCount == n ) {
+            edited << newline << "\n";
+			++lineCount;
+            continue;
+        }
+        edited << s << "\n";
+        ++lineCount;
+    }
+
+	in.close();
+    /* save file */
+    ofstream out(fname.c_str()); //overwrites
+	if( out ) {
+		out << edited.rdbuf();
+	}
+	out.close();
+//	ProtectAssistCell::instance().synFileTo(fname.c_str());
+
+}
+
+
+void CMidFileTxt::appendTxtLine(string& newline) {
+    ofstream out(fname.c_str(), ios::app);
+    out << newline << "\n";
+    out.close();
+}
+
+int CMidFileTxt::getLineCount(void) {
+    ifstream in(fname.c_str());
+    if( !in ) {
+        throw SysError("Open file error!");
+    }
+    int lineCount = 0;
+    string s;
+    while( getline(in, s) ) {
+        ++lineCount;
+    }
+    return lineCount;
+
+}
+
+void CMidFileTxt::clearContent(void) {
+    ofstream out(fname.c_str());
+}

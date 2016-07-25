@@ -1,0 +1,10 @@
+.\UV4Build\OBJ\cmssave.o: ./source/HIS/app/UpDataMain/CMSSave.cpp
+.\UV4Build\OBJ\cmssave.o: ./source/HIS/app/UpDataMain/CMSSave.h
+.\UV4Build\OBJ\cmssave.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\cmssave.o: ./source/HIS/app/UpDataMain/Mid_FlashData.h
+.\UV4Build\OBJ\cmssave.o: .\source\HAL\lib\LPC\include\lpc_nandflash_params.h
+.\UV4Build\OBJ\cmssave.o: .\source\HAL\lib\LPC\include\lpc_types.h
+.\UV4Build\OBJ\cmssave.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\cmssave.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\UV4Build\OBJ\cmssave.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\cmssave.o: .\source\HIS\include\CCheckData.h

@@ -1,0 +1,27 @@
+/*
+ * DCCChannelSnd.cpp
+ *
+ *  Created on: 2013-6-28
+ *      Author: Administrator
+ */
+
+#include "DCCChannelSnd.h"
+#include "InnerDCCManager.h"
+
+std::map<uint32, DCCChannelSnd*> DCCChannelSnd::DccSendMap;
+
+
+DCCChannelSnd::DCCChannelSnd(uint32 id, uint32 OptPortID) {
+	uid = id;
+    belongPort = OptPortID;
+    port = 0;
+	os_mut_init(mut_send_protect);
+	DccSendMap.insert( std::pair<uint32, DCCChannelSnd*>(uid, this) );
+	InnerDCCManager::instance().join(this);
+}
+
+DCCChannelSnd::~DCCChannelSnd() {
+    InnerDCCManager::instance().leave(this);
+	DccSendMap.erase(uid);
+}
+

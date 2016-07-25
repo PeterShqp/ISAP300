@@ -1,0 +1,14 @@
+.\UV4Build\OBJ\sysinitial.o: ./source/HIS/app/SysInitial.cpp
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\include\SysInitial.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\include\SysCLI.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\platform\filesystem\NAND_File.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\app\ComponentElement\Protect\ProtectAssistCell.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\platform\os\include\os.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\platform\os\include\os_def.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\platform\os\include\rtl.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\app\ComponentElement\Protect\OMUStatus.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HIS\app\ComponentElement\Protect\OMUWorking.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HAL\include\Uart1.h
+.\UV4Build\OBJ\sysinitial.o: .\source\HAL\lib\LPC\include\LPC_TYPES.H
+.\UV4Build\OBJ\sysinitial.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h

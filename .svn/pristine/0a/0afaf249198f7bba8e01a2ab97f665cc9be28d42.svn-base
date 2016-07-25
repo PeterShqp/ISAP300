@@ -1,0 +1,25 @@
+/*
+ * DCCTribSnd.h
+ *
+ *  Created on: 2014-5-19
+ *      Author: Administrator
+ */
+
+#ifndef DCCTRIBSND_H_
+#define DCCTRIBSND_H_
+
+#include "DCCChannelSnd.h"
+
+class Chip8STM1Logic2;
+
+class DCCTribSnd : public DCCChannelSnd {
+public:
+    DCCTribSnd(uint32 uid, uint32 belongPort, Chip8STM1Logic2& lgc);
+    virtual ~DCCTribSnd();
+
+    virtual void sendData(uint8* d, uint32 len);
+private:
+    Chip8STM1Logic2& chip;
+};
+
+#endif /* DCCTRIBSND_H_ */

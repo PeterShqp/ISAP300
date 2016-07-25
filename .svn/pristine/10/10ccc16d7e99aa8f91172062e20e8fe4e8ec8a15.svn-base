@@ -1,0 +1,40 @@
+/*
+ * DCCTribRcv.cpp
+ *
+ *  Created on: 2014-5-19
+ *      Author: Administrator
+ */
+
+#include "DCCTribRcv.h"
+#include "Chip8STM1Logic2.h"
+#include "UID.h"
+
+DCCTribRcv::DCCTribRcv(uint32 uid, uint32 optID,  Chip8STM1Logic2& lgc) : DCCChannelRcv(uid, optID), chip(lgc){
+    ch = UID::breakUID(uid).nm.sn;
+
+}
+
+DCCTribRcv::~DCCTribRcv() {
+    // TODO Auto-generated destructor stub
+}
+
+bool DCCTribRcv::havePacet(void) {
+    return chip.ifHavePacket(ch);
+}
+
+int DCCTribRcv::getPacketLen(void) {
+    return chip.getPacketLen(ch);
+}
+bool DCCTribRcv::getPacketData(uint8* d, uint16 len, uint16 startPos) {
+    if( len == 0 ) {
+        len = getPacketLen();
+    }
+    if( len == 0 ) {
+        return false;
+    }
+    chip.GetDCCPacket(ch,d,len,startPos);
+    return true;
+}
+void DCCTribRcv::discardPacket() {
+    chip.clearDccRdBufForce(ch);
+}

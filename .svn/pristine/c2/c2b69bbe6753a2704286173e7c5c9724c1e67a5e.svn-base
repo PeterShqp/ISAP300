@@ -1,0 +1,29 @@
+/*
+ * DCCSdhRcv.h
+ *
+ *  Created on: 2013-6-28
+ *      Author: Administrator
+ */
+
+#ifndef DCCSDHRCV_H_
+#define DCCSDHRCV_H_
+
+#include "DCCChannelRcv.h"
+#include "DriverPCM.h"
+
+class DCCSdhRcv : public DCCChannelRcv {
+public:
+	DCCSdhRcv( uint32 id, uint32 OptPortID, DriverPCM& pcm );
+	virtual ~DCCSdhRcv();
+
+    virtual bool havePacet(void);
+    virtual int getPacketLen(void);
+    virtual bool getPacketData(uint8* d, uint16 len = 0, uint16 startPos = 0);
+    virtual void discardPacket();
+
+private:
+    DriverPCM& chip;
+    NM_CH_E ch;
+};
+
+#endif /* DCCSDHRCV_H_ */

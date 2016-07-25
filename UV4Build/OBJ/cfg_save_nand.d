@@ -1,0 +1,14 @@
+.\UV4Build\OBJ\cfg_save_nand.o: ./source/HIS/app/UpDataMain/cfg_save_nand.c
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_string.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_types.h
+.\UV4Build\OBJ\cfg_save_nand.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\cfg_save_nand.o: ./source/HIS/app/UpDataMain/s1l_cfg.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_types.h
+.\UV4Build\OBJ\cfg_save_nand.o: ./source/HIS/app/UpDataMain/s1l_sys.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_types.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_nandflash_params.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_types.h
+.\UV4Build\OBJ\cfg_save_nand.o: ./source/HIS/app/UpDataMain/Mid_FlashData.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\cfg_save_nand.o: ./source/HIS/app/UpDataMain/Mid_NandFlash.h
+.\UV4Build\OBJ\cfg_save_nand.o: .\source\HAL\lib\LPC\include\lpc_types.h

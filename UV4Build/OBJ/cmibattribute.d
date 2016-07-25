@@ -1,0 +1,12 @@
+.\UV4Build\OBJ\cmibattribute.o: ./source/HIS/app/communication/SNMP/SNMPMib/Private/AttributeGroup/CMibAttribute.cpp
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CMibAttribute.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\CMibEntry.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\CMibNodeObject.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\CSnmpVariable.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CMibBasicAttribute.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\CMibColumn.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CMibCommunicationAttribute.h
+.\UV4Build\OBJ\cmibattribute.o: .\source\HIS\app\communication\SNMP\SNMPMib\include\CMibDateAttribute.h

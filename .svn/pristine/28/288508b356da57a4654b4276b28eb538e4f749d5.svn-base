@@ -1,0 +1,147 @@
+/*
+ * DCCChannelRcv.h
+ *
+ *  Created on: 2013-6-28
+ *      Author: Administrator
+ */
+
+#ifndef DCCCHANNELRCV_H_
+#define DCCCHANNELRCV_H_
+
+#include <map>
+#include "EZ_types.h"
+#include <list>
+#include "EthMemory.h"
+
+class SwitchPortInner;
+class PriPacket;
+
+class DCCChannelRcv {
+    uint32 optPortuid;
+public:
+	DCCChannelRcv(uint32 id, uint32 realPortID);
+	virtual ~DCCChannelRcv();
+
+	bool receivData(void);
+//	void processData(void);
+//	void copyData(void);
+
+	uint32 belongLocalPort(void) {
+	    return optPortuid;
+	};
+
+	virtual bool havePacet(void) = 0;
+	virtual int getPacketLen(void) = 0;
+	virtual bool getPacketData(uint8*d, uint16 len = 0, uint16 startPos = 0) = 0;
+	virtual void discardPacket() = 0;
+
+
+	static DCCChannelRcv* getRcvDccByUID(uint32 uid) {
+		std::map<uint32, DCCChannelRcv*>::iterator it = DccRcvMap.find(uid);
+		if( it != DccRcvMap.end() ) {
+			return it->second;
+		}
+		return 0;
+	};
+
+	void setInnerPort(SwitchPortInner* p) {
+		port = p;
+	};
+
+	SwitchPortInner* getInnerPort(void) {
+		return port;
+	};
+
+	static DCCChannelRcv* getFirstRcvDcc(void) {
+		std::map<uint32, DCCChannelRcv*>::iterator it = DccRcvMap.begin();
+		if( it != DccRcvMap.end() ) {
+			return it->second;
+		}
+		return 0;
+	};
+	static DCCChannelRcv* getNextRcvDcc(uint32 uid) {
+		std::map<uint32, DCCChannelRcv*>::iterator it = DccRcvMap.find(uid);
+		if( it != DccRcvMap.end() ) {
+			++it;
+			if( it != DccRcvMap.end() ) {
+				return it->second;
+			}
+		}
+		return 0;
+	};
+
+	static void removeRepeat(DCCChannelRcv* ch) {
+	    uint32 remoteUID = ch->getUpStreamPortUid();
+	    DCCChannelRcv* it = getFirstRcvDcc();
+	    while( it ) {
+	        if( it->getUID() != ch->getUID() ) {
+	            if( (it->getUpStreamPortUid() == remoteUID) &&
+	                    ifRemoteIpSame(it, ch)) {
+	                uint8 d[4] = {0};
+	                it->setUpStreamPortUid(0);
+	                it->setUpStreamIP(d);
+	                it->setUpStreamIpMask(d);
+	            }
+	        }
+	        it = getNextRcvDcc(it->getUID());
+	    }
+	};
+	uint32 getUID(void) {
+		return uid;
+	};
+
+	/* for Topo */
+	uint32 getUpStreamPortUid(void) {
+		return upstreamUid;
+	};
+
+	uint8* getUpStreamIP(void) {
+		return upstreamIP;
+	};
+
+	uint8* getUpStreamIpMask(void) {
+		return upstreamIpMask;
+	};
+
+	void setUpStreamPortUid(uint32 id) {
+		upstreamUid = id;
+	};
+
+	void setUpStreamIP(uint8* ip) {
+		for( int i = 0; i < 4; i++ ) {
+			upstreamIP[i] = ip[i];
+		}
+	}
+
+	void setUpStreamIpMask(uint8* mask) {
+		for( int i = 0; i < 4; i++ ) {
+			upstreamIpMask[i] = mask[i];
+		}
+	}
+private:
+	uint32 uid; //type + slot + sn, type
+	static std::map<uint32, DCCChannelRcv*> DccRcvMap;
+
+	std::list<PriPacket*> WaitingProccess;
+	std::list<PriPacket*> Proccessing;
+
+	SwitchPortInner* port;
+
+	uint32 upstreamUid;
+	uint8 upstreamIP[4];
+	uint8 upstreamIpMask[4];
+	static const int MTU = 1024;
+
+	static bool ifRemoteIpSame(DCCChannelRcv* a, DCCChannelRcv* b) {
+	    uint8* ipa = a->getUpStreamIP();
+	    uint8* ipb = b->getUpStreamIP();
+	    for (int i = 0; i < 4; ++i) {
+            if( ipa[i] != ipb[i] ) {
+                return false;
+            }
+        }
+	    return true;
+	};
+};
+
+#endif /* DCCCHANNELRCV_H_ */

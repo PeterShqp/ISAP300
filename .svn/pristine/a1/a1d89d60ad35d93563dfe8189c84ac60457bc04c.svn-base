@@ -1,0 +1,23 @@
+/*
+ * CMidFileCfg.cpp
+ *
+ *  Created on: 2013-12-21
+ *      Author: Administrator
+ */
+
+#include "CMidFileCfg.h"
+
+CMidFileCfg::CMidFileCfg(const std::string& name) : fname(name){
+    // TODO Auto-generated constructor stub
+
+}
+
+CMidFileCfg::CMidFileCfg(const char* name) : fname(name) {
+
+}
+
+
+CMidFileCfg::~CMidFileCfg() {
+    // TODO Auto-generated destructor stub
+}
+
