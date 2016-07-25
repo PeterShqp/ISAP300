@@ -20,9 +20,12 @@
 SwitchCore SwitchCore::sw;
 os_mbx_declare(mbox_sw_input, 128);
 static TASK void task_sw_proccess(void);
+static TASK void taskCheckBroadcastFilter(void);
 
 SwitchCore::SwitchCore() {
     t_sw_proccess = 0;
+    t_broad_filter = 0;
+    bcfilt = false;
 }
 
 SwitchCore::~SwitchCore() {
@@ -40,6 +43,7 @@ void SwitchCore::initSwitchCore(void) {
 #endif
     os_mbx_init(mbox_sw_input, sizeof(mbox_sw_input));
     t_sw_proccess = os_tsk_create(task_sw_proccess, P_SW_Process);
+    t_broad_filter = os_tsk_create(taskCheckBroadcastFilter, P_LED);
 #ifdef EXT_DBG
     printf("\ninitSwitchCore() end.\n");
 #endif
@@ -94,10 +98,13 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 	break;
 
 	case broadcast:{
+		if( !broadcastFilter() ) {
 #ifdef SW_DEBUG
         printf("broadcast\n");
 #endif
-		return SwitchPort::broadcastThePacket(pkt);
+        os_evt_set(0x0001, t_broad_filter);
+        return SwitchPort::broadcastThePacket(pkt);
+		}
 	}
 		break;
 //	case multicast:
@@ -167,4 +174,13 @@ TASK void task_sw_proccess(void) {
         }
         SoftWDT::instance().feed(os_tsk_self());
     }
+}
+
+TASK void taskCheckBroadcastFilter(void) {
+	while(1) {
+		os_evt_wait_or(0x0001, 0xffff);
+		SwitchCore::instance().startFilter();
+		os_dly_wait(100);
+		SwitchCore::instance().stopFilter();
+	}
 }

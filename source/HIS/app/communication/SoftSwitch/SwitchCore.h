@@ -44,11 +44,22 @@ public:
 	void setTransmitListTTL(uint16 time) {
 		finishedPkt.setTTL(time);
 	};
+	bool broadcastFilter(void) {
+		return bcfilt;
+	};
+	void startFilter(void) {
+		bcfilt = true;
+	};
+	void stopFilter(void) {
+		bcfilt = false;
+	};
 private:
 	std::map<int, SwitchPort*> portMap;
 	CFinishedPacket finishedPkt;
 	MacPortMap macPortTable;
     OS_TID t_sw_proccess;
+    OS_TID t_broad_filter;
+    bool bcfilt;
 };
 
 #endif /* SWITCHCORE_H_ */
