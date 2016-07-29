@@ -266,8 +266,13 @@ bool ChipE1Port16Logic::getDcnPacket(uint8 ch, uint8* buff, uint16 len) {
     return true;
 }
 void ChipE1Port16Logic::readDcnPacketOver(uint8 ch) {
-    regAccess->writeReg(REG_DCN_R_OVER, 1<<ch);
-    regAccess->writeReg(REG_DCN_R_OVER, 0);
+    regAccess->writeReg(REG_DCN_MONI_SEL, ch);
+    uint16 bak = regAccess->readReg(REG_DCN_PAGE_STA) & (1<<14);
+    while( bak == (regAccess->readReg(REG_DCN_PAGE_STA) & (1<<14)) ) {
+        regAccess->writeReg(REG_DCN_R_OVER, 1<<ch);
+        regAccess->writeReg(REG_DCN_R_OVER, 0);
+    }
+
 }
 void ChipE1Port16Logic::sendDcnPacket(uint8 ch, uint8* data, uint16 len) {
     uint8 retryNum = 200;
