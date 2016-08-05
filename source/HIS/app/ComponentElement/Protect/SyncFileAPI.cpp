@@ -16,7 +16,6 @@
 
 SyncFileAPI SyncFileAPI::api;
 static uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len);
-static void tftpc_notify(uint8 event);
 
 static uint8 soc_massage = 0;
 
@@ -24,7 +23,6 @@ os_mbx_declare(mbox_sync_cmd, 50);
 OS_TID task_sync_cmd;
 TASK void ProcessSyncCmd(void);
 
-os_mbx_declare(mbx_tftpc, 10);
 os_mbx_declare(mbx_udp, 10);
 
 
@@ -39,7 +37,6 @@ bool SyncFileAPI::initSyncFileAPI(void) {
         return false;
     }
     os_mbx_init(mbox_sync_cmd, sizeof(mbox_sync_cmd));
-    os_mbx_init(mbx_tftpc, sizeof(mbx_tftpc));
     os_mbx_init(mbx_udp, sizeof(mbx_udp));
     DeviceComponent::getDeviceAttribute().getProtectMCUIP(RemoteIP);
 
@@ -80,10 +77,10 @@ bool SyncFileAPI::sendAllFiles(void) {
     while (ffind ("*.cfg",&info) == 0) {
         sendAfileToRemote( (char*)info.name );
     }
-//    memset(&info, 0, sizeof(info));
-//    while (ffind ("*.bit",&info) == 0) {
-//        sendAfileToRemote( (char*)info.name );
-//    }
+    memset(&info, 0, sizeof(info));
+    while (ffind ("*.bit",&info) == 0) {
+        sendAfileToRemote( (char*)info.name );
+    }
     char* cmd = new char[50];
     sprintf(cmd, "%d %s %s", 1, "over", "Roger");
     if( os_mbx_check(mbox_sync_cmd) == 0 ) {
@@ -142,7 +139,7 @@ bool SyncFileAPI::sendUDPMassage(const char* msg_snd, const char* msg_expect, ch
     /* wait ack */
     void* backmsg = 0;
     bool returnV = false;
-    OS_RESULT rst = os_mbx_wait(mbx_udp, &backmsg, 1000);
+    OS_RESULT rst = os_mbx_wait(mbx_udp, &backmsg, 500);
     if( rst == OS_R_TMO ) {
 #ifdef EZ_DEBUG
         if( msg_ack )
@@ -203,71 +200,6 @@ int SyncFileAPI::needSync( const char* filename ) {
     return -1;
 }
 
-/*
- * ͨ��TFTP ͬ��һ���ļ���Զ��
- * �ȴ�TFTPC����ͳɹ�����true
- *            ���ͳ�ʱ������ʧ�ܷ���false
- */
-bool SyncFileAPI::syncFileToRemote(const char* fileName, uint8* ip) {
-    bool returnV = false;
-    uint8 rip[4] = {0};
-    if( ip == 0 ) {
-        memcpy(rip, RemoteIP, 4);
-    }
-    else {
-        memcpy(rip, ip, 4);
-    }
-    if( fileName ) {
-        std::string str(fileName);
-        str += ".temp";         //tftp传送的文件名改为*。temp
-        if( tftpc_put(rip, 69, fileName, str.c_str(), tftpc_notify) == __TRUE ) {
-            void* msg = 0;
-            os_mbx_wait(mbx_tftpc, &msg, 0xffff);
-            std::string* s = reinterpret_cast<std::string*>(msg);
-            if( s ) {
-                if( *s == "success" ) {
-                    returnV = true;
-                }
-                delete s;
-            }
-            else {
-#ifdef EZ_DEBUG
-                printf("\ntftpc_put back msg NULL\n");
-#endif
-            }
-        }
-    }
-    return returnV;
-}
-bool SyncFileAPI::getFileFromRemote(const char* fileName, uint8* ip) {
-    bool returnV = false;
-    uint8 cip[4] = {0};
-    if( ip == 0 ) {
-        DeviceComponent::getDeviceAttribute().getDeviceIP(cip);
-    }
-    else {
-        memcpy(cip, ip, 4);
-    }
-    if( tftpc_get(cip, 69, fileName, NULL, tftpc_notify) == __TRUE ) {
-        printf("File get started.\n");
-        void* msg = 0;
-        os_mbx_wait(mbx_tftpc, &msg, 0xffff);
-        std::string* s = reinterpret_cast<std::string*>(msg);
-        if( s ) {
-            if( *s == "success" ) {
-                returnV = true;
-            }
-            delete s;
-        }
-        else {
-#ifdef EZ_DEBUG
-            printf("\ntftpc_put back msg NULL\n");
-#endif
-        }
-
-    }
-    return returnV;
-}
 
 uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len) {
     char* msg = new char[len];
@@ -278,34 +210,6 @@ uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, ui
     }
     os_mbx_send(mbx_udp, msg, 0xffff);
     return 0;
-}
-void tftpc_notify(uint8 event) {
-    switch( event ) {
-    case TFTPC_EVT_SUCCESS:
-        if( os_mbx_check(mbx_tftpc) != 0 ) {
-            os_mbx_send(mbx_tftpc, new std::string("success"), 0xffff);
-        }
-        else {
-            printf("!!!mbx_tftpc full!!!\n");
-        }
-        break;
-    case TFTPC_EVT_TIMEOUT:
-        if( os_mbx_check(mbx_tftpc) != 0 ) {
-            os_mbx_send(mbx_tftpc, new std::string("timeout"), 0xffff);
-        }
-        else {
-            printf("!!!mbx_tftpc full!!!\n");
-        }
-        break;
-    default:
-        if( os_mbx_check(mbx_tftpc) != 0 ) {
-            os_mbx_send(mbx_tftpc, new std::string("error"), 0xffff);
-        }
-        else {
-            printf("!!!mbx_tftpc full!!!\n");
-        }
-        break;
-    }
 }
 
 /*
@@ -340,7 +244,7 @@ TASK void ProcessSyncCmd(void) {
                 if( SyncFileAPI::instance().sendUDPMassage(s, s2) ) {
 #ifdef EZ_DEBUG
                     if( strcmp(s, "over") == 0 ) {
-                        printf("\nAll files send over!\n");
+                        printf("\nAll files check over!\n");
                     }
                     else {
                         printf("\n%s\n", s);
@@ -366,22 +270,22 @@ TASK void ProcessSyncCmd(void) {
                 }
                 ++retryCnt;
             }
-            if( needResult == 1 ) {
-                retryCnt = 0;
-                while( retryCnt < 3 ) {
-                    if( SyncFileAPI::instance().syncFileToRemote(s) ) {
-                        std::string s1("check");
-                        s1 += s;
-                        SyncFileAPI::instance().sendUDPMassage(s1.c_str(), "succeed"); //检查*。temp文件
-                        if( memcmp(s, "main.bit", 8) == 0 ||
-                            memcmp(s, "MAIN.BIT", 8) == 0) {
-                            SyncFileAPI::instance().sendUDPMassage("upmain", "succeed");
-                        }
-                        break;
-                    }
-                    ++retryCnt;
-                }
-            }
+//            if( needResult == 1 ) {
+//                retryCnt = 0;
+//                while( retryCnt < 3 ) {
+//                    if( SyncFileAPI::instance().syncFileToRemote(s) ) {
+//                        std::string s1("check");
+//                        s1 += s;
+//                        SyncFileAPI::instance().sendUDPMassage(s1.c_str(), "succeed"); //检查*。temp文件
+//                        if( memcmp(s, "main.bit", 8) == 0 ||
+//                            memcmp(s, "MAIN.BIT", 8) == 0) {
+//                            SyncFileAPI::instance().sendUDPMassage("upmain", "succeed");
+//                        }
+//                        break;
+//                    }
+//                    ++retryCnt;
+//                }
+//            }
         }
         break;
         }

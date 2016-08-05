@@ -38,9 +38,7 @@ public:
     uint8* getRemoteIP(void) {
         return RemoteIP;
     };
-    bool syncFileToRemote(const char* fileName, uint8* ip = 0);
     int needSync( const char* filename );
-    bool getFileFromRemote(const char* fileName, uint8* ip = 0);
 private:
     friend TASK void ProcessSyncCmd(void);
     bool sendUDPMassage(const char* msg_snd, const char* msg_expect, char* msg_ack = 0);

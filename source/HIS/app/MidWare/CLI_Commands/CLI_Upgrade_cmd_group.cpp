@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include "Lpc3250upload.h"
 #include "Card24E1.h"
-#include "SyncFileAPI.h"
+#include "SyncFileBakAPI.h"
 
 /********************************* upgradefpga command ********************************************/
 static BOOL_32 cmd_upgradefpga (void);
@@ -131,13 +131,13 @@ BOOL_32 cmd_sendfile(void) {
         char* s = (char*)cmd_get_field_val(2);
         std::string str(s);
         CPPTools::ezip_aton(str, rip);
-        if( SyncFileAPI::instance().syncFileToRemote(fname, rip) ) {
+        if( SyncFileBakAPI::putFileTo(fname, rip) ) {
             printf("file:%s send to backup card succeed.\n", fname);
             return TRUE;
         }
     }
     else {
-        if( SyncFileAPI::instance().syncFileToRemote(fname) ) {
+        if( SyncFileBakAPI::putFileTo(fname) ) {
             printf("file:%s send to backup card succeed.\n", fname);
             return TRUE;
         }
@@ -173,7 +173,7 @@ BOOL_32 cmd_getfile(void) {
     char* s = (char*)cmd_get_field_val(2);
     std::string str(s);
     CPPTools::ezip_aton(str, rip);
-    if( SyncFileAPI::instance().getFileFromRemote(fname, rip) ) {
+    if( SyncFileBakAPI::getFileFrom(fname, rip) ) {
         printf("file:%s send to backup card succeed.\n", fname);
         return TRUE;
     }

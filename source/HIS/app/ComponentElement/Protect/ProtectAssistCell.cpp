@@ -56,7 +56,6 @@ void ProtectAssistCell::start() {
     DeviceComponent::initDeviceComponentCommon();
     CommunicationModule::initCommon();
 //    SoftWDT::instance().startSoftWDT(); //开启软狗
-    SyncFileAPI::instance().initSyncFileAPI();
     if( getOMUWorkingStateByHardware() == OMU_Working ) {
         omu = new OMUWorking();
 #ifdef EZ_DEBUG
@@ -64,9 +63,9 @@ void ProtectAssistCell::start() {
 #endif
     }
     else {
-        omu = new OMUIdle();
+        omu = new OMUStandby(); //
 #ifdef EZ_DEBUG
-    std::cout << "OMUIdle" << std::endl;
+    std::cout << "OMUStandby" << std::endl;
 #endif
     }
 

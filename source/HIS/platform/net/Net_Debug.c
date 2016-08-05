@@ -54,7 +54,7 @@
 
 //   <o>UDP Debug   <0=> Off <1=> Errors only <2=> Full debug
 //   <i> Turn On/Off UDP debug messages
-#define DBG_UDP        2
+#define DBG_UDP        1
 
 //   <o>TCP Debug   <0=> Off <1=> Errors only <2=> Full debug
 //   <i> Turn On/Off TCP debug messages
@@ -101,11 +101,11 @@
 
 //   <o>TFTP Server Debug <0=> Off <1=> Errors only <2=> Full debug
 //   <i> Turn On/Off TFTP Server debug messages
-#define DBG_TFTP       2
+#define DBG_TFTP       1
 
 //   <o>TFTP Client Debug <0=> Off <1=> Errors only <2=> Full debug
 //   <i> Turn On/Off TFTP Client debug messages
-#define DBG_TFTPC      2
+#define DBG_TFTPC      1
 
 //   <o>SMTP Client Debug <0=> Off <1=> Errors only <2=> Full debug
 //   <i> Turn On/Off SMTP Client debug messages

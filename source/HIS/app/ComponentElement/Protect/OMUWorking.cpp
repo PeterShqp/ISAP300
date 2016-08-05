@@ -42,12 +42,14 @@ OMUWorking::OMUWorking() : OMUStatus(50){
     task_sync_files = os_tsk_create(Sync_all_files, P_FILE_SYNC - 1);
 
     lockIt(false);
+    SyncFileAPI::instance().initSyncFileAPI();
 }
 
 OMUWorking::~OMUWorking() {
 #ifdef EXT_DEBUG
     printf("\n~OMUWorking()\n");
 #endif
+    SyncFileAPI::instance().clearSyncFileAPI();
     os_tsk_delete(task_sync_files);
     os_tsk_delete(task_fast_alarm);
     os_tsk_delete(task_work);

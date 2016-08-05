@@ -2521,6 +2521,11 @@
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/ComponentElement/Protect/SyncFileAPI.cpp</FilePath>
             </File>
+            <File>
+              <FileName>SyncFileBakAPI.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
