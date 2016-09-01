@@ -39,11 +39,13 @@ public:
         return RemoteIP;
     };
     int needSync( const char* filename );
+    int ifSame(const char *filename);
 private:
     friend TASK void ProcessSyncCmd(void);
     bool sendUDPMassage(const char* msg_snd, const char* msg_expect, char* msg_ack = 0);
     bool Protected;
     uint8 RemoteIP[4];
+    OS_SEM sem_msg;
 
 };
 

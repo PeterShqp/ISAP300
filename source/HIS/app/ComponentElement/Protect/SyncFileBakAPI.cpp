@@ -58,6 +58,9 @@ bool SyncFileBakAPI::getFileFrom(const char* fileName, uint8* ip) {
         if( s ) {
             if( *s == "success" ) {
                 returnV = true;
+                if( strcmp("main.bit", fileName) == 0 ) {
+                    updata_main("main.bit");
+                }
             }
             delete s;
         }
@@ -140,16 +143,19 @@ uint16 udp_callback(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint
     }
     else if( memcmp("check", buf, 5) == 0 ) {
         printf("\nstart check\n");
-        char* fileName = (char*)&buf[5];
-        std::string tmpname(fileName);
-        tmpname += ".temp";
+        char fileName[30] = {0};
+        uint32 UCRC = 0;
+        sscanf((char*)&buf[5], "0x%x+%s", &UCRC, fileName);
+        uint32 MyCRC = 0;
+        char* sendData = DontSync;
+        if( CPPTools::getFileCRC(fileName, &MyCRC) ) {
+            if( MyCRC == UCRC ) {
+                sendData = Sync;
+                printf("\nsame\n");
+            }
+        }
         uint8* send_buff = udp_get_buf(10);
-        if( frename(tmpname.c_str(), fileName) != 0 ) {
-            strcpy( (char*)send_buff, "failed" );
-        }
-        else {
-            strcpy( (char*)send_buff, "succeed" );
-        }
+        strcpy( (char*)send_buff, sendData );
         udp_send(socket, remip, remport, send_buff, strlen((char*)send_buff)+1);
     }
     else {//if need sync
@@ -227,7 +233,8 @@ TASK void tsk_getFile(void* api) {
             filesWaitingSync.pop_front();
             os_mut_release(mut_syncfiles);
             SyncFileBakAPI::getFileFrom(f.c_str());
-            if( strcmp("main.bit", f.c_str()) == 0 ) {
+            if( strcmp("main.bit", f.c_str()) == 0 ||
+                    strcmp("MAIN.BIT", f.c_str()) == 0 ) {
                 updata_main("main.bit");
             }
         }

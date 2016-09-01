@@ -114,6 +114,8 @@ void CardVF::loadDefaultData(void) {
     VFPort_Config_T temp;
     memset(&temp, 0, sizeof(temp));
     temp.enable = 1;
+    temp.offHookSig = 0x02;
+    temp.onHookSig = 0x0a;
     for (int i = 0; i < 30; ++i) {
         memcpy(&ConfigData.port[i], &temp, sizeof(VFPort_Config_T));
     }

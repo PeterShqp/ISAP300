@@ -20,6 +20,7 @@ typedef enum {
 	vf_port_snd_gain,
 	vf_port_rcv_gain,
 	vf_port_desc,
+	vf_port_signal,
 	vf_port_size
 
 }Mib_VF_Port_Column_E;
@@ -142,6 +143,19 @@ public:
 
 	virtual int CallbackGet(const index_info_T& index, uint8*, uint32* len);
 	virtual int callbackSet( const index_info_T& index, uint8*, uint32 len);
+};
+
+class CMibVFPortCol_Signal : public CMibTableColumn {
+    CMibVFPortCol_Signal();
+public:
+    CMibVFPortCol_Signal(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~CMibVFPortCol_Signal() {};
+
+    virtual int CallbackGet(const index_info_T& index, uint8*, uint32* len);
+    virtual int callbackSet( const index_info_T& index, uint8*, uint32 len);
 };
 
 #endif /* CMIBVFPORTTABLE_H_ */

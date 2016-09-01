@@ -16,6 +16,7 @@
 #include "VFcmdTSPolarTurn.h"
 #include "VFCmdTSRcvGain.h"
 #include "VFCmdTSSndGain.h"
+#include "VFCmdSignalConfig.h"
 #include "CPPTools.h"
 #include <string.h>
 
@@ -38,6 +39,7 @@ PortVF::PortVF(uint32 uid, PairTSChannel* t, VFPort_Config_T* config, VFGroup_Co
     setEnable(ConfigData->enable, false);
     setWorkMode(ConfigData->mode, false);
     setPolarTurn(ConfigData->Polarturn, false);
+    setSignalConfig((ConfigData->offHookSig<<4) | ConfigData->onHookSig, false);
     PortType = readPortType();
     if( PortType == DEF_VFType_4W || PortType == DEF_VFType_2W ) {
         setRcvGain(ConfigDataG->rcvgain, false);
@@ -173,3 +175,25 @@ bool PortVF::setSndGain(uint8 g, bool save) {
     return false;
 }
 
+uint8 PortVF::getSignalConfig(void) {
+    return (ConfigData->offHookSig << 4) | ConfigData->onHookSig;
+}
+bool PortVF::setSignalConfig(uint8 sig, bool save) {
+    uint8 offhook = sig >> 4;
+    uint8 onhook = sig & 0xf;
+    uint8 tsn = (uint8)ts->getHID();
+    VFCmdSignalConfig* cmd = new VFCmdSignalConfig(tsn, offhook, onhook);
+    BelongCard->processVFCommand(*cmd);
+    int rtn = *(cmd->getResult());
+    delete cmd;
+    if( !save ) {
+        return true;
+    }
+    if( rtn == 0x5a ) {
+        ConfigData->offHookSig = offhook;
+        ConfigData->onHookSig = onhook;
+        return BelongCard->saveConfig();
+    }
+    return false;
+
+}

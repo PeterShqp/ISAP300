@@ -132,18 +132,7 @@ int TableDeviceBitFiles_cmp::CallbackGet(const index_info_T& index) {
     FINFO info;
     if( FileFind::getBitFileInfoByID(index.index[1], info) ) {
         int retryCnt = 0;
-        int needResult = -1;
-        while( retryCnt < 3 ) {
-            needResult = SyncFileAPI::instance().needSync((char*)info.name);
-            if( needResult >= 0 ) {
-                break;
-            }
-            ++retryCnt;
-        }
-        if( needResult == 1 ) {
-            return 0;
-        }
-        return 1;
+        return SyncFileAPI::instance().ifSame((char*)info.name);
     }
     return -1;
 }

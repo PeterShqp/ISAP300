@@ -24,6 +24,7 @@ OS_TID task_sync_cmd;
 TASK void ProcessSyncCmd(void);
 
 os_mbx_declare(mbx_udp, 10);
+os_mbx_declare(mbx_sync_back, 1);
 
 
 bool SyncFileAPI::initSyncFileAPI(void) {
@@ -38,9 +39,11 @@ bool SyncFileAPI::initSyncFileAPI(void) {
     }
     os_mbx_init(mbox_sync_cmd, sizeof(mbox_sync_cmd));
     os_mbx_init(mbx_udp, sizeof(mbx_udp));
+    os_mbx_init(mbx_sync_back, sizeof(mbx_sync_back));
     DeviceComponent::getDeviceAttribute().getProtectMCUIP(RemoteIP);
 
     task_sync_cmd = os_tsk_create(ProcessSyncCmd, P_SYNC + 1);
+    os_sem_init(sem_msg, 1);
     return true;
 }
 
@@ -139,7 +142,7 @@ bool SyncFileAPI::sendUDPMassage(const char* msg_snd, const char* msg_expect, ch
     /* wait ack */
     void* backmsg = 0;
     bool returnV = false;
-    OS_RESULT rst = os_mbx_wait(mbx_udp, &backmsg, 500);
+    OS_RESULT rst = os_mbx_wait(mbx_udp, &backmsg, 400);
     if( rst == OS_R_TMO ) {
 #ifdef EZ_DEBUG
         if( msg_ack )
@@ -170,6 +173,7 @@ bool SyncFileAPI::sendUDPMassage(const char* msg_snd, const char* msg_expect, ch
  */
 int SyncFileAPI::needSync( const char* filename ) {
     uint32 crc = 0;
+    int rtn = -1;
     if( !CPPTools::getFileCRC(filename, &crc) ) {
 #ifdef EZ_DEBUG
         printf("\n%s Calculate CRC Error!\n", filename);
@@ -179,34 +183,68 @@ int SyncFileAPI::needSync( const char* filename ) {
     char sendbuf[50] = {0};
     sprintf(sendbuf, "0x%8x+%s", crc, filename);
     char ack[50] = {0};
+    os_sem_wait(sem_msg, 500);
     if( sendUDPMassage(sendbuf, "yes", ack) ) {
 #ifdef EZ_DEBUG
         printf("\n%s will sync!\n", filename);
 #endif
-        return 1;
+        rtn = 1;
     }
     else if( strcmp(ack, "no") == 0 ){
 #ifdef EZ_DEBUG
         printf("\n%s same!\n", filename);
 #endif
-        return 0;
+        rtn = 0;;
     }
     else {
 #ifdef EZ_DEBUG
         printf("\n%s %s\n", filename, ack);
 #endif
     }
-
-    return -1;
+    os_sem_send(sem_msg);
+    return rtn;
 }
 
+int SyncFileAPI::ifSame(const char *filename) {
+    if( !ifProtected() ) {
+        return -1;
+    }
+    os_sem_wait(sem_msg, 0xffff);
+    char* cmd = new char[80];
+    uint32 crc = 0;
+    int rtn = -1;
+    if( !CPPTools::getFileCRC(filename, &crc) ) {
+#ifdef EZ_DEBUG
+        printf("\n%s Calculate CRC Error!\n", filename);
+#endif
+        return -1;
+    }
+    char sendbuf[50] = {0};
+    sprintf(sendbuf, "0x%x+%s", crc, filename);
+    sprintf(cmd, "3 check%s yes", sendbuf);
+    os_mbx_send(mbox_sync_cmd, cmd, 0xffff);
+    void* bakmsg = 0; //do not delete
+    if( os_mbx_wait(mbx_sync_back, &bakmsg, 2000) != OS_R_TMO ) {
+        if( strcmp((char*)bakmsg, "yes") == 0 ) {
+            rtn =  1;
+        }
+		else {
+			rtn =  0;
+		}
+    }
+    os_sem_send(sem_msg);
+    return rtn;
+}
 
 uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len) {
+    if( remport != 10001 ) {
+        return 0;
+    }
     char* msg = new char[len];
     memcpy(msg, buf, len);
     if( os_mbx_check(mbx_udp) == 0 ) {
         delete []msg;
-        return false;
+        return 1;
     }
     os_mbx_send(mbx_udp, msg, 0xffff);
     return 0;
@@ -222,14 +260,25 @@ uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, ui
  *         2.2 �ļ���ͬ��������
  */
 TASK void ProcessSyncCmd(void) {
+    char bakmsgYes[] = "yes";
+    char bakmsgNo[] = "no";
     while( 1 ) {
         void* amsg = 0;
         os_mbx_wait(mbox_sync_cmd, &amsg, 0xffff);
-        int cmd; //同步命令 1 发送udp消息， 2 tftp传输
-        char s[30]; //udp发送消息，或 文件名
-        char s2[30];//udp期待回应消息
+
+
+        int cmd = 0; //同步命令 1 发送udp消息， 2 tftp传输
+        char s[50] = {0}; //udp发送消息，或 文件名
+        char s2[50] = {0};//udp期待回应消息
 		char* msg = (char*)amsg;
+//        puts(msg);
         sscanf(msg, "%d %s %s", &cmd, s, s2);
+
+//        printf("%d\n", cmd);
+//        puts(s);
+//        puts(s2);
+
+
         delete []msg;
         if( !SyncFileAPI::instance().ifProtected() ) {
 #ifdef EZ_DEBUG
@@ -254,6 +303,7 @@ TASK void ProcessSyncCmd(void) {
                 }
                 ++retryCnt;
             }
+
 #ifdef EZ_DEBUG
             if( retryCnt == 3 )
                 printf("\n!!!%s Failed!!!\n", s);
@@ -286,6 +336,19 @@ TASK void ProcessSyncCmd(void) {
 //                    ++retryCnt;
 //                }
 //            }
+        }
+        break;
+        case 3: { //同步命令
+            if( SyncFileAPI::instance().sendUDPMassage(s, bakmsgYes) ) {
+                if( os_mbx_check(mbx_sync_back) != 0 ) {
+                    os_mbx_send(mbx_sync_back, bakmsgYes, 0xffff);
+                }
+            }
+            else {
+                if( os_mbx_check(mbx_sync_back) != 0 ) {
+                    os_mbx_send(mbx_sync_back, bakmsgNo, 0xffff);
+                }
+             }
         }
         break;
         }
