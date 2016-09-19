@@ -17,6 +17,7 @@
 #include "VFCmdTSRcvGain.h"
 #include "VFCmdTSSndGain.h"
 #include "VFCmdSignalConfig.h"
+#include "VFCmdSignalStatus.h"
 #include "CPPTools.h"
 #include <string.h>
 
@@ -196,4 +197,13 @@ bool PortVF::setSignalConfig(uint8 sig, bool save) {
     }
     return false;
 
+}
+
+uint8 PortVF::getSignalRcved(void) {
+    uint8 tsn = (uint8)ts->getHID();
+    VFCmdSignalStatus* cmd = new VFCmdSignalStatus(tsn);
+    BelongCard->processVFCommand(*cmd);
+    uint8 rtn = *(cmd->getResult());
+    delete cmd;
+    return rtn;
 }

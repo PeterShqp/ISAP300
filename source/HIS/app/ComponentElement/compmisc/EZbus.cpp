@@ -10,6 +10,7 @@
 #include "os.h"
 #include <iostream>
 #include "bsp_interrupt.h"
+#include "EZLog.h"
 
 OS_MUT mut_ezbus;
 
@@ -54,6 +55,9 @@ void EZbus::writeReg(uint16 regAddr, uint16 newData, int opt, uint16 verifyBitMa
                     " Expect: "<< (int)newData << " Actual: "<< (int)RData << std::endl;
             *paddr = newData;
             counter--;
+        }
+        if( counter == 0 ) {
+            EZLog::instance().record("EZbus write Error.");
         }
     }
     os_mut_release(mut_ezbus);

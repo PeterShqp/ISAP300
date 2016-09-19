@@ -17,6 +17,18 @@ struct TrapBuffer
 	uint32 buffersize;
 	uint8 buffer[TrapMaxBufferSize];	
 };
+
+typedef enum {
+    alarm_trap,
+    event_trap,
+}Trap_Type_E;
+
+typedef enum {
+    alarm_raise,
+    alarm_clear,
+}Alarm_Trap_type_E;
+
+
 class TrapList {
 	TrapList(void);
 	TrapList(TrapList&);
@@ -50,6 +62,7 @@ public:
 	
 	bool ifTrapDestExist();
 private:
+	void makeAlarmTrapDatagram(Alarm_Trap_type_E type, AlarmRecord *record);
 	uint8 soc_massage;
 	OS_TID tsk_send_trap;
 	bool inited;

@@ -12,7 +12,7 @@
 
 table_info_T CMibTS::tableInfo[table_ts_size] = {
 		{1, 3, 3},
-		{2, 9, 3}, //sn, col number, index count
+		{2, 10, 3}, //sn, col number, index count
 		{3, 3, 4},
 		{4, 4, 3},
 		{5, 3, 4}

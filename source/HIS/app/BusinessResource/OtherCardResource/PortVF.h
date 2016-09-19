@@ -64,7 +64,7 @@ public:
 
     uint8 getSignalConfig(void);
     bool setSignalConfig(uint8 sig, bool save = true);
-
+    uint8 getSignalRcved(void);
 private:
 //    std::string name;
     PairTSChannel* ts;

@@ -2106,6 +2106,11 @@
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdMcuVer.cpp</FilePath>
             </File>
+            <File>
+              <FileName>VFCmdSignalConfig.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalConfig.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

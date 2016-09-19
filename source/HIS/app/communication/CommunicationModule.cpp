@@ -117,7 +117,7 @@ void CommunicationModule::initWorking(void) {
         printf("\n!!!socket get error!!!\n");
     }
     int_enable_eth_real();
-//    TrapList::instance().Initial();
+    TrapList::instance().Initial();
     TopoManager::startTopoSearch();
 #ifdef EXT_DBG
     printf("\n initWorking() end.\n");
