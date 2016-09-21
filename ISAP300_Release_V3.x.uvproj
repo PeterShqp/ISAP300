@@ -966,6 +966,11 @@
               <FileType>8</FileType>
               <FilePath>./source/HIS/Tools/OutMsg.cpp</FilePath>
             </File>
+            <File>
+              <FileName>EZLog.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/Tools/EZLog.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2111,6 +2116,11 @@
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalConfig.cpp</FilePath>
             </File>
+            <File>
+              <FileName>VFCmdSignalStatus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalStatus.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2540,6 +2550,11 @@
               <FileName>FANPOWOnLine.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/FANPOWOnLine.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CmdRing.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdRing.cpp</FilePath>
             </File>
           </Files>
         </Group>
