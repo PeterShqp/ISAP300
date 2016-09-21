@@ -1,0 +1,5 @@
+--cpu ARM926EJ-S --pd "__RTX SETA 1" -g --apcs=interwork --fpu=vfpv2 
+-I D:\WorkProgram\Keil\ARM\RV31\INC 
+-I D:\WorkProgram\Keil\ARM\CMSIS\Include 
+-I D:\WorkProgram\Keil\ARM\Inc\Philips 
+--pd "RAM_INTVEC SETA 1" --pd "REMAP SETA 1" --list ".\UV4Build\LST\lpc32xx_vectors.lst" --xref -o ".\UV4Build\OBJ\lpc32xx_vectors.o" --depend ".\UV4Build\OBJ\lpc32xx_vectors.d" "./source/HAL/lib/LPC32xx/source/lpc32xx_vectors.s"
