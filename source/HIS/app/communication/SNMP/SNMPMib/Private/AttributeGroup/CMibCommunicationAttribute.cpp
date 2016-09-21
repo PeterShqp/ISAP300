@@ -404,7 +404,7 @@ uint32 CMibCommunicationAttributeColumn::SetResponse(CSnmpCell* objpCell)
             ip = ip + ".";
             ip += CPPTools::number2string(ucpTempBuf[i]);
         }
-        objpDeviceAttribute.setBaseAttribute(ln_ipmask, ip);
+        objpDeviceAttribute.setBaseAttribute(ln_iptrapdest, ip);
         CSnmpVariable objResponse(0x5A);
 		objpCell->SetResponse(objpOID,&objResponse);
 		return CErrorValueDefine::uiConstReturnSuccess;
