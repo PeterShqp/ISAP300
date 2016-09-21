@@ -22,6 +22,8 @@ typedef struct {
     uint8 enable; //Enable(1) Disable(0)
     uint8 mode;   //Auto(0) Hotline(1)
     uint8 Polarturn; //Enable(1) Disable(0)
+    uint8 offHookSig;
+    uint8 onHookSig;
     char desc[32];
     uint8 dlen;
 }VFPort_Config_T;
@@ -60,6 +62,9 @@ public:
     char* getDescription(uint32* len);
     bool setDescription(char* s, uint32 len, bool save = true);
 
+    uint8 getSignalConfig(void);
+    bool setSignalConfig(uint8 sig, bool save = true);
+    uint8 getSignalRcved(void);
 private:
 //    std::string name;
     PairTSChannel* ts;

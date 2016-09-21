@@ -21,6 +21,8 @@ column_info_T CMibVFPortTable::colInfo[vf_port_size] = {
 		{6, Mib_read_write, CSnmpConstDefine::ucConstInteger32},	//ColumnVFPortADGain
 		{7, Mib_read_write, CSnmpConstDefine::ucConstInteger32},	//ColumnVFPortDAGain
 		{8, Mib_read_write, CSnmpConstDefine::ucConstOctetString},	//ColumnVFPortDescription
+		{9, Mib_read_write, CSnmpConstDefine::ucConstOctetString},  //ColumnVFPortSignalConfig
+		{10, Mib_read_only, CSnmpConstDefine::ucConstInteger32},    //ColumnVFPortSignalStat
 };
 
 
@@ -54,6 +56,10 @@ CMibNodeObject* CMibVFPortTable::MakeColumn(int sn, uint32* oid, uint32 oidLen) 
 		return new CMibVFPortCol_RcvGain(sn, oid, oidLen, this);
 	case vf_port_desc:
 		return new CMibVFPortCol_Description(sn, oid, oidLen, this);
+	case vf_port_signal:
+	    return new CMibVFPortCol_Signal(sn, oid, oidLen, this);
+	case vf_port_sig_rcv:
+	    return new CMibVFPortCol_sigRcv(sn, oid, oidLen, this);
 	default:
 		return 0;
 	}
@@ -214,4 +220,35 @@ int CMibVFPortCol_Description::callbackSet( const index_info_T& index, uint8* vl
 	return -1;
 }
 
+
+int CMibVFPortCol_Signal::CallbackGet(const index_info_T& index, uint8* vl, uint32* len) {
+    PortVF* vf = PortVF::getInstance(index.index[2]);
+    if( vf ) {
+        uint8 s = vf->getSignalConfig();
+        vl[0] = s >> 4;
+        vl[1] = s & 0xf;
+        *len = 2;
+        return 1;
+    }
+    return -1;
+
+}
+
+int CMibVFPortCol_Signal::callbackSet( const index_info_T& index, uint8* vl, uint32 len) {
+    PortVF* vf = PortVF::getInstance(index.index[2]);
+    if( vf ) {
+        uint8 sig = (vl[0] << 4) | vl[1];
+        if( vf->setSignalConfig(sig) )
+            return 0x5A;
+    }
+    return -1;
+}
+
+int CMibVFPortCol_sigRcv::CallbackGet(const index_info_T& index) {
+    PortVF* vf = PortVF::getInstance(index.index[2]);
+    if( vf ) {
+        return vf->getSignalRcved();
+    }
+    return -1;
+}
 

@@ -62,6 +62,7 @@
 .\UV4Build\OBJ\ezbus.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_numeric.h
 .\UV4Build\OBJ\ezbus.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_punct.h
 .\UV4Build\OBJ\ezbus.o: .\source\HAL\include\bsp_interrupt.h
+.\UV4Build\OBJ\ezbus.o: .\source\HIS\include\EZLog.h
 .\UV4Build\OBJ\ezbus.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\ezbus.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_punct.CC
 .\UV4Build\OBJ\ezbus.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_numeric.CC

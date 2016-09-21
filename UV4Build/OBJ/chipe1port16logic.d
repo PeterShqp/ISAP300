@@ -43,4 +43,5 @@
 .\UV4Build\OBJ\chipe1port16logic.o: .\source\HIS\include\CPPTools.h
 .\UV4Build\OBJ\chipe1port16logic.o: .\source\HIS\include\ComponentElement\RegisterAccess.h
 .\UV4Build\OBJ\chipe1port16logic.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\UV4Build\OBJ\chipe1port16logic.o: .\source\HIS\include\EZLog.h
 .\UV4Build\OBJ\chipe1port16logic.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC

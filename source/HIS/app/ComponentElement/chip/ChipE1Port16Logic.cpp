@@ -9,6 +9,7 @@
 #include "CPPTools.h"
 #include "RegisterAccess.h"
 #include <stdio.h>
+#include "EZLog.h"
 
 static const std::string chipName = "e1port16logic";
 
@@ -239,7 +240,16 @@ uint32 ChipE1Port16Logic::getDcnTsMap(uint8 ch) {
 bool ChipE1Port16Logic::ifDcnHavePacket(uint8 ch) {
     uint16 regv = regAccess->readReg(REG_DCN_R_STA);
     if( (regv & ( 1 << ch )) != 0 ) {
-        return true;
+        regv = regAccess->readReg(REG_DCN_R_STA);
+        if( (regv & ( 1 << ch )) != 0 ) {
+            regv = regAccess->readReg(REG_DCN_R_STA);
+            if( (regv & ( 1 << ch )) != 0 ) {
+                return true;
+            }
+        }
+        else {
+            EZLog::instance().record("#REG_DCN_R_STA read error.");
+        }
     }
     return false;
 }

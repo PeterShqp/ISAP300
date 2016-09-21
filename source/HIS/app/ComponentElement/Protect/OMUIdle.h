@@ -10,6 +10,7 @@
 
 #include "OMUStatus.h"
 
+class SyncFileBakAPI;
 class OMUIdle: public OMUStatus {
 public:
     OMUIdle();
@@ -17,7 +18,7 @@ public:
 
     virtual Working_STATE_E getStatus(void);
 private:
-    uint8 soc_syn_over;
+    SyncFileBakAPI* sync;
 };
 
 #endif /* OMUIDLE_H_ */

@@ -10,6 +10,7 @@
 
 #include "OMUStatus.h"
 
+class SyncFileBakAPI;
 class OMUStandby: public OMUStatus {
 public:
     OMUStandby();
@@ -19,7 +20,7 @@ public:
         return OMU_Standby;
     };
 private:
-    uint8 udp_cmd;
+    SyncFileBakAPI* sync;
 };
 
 #endif /* OMUSTANDBY_H_ */

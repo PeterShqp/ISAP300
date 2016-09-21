@@ -19,10 +19,8 @@ extern "C" void SendFrameBySwitch(LAYER2FRAME* frame);
 
 uint32 OIDImplTimeticks[] = { 1, 3, 6, 1, 2, 1, 1, 3, 0 };//time
 uint32 OIDTrapFix[] = { 1, 3, 6, 1, 6, 3, 1, 1, 4, 1, 0 };//TRAP OID
-uint32 OIDTrapEnterpriseFix[] = { 1, 3, 6, 1, 6, 3, 1, 1, 4, 3, 0 };
 
-uint32 OIDTrapList[] = { 1, 3, 6, 1, 4, 1, 25449, 1, 1, 12, 1, 1, 0, 3000 };
-uint32 OIDImplEventID[] = { 1, 3, 6, 1, 4, 1, 25449, 1, 1, 12, 2, 0 };
+uint32 OIDImplEventID[] =  { 1, 3, 6, 1, 4, 1, 25449, 1, 1, 12, 2, 0 };
 uint32 OIDImplTrapItem[] = { 1, 3, 6, 1, 4, 1, 25449, 1, 1, 12, 3, 0 };
 
 TASK void tsk_trap(void);
@@ -70,12 +68,21 @@ void TrapList::deInitial(void) {
 /*
  * 生成告警产生报文，并加入到发送队列
  */
-void TrapList::insertNewAlarmTrap(AlarmRecord *type) {
+void TrapList::insertNewAlarmTrap(AlarmRecord *record) {
+    makeAlarmTrapDatagram(alarm_raise, record);
+}
+
+void TrapList::insertRecoveryAlarmTrap(AlarmRecord *record, uint32 timetick) {
+    makeAlarmTrapDatagram(alarm_raise, record);
+}
+
+
+void TrapList::makeAlarmTrapDatagram(Alarm_Trap_type_E type, AlarmRecord *record) {
 
     if( !inited ) {
         return;
     }
-    if (type == NULL)
+    if (record == NULL)
         return;
 
     /*检查trapbuf是否满*/
@@ -100,119 +107,42 @@ void TrapList::insertNewAlarmTrap(AlarmRecord *type) {
     /*1.3.6.1.2.1.1.3.0 Timeticks*/
     OID oid1(OIDImplTimeticks, 9);
     pdu.variableBindings.getAt(0)->setOID(&oid1);
-    TimeTicks value1(type->itsRaiseTime());
+    TimeTicks value1(record->itsRaiseTime());
     pdu.variableBindings.getAt(0)->setValue(&value1);
 
     /*1.3.6.1.6.3.1.1.4.1.0 TrapOID*/
+        /*1.3.6.1.4.1.25449.1.1.12.2.type alarmType*/
+
     OID oid2(OIDTrapFix, 11);
     pdu.variableBindings.getAt(1)->setOID(&oid2);
-    OIDImplEventID[11] = type->itsAlarmType();
+    OIDImplEventID[11] = record->itsAlarmType();
+    if( type == alarm_clear ) {
+        OIDImplEventID[11] |= 0x8000;
+    }
     OID value2(OIDImplEventID, 12);
     pdu.variableBindings.getAt(1)->setValue(&value2);
 
-    //trap alarm sn
-
+    /*1.3.6.1.4.1.25449.1.1.12.3.1 alarm sn*/
     OIDImplTrapItem[11] = 1;
     OID oid3(OIDImplTrapItem, 12);
     pdu.variableBindings.getAt(2)->setOID(&oid3);
-    Integer32 value3(type->itsSN());
+    Integer32 value3(record->itsSN());
     pdu.variableBindings.getAt(2)->setValue(&value3);
 
     //Alarm source ID
-
+    /*1.3.6.1.4.1.25449.1.1.12.3.2 Alarm source ID*/
     OIDImplTrapItem[11] = 2;
     OID oid4(OIDImplTrapItem, 12);
     pdu.variableBindings.getAt(3)->setOID(&oid4);
-    Integer32 value4(type->itsAlarmSource());
+    Integer32 value4(record->itsAlarmSource());
     pdu.variableBindings.getAt(3)->setValue(&value4);
 
     //Alarm level
-
+    /*1.3.6.1.4.1.25449.1.1.12.3.3 Alarm level*/
     OIDImplTrapItem[11] = 3;
     OID oid5(OIDImplTrapItem, 12);
     pdu.variableBindings.getAt(4)->setOID(&oid5);
-    Integer32 value5(type->itsAlarmLevel());
-    pdu.variableBindings.getAt(4)->setValue(&value5);
-
-    int pklen = pdu.getPDUBerLength();
-    int buflen = pklen + 1 + SNMPPdu::getLengthBerLength(pklen);
-
-    ///unsigned char *buf = new unsigned char[buflen];
-    if (pdu.encode((unsigned char*) trapBuffer[endIndex].buffer, buflen,
-            pklen)) {
-        trapBuffer[endIndex].buffersize = buflen;
-        trapBuffer[endIndex].valid = 1;
-    } else {
-        trapBuffer[endIndex].buffersize = 0;
-        trapBuffer[endIndex].valid = 0;
-    }
-
-    pdu.variableBindings.variableBinding = NULL;
-    endIndex++;
-    if (endIndex >= TrapMaxNumber) {
-        endIndex = 0;
-    }
-
-}
-void TrapList::insertRecoveryAlarmTrap(AlarmRecord *type, uint32 timetick) {
-
-    if( !inited ) {
-        return;
-    }
-    if (type == NULL)
-        return;
-    if (endIndex != currentIndex) {
-        //�Ƿ�buffer������� ����
-        if ((endIndex == TrapMaxNumber - 1) && currentIndex == 0) {
-            return;
-        } else if ((endIndex + 1) == currentIndex) {
-            return;
-        }
-    }
-    OIDImplTrapItem[10] = 3;
-    OIDImplEventID[10] = 2;
-    SNMPPdu pdu;
-    pdu.commond = SNMPPdu::TRAP;
-    VariableBinding vb[5];
-    pdu.variableBindings.variableBinding = vb;
-    pdu.variableBindings.vbsLength = 5;
-    //trap����ʱ��
-
-    OID oid1(OIDImplTimeticks, 9);
-    pdu.variableBindings.getAt(0)->setOID(&oid1);
-    TimeTicks value1(timetick * 100);
-    pdu.variableBindings.getAt(0)->setValue(&value1);
-
-    //trap�¼�ID
-
-    OID oid2(OIDTrapFix, 11);
-    pdu.variableBindings.getAt(1)->setOID(&oid2);
-    OIDImplEventID[11] = type->itsAlarmType() | 0x8000;
-    OID value2(OIDImplEventID, 12);
-    pdu.variableBindings.getAt(1)->setValue(&value2);
-
-    //trap alarm �澯��Ŀ����
-
-    OIDImplTrapItem[11] = 1;
-    OID oid3(OIDImplTrapItem, 12);
-    pdu.variableBindings.getAt(2)->setOID(&oid3);
-    Integer32 value3(type->itsSN());
-    pdu.variableBindings.getAt(2)->setValue(&value3);
-
-    //�澯ԴID
-
-    OIDImplTrapItem[11] = 2;
-    OID oid4(OIDImplTrapItem, 12);
-    pdu.variableBindings.getAt(3)->setOID(&oid4);
-    Integer32 value4(type->itsAlarmSource());
-    pdu.variableBindings.getAt(3)->setValue(&value4);
-
-    //�澯����
-
-    OIDImplTrapItem[11] = 3;
-    OID oid5(OIDImplTrapItem, 12);
-    pdu.variableBindings.getAt(4)->setOID(&oid5);
-    Integer32 value5(type->itsAlarmLevel());
+    Integer32 value5(record->itsAlarmLevel());
     pdu.variableBindings.getAt(4)->setValue(&value5);
 
     int pklen = pdu.getPDUBerLength();
