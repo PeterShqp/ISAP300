@@ -3,7 +3,28 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-D:\EclipseWorkspace\ISAP300_Release_V3.x\ISAP300_Release_V3.x.uvproj
-Project File Date:  07/11/2016
+D:\EclipseWorkspace\ISAP300\ISAP300_Release_V3.x.uvproj
+Project File Date:  09/21/2016
 
 <h2>Output:</h2>
+Build target 'LPC3250'
+compiling CMibCommunicationAttribute.cpp...
+compiling CmdRing.cpp...
+./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdRing.h(11): error:  #262: not a class or struct name
+./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdRing.h(14): error:  #403: invalid redeclaration of member function "CmdRing::CmdRing()" (declared at line 12)
+Target not created
+Build target 'LPC3250'
+compiling CmdRing.cpp...
+./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdRing.h(15): error:  #403: invalid redeclaration of member function "CmdRing::CmdRing()" (declared at line 13)
+Target not created
+Build target 'LPC3250'
+compiling CmdRing.cpp...
+linking...
+Program Size: Code=905268 RO-data=99252 RW-data=4512 ZI-data=6343888  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+D:\EclipseWorkspace\ISAP300>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: d21a07a5
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).

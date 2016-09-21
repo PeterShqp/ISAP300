@@ -8,10 +8,10 @@
 #ifndef SOURCE_HIS_APP_COMPONENTELEMENT_COMPMISC_FANPOWCOMMAND_CMDRING_H_
 #define SOURCE_HIS_APP_COMPONENTELEMENT_COMPMISC_FANPOWCOMMAND_CMDRING_H_
 
+#include "VFCommand.h"
 class CmdRing: public VFCommand {
     CmdRing();
 public:
-    CmdRing();
     virtual ~CmdRing();
 };
 

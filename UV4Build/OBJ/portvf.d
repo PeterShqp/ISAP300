@@ -63,6 +63,8 @@
 .\UV4Build\OBJ\portvf.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFcmdTSPolarTurn.h
 .\UV4Build\OBJ\portvf.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFCmdTSRcvGain.h
 .\UV4Build\OBJ\portvf.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFCmdTSSndGain.h
+.\UV4Build\OBJ\portvf.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFCmdSignalConfig.h
+.\UV4Build\OBJ\portvf.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFCmdSignalStatus.h
 .\UV4Build\OBJ\portvf.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
 .\UV4Build\OBJ\portvf.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\portvf.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC

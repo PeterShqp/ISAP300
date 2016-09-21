@@ -118,7 +118,7 @@
 .\UV4Build\OBJ\cli_upgrade_cmd_group.o: .\source\HIS\app\BusinessResource\OtherCardResource\PortE1.h
 .\UV4Build\OBJ\cli_upgrade_cmd_group.o: .\source\HIS\include\ComponentElement\Chip24E1CPLD.h
 .\UV4Build\OBJ\cli_upgrade_cmd_group.o: .\source\HIS\app\AlarmModule\E1CardAlarm\E1CardAlarmDataDefine.h
-.\UV4Build\OBJ\cli_upgrade_cmd_group.o: .\source\HIS\app\ComponentElement\Protect\SyncFileAPI.h
+.\UV4Build\OBJ\cli_upgrade_cmd_group.o: .\source\HIS\app\ComponentElement\Protect\SyncFileBakAPI.h
 .\UV4Build\OBJ\cli_upgrade_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector.CC
 .\UV4Build\OBJ\cli_upgrade_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\cli_upgrade_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC
