@@ -1,7 +1,7 @@
 /*
  * CardFAN.h
  *
- *  Created on: 2015Äê3ÔÂ4ÈÕ
+ *  Created on: 2015ï¿½ï¿½3ï¿½ï¿½4ï¿½ï¿½
  *      Author: Administrator
  */
 
@@ -11,6 +11,7 @@
 #include "CBaseCard.h"
 
 typedef struct {
+    uint8 buzzerCtrl; //1 ring; 0 mute
 }Card_ConfigData_FAN;
 
 class CardFAN: public CBaseCard {
@@ -27,6 +28,12 @@ public:
     virtual uint32 getConfigDataLen(void) {
         return sizeof(ConfigData);
     };
+    virtual void loadDefaultData(void) {
+        ConfigData.buzzerCtrl = 1;
+    };
+
+    uint8 getBuzzerCfg(void);
+    bool setBuzzerCfg(uint8 r);
 private:
     Card_ConfigData_FAN ConfigData;
     std::string cardversionInfo;

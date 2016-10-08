@@ -69,6 +69,13 @@
 .\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\include\UID.h
 .\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\app\BusinessResource\OtherCardResource\PortFE1.h
 .\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\app\BusinessResource\RealPortBase.h
+.\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\include\ComponentElement\ObjectReference.h
+.\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\include\ComponentElement\CardFAN.h
+.\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\include\ComponentElement\CBaseCard.h
+.\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\include\ComponentElement\FANPOWModule.h
+.\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\app\ComponentElement\compmisc\FANPOWCommand\CmdRing.h
+.\UV4Build\OBJ\dxcalarmmodule.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFCommand.h
+.\UV4Build\OBJ\dxcalarmmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\UV4Build\OBJ\dxcalarmmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC
 .\UV4Build\OBJ\dxcalarmmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\dxcalarmmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\list.CC

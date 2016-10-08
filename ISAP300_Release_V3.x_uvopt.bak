@@ -133,10 +133,27 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ULP2ARM_TKSCP_DRV_ARM_for_AGDI</Key>
-          <Name>-VD134322 -VE200 -EP1179648 -ES1859 -OP1798 -IC0 -LM0 -IF0 -EF0 -VL0 -UT0 -UE0 -OF317059580 -OJ317059596-EO000 -EO010 -EO02134217728 -EO030 -EO04208 -EO050 -EO060 -EO07134217728 -EO080 -EO09208 -EO100 -EO110 -EO12134217728 -EO130 -EO14208 -EO150 -EO160 -EO17134217728 -EO180 -EO19208 -EO201200000 -EO211200000 -EO22100000 -EO231200000 -EO2450 -EO25500 -EO26305419896 -EO277341448 -EO2850500000 -EO2915 -EO300 -EO310 -EO3228 -EO330 -EO340 -EO350 -EO360 -EO370 -EO380 -EO390 -HD000 -HD010 -HD020 -HD030 -HD040 -HD050 -OJ000 -OJ010 -OJ020 -OJ030 -OJ040 -OJ050 -OJ060 -OJ070 -FF4"ulp2arm_tkscp_drv_arm_for_agdi lpc3250.ini" -PJ"ISAP300_Release_V3.x_LPC3250.cfg"  -MM0V2T0S0E65535 -MM8V2T0S0E65535</Name>
+          <Name>-VD134322 -VE200 -EP1179648 -ES1859 -OP1798 -IC0 -LM0 -IF0 -EF0 -VL0 -UT0 -UE0 -OF415363580 -OJ415363596-EO000 -EO010 -EO02134217728 -EO030 -EO04208 -EO050 -EO060 -EO07134217728 -EO080 -EO09208 -EO100 -EO110 -EO12134217728 -EO130 -EO14208 -EO150 -EO160 -EO17134217728 -EO180 -EO19208 -EO201200000 -EO211200000 -EO22100000 -EO231200000 -EO2450 -EO25500 -EO26305419896 -EO277341448 -EO2850500000 -EO2915 -EO300 -EO310 -EO3228 -EO330 -EO340 -EO350 -EO360 -EO370 -EO380 -EO390 -HD000 -HD010 -HD020 -HD030 -HD040 -HD050 -OJ000 -OJ010 -OJ020 -OJ030 -OJ040 -OJ050 -OJ060 -OJ070 -FF4"ulp2arm_tkscp_drv_arm_for_agdi lpc3250.ini" -PJ"ISAP300_Release_V3.x_LPC3250.cfg"  -MM0V2T0S0E65535 -MM8V2T0S0E65535</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>88</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>D:\EclipseWorkspace\ISAP300\source\HIS\app\AlarmModule\EmuxXCAlarm\DXCAlarmModule.cpp</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -153,13 +170,13 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>data</ItemText>
+          <ItemText>result</ItemText>
         </Mm>
       </MemoryWindow1>
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -210,7 +227,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>53</TopLine>
+      <TopLine>45</TopLine>
       <CurrentLine>76</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HAL/BSP_ISAP300_V1.0/IRQ.c</PathWithFileName>
@@ -1370,7 +1387,7 @@
       <Focus>0</Focus>
       <ColumnNumber>28</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>770</TopLine>
+      <TopLine>773</TopLine>
       <CurrentLine>789</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/platform/net/Net_lib.c</PathWithFileName>
@@ -1450,7 +1467,7 @@
       <Focus>0</Focus>
       <ColumnNumber>46</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>82</TopLine>
+      <TopLine>85</TopLine>
       <CurrentLine>95</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/platform/net/Net_Debug.c</PathWithFileName>
@@ -1536,10 +1553,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>48</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>172</TopLine>
-      <CurrentLine>181</CurrentLine>
+      <TopLine>175</TopLine>
+      <CurrentLine>191</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/platform/os/RTX/RTX_Config.c</PathWithFileName>
       <FilenameWithoutPath>RTX_Config.c</FilenameWithoutPath>
@@ -1778,7 +1795,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>165</TopLine>
+      <TopLine>168</TopLine>
       <CurrentLine>176</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/MidWare/CLI_Commands/CLI_Upgrade_cmd_group.cpp</PathWithFileName>
@@ -1802,7 +1819,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>578</TopLine>
+      <TopLine>581</TopLine>
       <CurrentLine>596</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/MidWare/s1l/s1l_cmds.c</PathWithFileName>
@@ -2298,7 +2315,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>73</TopLine>
+      <TopLine>76</TopLine>
       <CurrentLine>91</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/card/CardVF.cpp</PathWithFileName>
@@ -2488,10 +2505,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>20</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>2</TopLine>
+      <CurrentLine>10</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/card/CardFAN.cpp</PathWithFileName>
       <FilenameWithoutPath>CardFAN.cpp</FilenameWithoutPath>
@@ -2938,7 +2955,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>21</TopLine>
+      <TopLine>24</TopLine>
       <CurrentLine>41</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/chip/Chip30VFLogic.cpp</PathWithFileName>
@@ -4082,7 +4099,7 @@
       <Focus>0</Focus>
       <ColumnNumber>24</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>18</TopLine>
+      <TopLine>20</TopLine>
       <CurrentLine>21</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/communication/SNMP/SNMPMib/Private/ModuleGroup/CMibFunctionModuleGroup.cpp</PathWithFileName>
@@ -4306,7 +4323,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>118</TopLine>
+      <TopLine>114</TopLine>
       <CurrentLine>138</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/communication/SNMP/SNMPMib/Private/ModuleGroup/TableDeviceBitFiles.cpp</PathWithFileName>
@@ -4330,7 +4347,7 @@
       <Focus>0</Focus>
       <ColumnNumber>59</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>41</TopLine>
+      <TopLine>34</TopLine>
       <CurrentLine>60</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/compmisc/EZbus.cpp</PathWithFileName>
@@ -4360,10 +4377,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>2</TopLine>
+      <CurrentLine>20</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/compmisc/ObjectReference.cpp</PathWithFileName>
       <FilenameWithoutPath>ObjectReference.cpp</FilenameWithoutPath>
@@ -4394,8 +4411,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>95</TopLine>
+      <CurrentLine>144</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/compmisc/FANPOWModule.cpp</PathWithFileName>
       <FilenameWithoutPath>FANPOWModule.cpp</FilenameWithoutPath>
@@ -4890,8 +4907,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/communication/SNMP/SNMPMib/Private/ElementGroup/TableDevice.cpp</PathWithFileName>
       <FilenameWithoutPath>TableDevice.cpp</FilenameWithoutPath>
@@ -5680,10 +5697,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>34</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>80</TopLine>
+      <CurrentLine>98</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp</PathWithFileName>
       <FilenameWithoutPath>XCAlarmModule.cpp</FilenameWithoutPath>
@@ -6274,7 +6291,7 @@
       <Focus>0</Focus>
       <ColumnNumber>41</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>20</TopLine>
+      <TopLine>23</TopLine>
       <CurrentLine>40</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\source\HIS\app\BusinessResource\OtherCardResource\PortVF.cpp</PathWithFileName>
@@ -6746,7 +6763,7 @@
       <Focus>0</Focus>
       <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>8</TopLine>
+      <TopLine>9</TopLine>
       <CurrentLine>10</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/Protect/SyncFileAPI.cpp</PathWithFileName>
@@ -6814,7 +6831,7 @@
 
   <Group>
     <GroupName>source_HIS_app_AlarmModule_EmuxXCAlarm</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -6826,8 +6843,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>48</TopLine>
+      <CurrentLine>49</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/AlarmModule/EmuxXCAlarm/DXCAlarmModule.cpp</PathWithFileName>
       <FilenameWithoutPath>DXCAlarmModule.cpp</FilenameWithoutPath>

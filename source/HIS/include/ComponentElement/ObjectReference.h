@@ -14,6 +14,7 @@ class CardVF;
 class CardPCMXC;
 class Card16FE1;
 class CardDXC;
+class CardFAN;
 
 class ObjectReference {
 public:
@@ -28,6 +29,8 @@ public:
     static CardVF* getVFCard(int sn);
     static int getOPTMode(void); //return 0 622 ,return 1 155
     static Card16FE1* get16FE1Card(int sn);
+
+    static CardFAN* getFANCard(void);
 
 };
 

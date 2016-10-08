@@ -25,6 +25,9 @@ enum {
 	device_active_card_number,
 	device_remote_reset,
 	device_update,
+	device_reset_bakcard,
+	device_update_bakcard,
+	device_buzzer,
 	device_column_size
 
 };
@@ -204,4 +207,42 @@ public:
 
 	virtual int callbackSet( const index_info_T& index, uint8*, uint32 len);
 };
+
+class TableDeviceCol_resetbakup : public CMibTableColumn {
+    TableDeviceCol_resetbakup();
+public:
+    TableDeviceCol_resetbakup(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~TableDeviceCol_resetbakup() {};
+
+    virtual int callbackSet( const index_info_T& index, uint32 );
+};
+
+class TableDeviceCol_updatebakup : public CMibTableColumn {
+    TableDeviceCol_updatebakup();
+public:
+    TableDeviceCol_updatebakup(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~TableDeviceCol_updatebakup() {};
+
+    virtual int callbackSet( const index_info_T& index, uint32 );
+};
+
+class TableDeviceCol_buzzer : public CMibTableColumn {
+    TableDeviceCol_buzzer();
+public:
+    TableDeviceCol_buzzer(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~TableDeviceCol_buzzer() {};
+
+    virtual int CallbackGet(const index_info_T& index);
+    virtual int callbackSet( const index_info_T& index, uint32 );
+};
+
 #endif /* TABLEDEVICE_H_ */

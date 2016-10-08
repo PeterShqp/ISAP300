@@ -17,6 +17,7 @@
 #include "ProtectAssistCell.h"
 #include "SyncFileAPI.h"
 #include "SlotModule.h"
+#include "CardFAN.h"
 
 column_info_T TableDevice::colInfo[device_column_size] = {
 		{1, Mib_read_only, CSnmpConstDefine::ucConstInteger32},
@@ -32,7 +33,9 @@ column_info_T TableDevice::colInfo[device_column_size] = {
 		{11,Mib_read_only, CSnmpConstDefine::ucConstInteger32},
 		{12,Mib_write_only, CSnmpConstDefine::ucConstInteger32},
 		{13,Mib_write_only,CSnmpConstDefine::ucConstOctetString},//use filename to update program
-
+		{14,Mib_write_only, CSnmpConstDefine::ucConstInteger32},
+		{15,Mib_write_only, CSnmpConstDefine::ucConstInteger32},
+		{16,Mib_read_write, CSnmpConstDefine::ucConstInteger32},
 };
 
 
@@ -81,6 +84,8 @@ CMibNodeObject* TableDevice::MakeColumn(int sn, uint32* oid, uint32 oidLen) {
 		return new TableDeviceCol_rmtreset(sn, oid, oidLen, this);
 	case device_update:
 		return new TableDeviceCol_update(sn, oid, oidLen, this);
+	case device_buzzer:
+	    return new TableDeviceCol_buzzer(sn, oid, oidLen, this);
 	default:
 		return 0;
 	}
@@ -178,4 +183,34 @@ int TableDeviceCol_update::callbackSet(const index_info_T& index, uint8* fname, 
     }
     SyncFileAPI::instance().sendAfileToRemote(f);
 	return 0x5A;
+}
+
+int TableDeviceCol_resetbakup::callbackSet( const index_info_T& index, uint32 ) {
+    return -1;
+}
+
+int TableDeviceCol_updatebakup::callbackSet( const index_info_T& index, uint32 ) {
+    return -1;
+}
+
+int TableDeviceCol_buzzer::CallbackGet(const index_info_T& index) {
+    CardFAN* fan = ObjectReference::getFANCard();
+    if( fan ) {
+        return fan->getBuzzerCfg();
+    }
+    return -1;
+}
+
+int TableDeviceCol_buzzer::callbackSet( const index_info_T& index, uint32 d ) {
+    CardFAN* fan = ObjectReference::getFANCard();
+    if( fan ) {
+        if( fan->setBuzzerCfg(d)) {
+            return 0x5A;
+        }
+        else {
+            return 0xEE;
+        }
+    }
+    return -1;
+
 }

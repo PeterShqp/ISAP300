@@ -72,5 +72,7 @@
 .\UV4Build\OBJ\tabledevice.o: .\source\HIS\include\ComponentElement\SlotModule.h
 .\UV4Build\OBJ\tabledevice.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector
 .\UV4Build\OBJ\tabledevice.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_dispatch.h
+.\UV4Build\OBJ\tabledevice.o: .\source\HIS\include\ComponentElement\CardFAN.h
+.\UV4Build\OBJ\tabledevice.o: .\source\HIS\include\ComponentElement\CBaseCard.h
 .\UV4Build\OBJ\tabledevice.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\tabledevice.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector.CC

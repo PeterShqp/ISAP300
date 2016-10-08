@@ -41,4 +41,9 @@
 .\UV4Build\OBJ\cardfan.o: .\source\HIS\platform\os\include\os_def.h
 .\UV4Build\OBJ\cardfan.o: .\source\HIS\platform\os\include\rtl.h
 .\UV4Build\OBJ\cardfan.o: .\source\HIS\include\ComponentElement\CardTypeID_define.h
+.\UV4Build\OBJ\cardfan.o: .\source\HIS\include\SysError.h
+.\UV4Build\OBJ\cardfan.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdexcept
+.\UV4Build\OBJ\cardfan.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_exception.h
+.\UV4Build\OBJ\cardfan.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\cstdarg
+.\UV4Build\OBJ\cardfan.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdarg.h
 .\UV4Build\OBJ\cardfan.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC

@@ -92,6 +92,8 @@
 .\UV4Build\OBJ\objectreference.o: .\source\HIS\include\ComponentElement\CBaseCard.h
 .\UV4Build\OBJ\objectreference.o: .\source\HIS\include\ComponentElement\ChipDXCLogic.h
 .\UV4Build\OBJ\objectreference.o: .\source\HIS\include\ComponentElement\GeneralLogic.h
+.\UV4Build\OBJ\objectreference.o: .\source\HIS\include\ComponentElement\CardFAN.h
+.\UV4Build\OBJ\objectreference.o: .\source\HIS\include\ComponentElement\CBaseCard.h
 .\UV4Build\OBJ\objectreference.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\objectreference.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC
 .\UV4Build\OBJ\objectreference.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector.CC

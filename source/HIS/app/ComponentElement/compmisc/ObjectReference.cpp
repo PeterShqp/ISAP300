@@ -17,6 +17,7 @@
 #include "Card16FE1.h"
 #include "CardDXC.h"
 #include "GeneralLogic.h"
+#include "CardFAN.h"
 
 ObjectReference::ObjectReference() {
     // TODO Auto-generated constructor stub
@@ -125,4 +126,20 @@ Card16FE1* ObjectReference::get16FE1Card(int sn) {
         }
     }
     return 0;
+}
+
+CardFAN* ObjectReference::getFANCard(void) {
+    CBaseSlot* pslt = SlotModule::getSlot(9);
+    if( pslt ) {
+        CBaseCard* pcard = pslt->GetCardObject();
+        int type = pcard->GetCartTypeID();
+        if( pcard && (type == FAN_CARD_TYPEID) ) {
+            CardFAN* pc = dynamic_cast<CardFAN*>(pcard);
+            if( pc ) {
+                return pc;
+            }
+        }
+    }
+    return 0;
+
 }

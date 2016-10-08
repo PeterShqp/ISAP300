@@ -7,8 +7,9 @@
 
 #include "CmdRing.h"
 
-CmdRing::CmdRing() {
-    // TODO Auto-generated constructor stub
+CmdRing::CmdRing(uint8 ring) {
+    cmd = 6;
+    para[0] = ring;
 
 }
 

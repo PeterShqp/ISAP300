@@ -11,6 +11,11 @@
 #include "SrcAlarmUpE1.h"
 #include "XCAlarmDataDefine.h"
 #include "PortFE1.h"
+#include "ObjectReference.h"
+#include "CardFAN.h"
+#include "FANPOWModule.h"
+#include "CmdRing.h"
+#include <stdio.h>
 
 TASK void Do_LED(void* xc);
 
@@ -44,6 +49,8 @@ void XCAlarmModule::turnLedMinOn(bool on) {
 
 TASK void Do_LED(void* pxc) {
     XCAlarmModule* xc = (XCAlarmModule*)pxc;
+    uint8 ring = 0;
+    uint8 ringBak = 0;
     while(1) {
         os_dly_wait(300);
         bool maj = false;
@@ -61,11 +68,13 @@ TASK void Do_LED(void* pxc) {
         if( maj ) {
             //�������澯��
             xc->turnLedMajOn(true);
+            ring = 1;
         }
         else {
             //�����澯��
             xc->turnLedMajOn(false);
-       }
+            ring = 0;
+        }
         if( min ) {
             //������Ҫ�澯��
             xc->turnLedMinOn(true);
@@ -73,7 +82,29 @@ TASK void Do_LED(void* pxc) {
         else {
             //���Ҫ�澯��
             xc->turnLedMinOn(false);
-       }
+        }
+        if( ObjectReference::getFANCard() ) {
+            if( ObjectReference::getFANCard()->getBuzzerCfg() == 0 ) {
+                ring = 0;
+            }
 
+            if( ring != ringBak ) {
+                ringBak = ring;
+                FANPOWModule mod;
+                CmdRing cmd(ring);
+                if( mod.processFANCommand(cmd) == DEFErrorSuccess ) {
+					#ifdef EZ_DEBUG
+                    uint8* result = cmd.getResultBuff();
+                    if( result[1] != 0x5a ) {
+                        printf("\n!!!CmdRing Error!!!");
+                    }
+					#endif
+				}
+				else {
+                    printf("\n!!!processFANCommand Error!!!");
+				
+				}
+            }
+        }
     }
 }
