@@ -2556,6 +2556,11 @@
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdRing.cpp</FilePath>
             </File>
+            <File>
+              <FileName>CmdFanCtrl.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdFanCtrl.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

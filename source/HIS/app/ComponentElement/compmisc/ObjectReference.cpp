@@ -117,11 +117,13 @@ Card16FE1* ObjectReference::get16FE1Card(int sn) {
     CBaseSlot* pslt = SlotModule::getSlot(sn);
     if( pslt ) {
         CBaseCard* pcard = pslt->GetCardObject();
-        int type = pcard->GetCartTypeID();
-        if( pcard && (type == FE1_16_CARD_TYPEID) ) {
-            Card16FE1* pc = dynamic_cast<Card16FE1*>(pcard);
-            if( pc ) {
-                return pc;
+        if( pcard ) {
+            int type = pcard->GetCartTypeID();
+            if( type == FE1_16_CARD_TYPEID ) {
+                Card16FE1* pc = dynamic_cast<Card16FE1*>(pcard);
+                if( pc ) {
+                    return pc;
+                }
             }
         }
     }
@@ -132,11 +134,13 @@ CardFAN* ObjectReference::getFANCard(void) {
     CBaseSlot* pslt = SlotModule::getSlot(9);
     if( pslt ) {
         CBaseCard* pcard = pslt->GetCardObject();
-        int type = pcard->GetCartTypeID();
-        if( pcard && (type == FAN_CARD_TYPEID) ) {
-            CardFAN* pc = dynamic_cast<CardFAN*>(pcard);
-            if( pc ) {
-                return pc;
+        if( pcard ) {
+            int type = pcard->GetCartTypeID();
+            if( type == FAN_CARD_TYPEID ) {
+                CardFAN* pc = dynamic_cast<CardFAN*>(pcard);
+                if( pc ) {
+                    return pc;
+                }
             }
         }
     }

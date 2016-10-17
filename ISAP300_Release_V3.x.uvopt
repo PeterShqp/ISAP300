@@ -1371,7 +1371,7 @@
       <Focus>0</Focus>
       <ColumnNumber>28</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>774</TopLine>
+      <TopLine>775</TopLine>
       <CurrentLine>789</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/platform/net/Net_lib.c</PathWithFileName>
@@ -1451,7 +1451,7 @@
       <Focus>0</Focus>
       <ColumnNumber>46</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>86</TopLine>
+      <TopLine>87</TopLine>
       <CurrentLine>95</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/platform/net/Net_Debug.c</PathWithFileName>
@@ -1507,7 +1507,7 @@
       <Focus>0</Focus>
       <ColumnNumber>48</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>176</TopLine>
+      <TopLine>177</TopLine>
       <CurrentLine>191</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/platform/os/RTX/RTX_Config.c</PathWithFileName>
@@ -1747,7 +1747,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>169</TopLine>
+      <TopLine>170</TopLine>
       <CurrentLine>176</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/MidWare/CLI_Commands/CLI_Upgrade_cmd_group.cpp</PathWithFileName>
@@ -1771,7 +1771,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>582</TopLine>
+      <TopLine>583</TopLine>
       <CurrentLine>596</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/MidWare/s1l/s1l_cmds.c</PathWithFileName>
@@ -2267,7 +2267,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>77</TopLine>
+      <TopLine>78</TopLine>
       <CurrentLine>91</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/card/CardVF.cpp</PathWithFileName>
@@ -2459,7 +2459,7 @@
       <Focus>0</Focus>
       <ColumnNumber>20</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>3</TopLine>
+      <TopLine>4</TopLine>
       <CurrentLine>10</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/card/CardFAN.cpp</PathWithFileName>
@@ -2907,7 +2907,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>25</TopLine>
+      <TopLine>26</TopLine>
       <CurrentLine>41</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/chip/Chip30VFLogic.cpp</PathWithFileName>
@@ -4275,7 +4275,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>116</TopLine>
+      <TopLine>117</TopLine>
       <CurrentLine>138</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/communication/SNMP/SNMPMib/Private/ModuleGroup/TableDeviceBitFiles.cpp</PathWithFileName>
@@ -4331,7 +4331,7 @@
       <Focus>0</Focus>
       <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>3</TopLine>
+      <TopLine>4</TopLine>
       <CurrentLine>20</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/compmisc/ObjectReference.cpp</PathWithFileName>
@@ -4363,7 +4363,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>127</TopLine>
+      <TopLine>128</TopLine>
       <CurrentLine>144</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/compmisc/FANPOWModule.cpp</PathWithFileName>
@@ -5651,7 +5651,7 @@
       <Focus>0</Focus>
       <ColumnNumber>34</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>81</TopLine>
+      <TopLine>82</TopLine>
       <CurrentLine>98</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp</PathWithFileName>
@@ -6243,7 +6243,7 @@
       <Focus>0</Focus>
       <ColumnNumber>41</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>24</TopLine>
+      <TopLine>25</TopLine>
       <CurrentLine>40</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\source\HIS\app\BusinessResource\OtherCardResource\PortVF.cpp</PathWithFileName>
@@ -6731,8 +6731,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>145</TopLine>
+      <CurrentLine>162</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp</PathWithFileName>
       <FilenameWithoutPath>SyncFileBakAPI.cpp</FilenameWithoutPath>
@@ -6779,6 +6779,22 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>47</GroupNumber>
+      <FileNumber>388</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdFanCtrl.cpp</PathWithFileName>
+      <FilenameWithoutPath>CmdFanCtrl.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -6789,7 +6805,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>48</GroupNumber>
-      <FileNumber>388</FileNumber>
+      <FileNumber>389</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6805,7 +6821,7 @@
     </File>
     <File>
       <GroupNumber>48</GroupNumber>
-      <FileNumber>389</FileNumber>
+      <FileNumber>390</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6821,7 +6837,7 @@
     </File>
     <File>
       <GroupNumber>48</GroupNumber>
-      <FileNumber>390</FileNumber>
+      <FileNumber>391</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6837,7 +6853,7 @@
     </File>
     <File>
       <GroupNumber>48</GroupNumber>
-      <FileNumber>391</FileNumber>
+      <FileNumber>392</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6861,7 +6877,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>49</GroupNumber>
-      <FileNumber>392</FileNumber>
+      <FileNumber>393</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6885,7 +6901,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>393</FileNumber>
+      <FileNumber>394</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6901,7 +6917,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>394</FileNumber>
+      <FileNumber>395</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6917,7 +6933,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>395</FileNumber>
+      <FileNumber>396</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6933,7 +6949,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>396</FileNumber>
+      <FileNumber>397</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6949,7 +6965,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>397</FileNumber>
+      <FileNumber>398</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6965,7 +6981,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>398</FileNumber>
+      <FileNumber>399</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6981,7 +6997,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>399</FileNumber>
+      <FileNumber>400</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -6997,7 +7013,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>400</FileNumber>
+      <FileNumber>401</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7013,7 +7029,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>401</FileNumber>
+      <FileNumber>402</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7029,7 +7045,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>402</FileNumber>
+      <FileNumber>403</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7045,7 +7061,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>403</FileNumber>
+      <FileNumber>404</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7061,7 +7077,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>404</FileNumber>
+      <FileNumber>405</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7077,7 +7093,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>405</FileNumber>
+      <FileNumber>406</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7093,7 +7109,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>406</FileNumber>
+      <FileNumber>407</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7109,7 +7125,7 @@
     </File>
     <File>
       <GroupNumber>50</GroupNumber>
-      <FileNumber>407</FileNumber>
+      <FileNumber>408</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7133,7 +7149,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>51</GroupNumber>
-      <FileNumber>408</FileNumber>
+      <FileNumber>409</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7149,7 +7165,7 @@
     </File>
     <File>
       <GroupNumber>51</GroupNumber>
-      <FileNumber>409</FileNumber>
+      <FileNumber>410</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7165,7 +7181,7 @@
     </File>
     <File>
       <GroupNumber>51</GroupNumber>
-      <FileNumber>410</FileNumber>
+      <FileNumber>411</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -7181,7 +7197,7 @@
     </File>
     <File>
       <GroupNumber>51</GroupNumber>
-      <FileNumber>411</FileNumber>
+      <FileNumber>412</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>

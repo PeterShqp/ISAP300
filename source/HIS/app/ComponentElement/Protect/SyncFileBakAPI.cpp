@@ -158,6 +158,13 @@ uint16 udp_callback(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint
         strcpy( (char*)send_buff, sendData );
         udp_send(socket, remip, remport, send_buff, strlen((char*)send_buff)+1);
     }
+    else if( memcmp("reset", buf, 5) == 0 ) {
+        CBaseSlot* objpSlot = SlotModule::getSlot(index.index[1] - 1);
+            if (objpSlot) {
+                objpSlot->reset(Warm_start);
+            }
+
+    }
     else {//if need sync
         char fileName[30] = {0};
         uint32 UCRC = 0;

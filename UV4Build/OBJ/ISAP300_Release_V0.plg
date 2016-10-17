@@ -4,16 +4,35 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 D:\EclipseWorkspace\ISAP300\ISAP300_Release_V3.x.uvproj
-Project File Date:  09/29/2016
+Project File Date:  10/09/2016
 
 <h2>Output:</h2>
 Build target 'LPC3250'
+compiling EmuxCompFac.cpp...
 linking...
-Program Size: Code=906716 RO-data=99436 RW-data=4520 ZI-data=6343912  
+Program Size: Code=906916 RO-data=99480 RW-data=4516 ZI-data=6343896  
 User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
 User command #2: addcrc.bat
 D:\EclipseWorkspace\ISAP300>AddMainCRC bin/ISAP300_Release_V0.bin 
 start ...
-crc result is: d955f062
+crc result is: d052fa51
 Add crc successful!
 ".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+linking...
+Program Size: Code=906916 RO-data=99480 RW-data=4516 ZI-data=6343896  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+D:\EclipseWorkspace\ISAP300>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: d052fa51
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling SyncFileBakAPI.cpp...
+./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp(162): error:  #20: identifier "CBaseSlot" is undefined
+./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp(162): error:  #20: identifier "objpSlot" is undefined
+./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp(162): error:  #70: incomplete type is not allowed
+./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp(162): error:  #20: identifier "index" is undefined
+./source/HIS/app/ComponentElement/Protect/SyncFileBakAPI.cpp(164): error:  #20: identifier "Warm_start" is undefined
+Target not created

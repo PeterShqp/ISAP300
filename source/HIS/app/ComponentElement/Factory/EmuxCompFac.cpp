@@ -42,7 +42,7 @@ CBaseCard* EmuxCompFac::makeCard(int iTypeID, CBaseSlot* slot) {
         try {
             switch( iTypeID ) {
                 case DXC_CARD_TYPEID: {
-                    static std::string name("DXC");
+                    static std::string name("DXC-M");
                     c = new CardDXC(name, slot);
                 }
                 break;
