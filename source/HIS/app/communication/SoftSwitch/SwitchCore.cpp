@@ -98,13 +98,14 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 	break;
 
 	case broadcast:{
-		if( !broadcastFilter() ) {
-#ifdef SW_DEBUG
-        printf("broadcast\n");
-#endif
-        os_evt_set(0x0001, t_broad_filter);
-        return SwitchPort::broadcastThePacket(pkt);
-		}
+	    SwitchPort::broadcastThePacket(pkt);
+//		if( !broadcastFilter() ) {
+//#ifdef SW_DEBUG
+//        printf("broadcast\n");
+//#endif
+//        os_evt_set(0x0001, t_broad_filter);
+//        return SwitchPort::broadcastThePacket(pkt);
+//		}
 	}
 		break;
 //	case multicast:

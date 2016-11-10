@@ -44,7 +44,7 @@ class PortFE1;
 class ChannelOptDcc;
 class NMPort;
 class ChannelSabit;
-class 
+class ChannelTsDcn;
 
 class CardXC : public CBaseCard {
 public:

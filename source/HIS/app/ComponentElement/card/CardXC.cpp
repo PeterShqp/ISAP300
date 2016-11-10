@@ -43,6 +43,9 @@
 #include "XCAlarmDataDefine.h"
 #include "NMPort.h"
 #include "ChannelOptDcc.h"
+#include "ChannelSabit.h"
+#include "ChannelTsDcn.h"
+
 /* 数组下标sdhbus，数组元素，对应槽位 */
 int shdbusSlotMapping[] = {0,0,2,2,3,3,5,5,6,6};
 

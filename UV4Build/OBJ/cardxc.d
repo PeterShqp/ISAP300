@@ -124,6 +124,8 @@
 .\UV4Build\OBJ\cardxc.o: .\source\HIS\include\SwTrace.h
 .\UV4Build\OBJ\cardxc.o: .\source\HIS\app\communication\NMPort\ChannelOptDcc.h
 .\UV4Build\OBJ\cardxc.o: .\source\HIS\app\communication\NMPort\NMChannel.h
+.\UV4Build\OBJ\cardxc.o: .\source\HIS\app\communication\NMPort\ChannelSabit.h
+.\UV4Build\OBJ\cardxc.o: .\source\HIS\app\communication\NMPort\ChannelTsDcn.h
 .\UV4Build\OBJ\cardxc.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\cardxc.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC
 .\UV4Build\OBJ\cardxc.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_punct.CC

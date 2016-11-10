@@ -9,37 +9,209 @@ Project File Date:  11/08/2016
 <h2>Output:</h2>
 Build target 'LPC3250'
 compiling CLI_Debug_cmd_group.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #283: qualified name is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #70: incomplete type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #65: expected a ";"
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/MidWare/CLI_Commands/CLI_Debug_cmd_group.cpp(1131): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/MidWare/CLI_Commands/CLI_Debug_cmd_group.cpp(1135): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/MidWare/CLI_Commands/CLI_Debug_cmd_group.cpp(1138): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/MidWare/CLI_Commands/CLI_Debug_cmd_group.cpp(1141): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/MidWare/CLI_Commands/CLI_Debug_cmd_group.cpp(1142): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/MidWare/CLI_Commands/CLI_Debug_cmd_group.cpp(1191): error:  #393: pointer to incomplete class type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling CLI_Upgrade_cmd_group.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #283: qualified name is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #70: incomplete type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #65: expected a ";"
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/MidWare/CLI_Commands/CLI_Upgrade_cmd_group.cpp(56): error:  #393: pointer to incomplete class type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling IsapCompFac.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #260-D: explicit type is missing ("int" assumed)
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/ComponentElement/Factory/IsapCompFac.cpp(57): error:  #79: expected a type specifier
+./source/HIS/app/ComponentElement/Factory/IsapCompFac.cpp(57): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling CardXC.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
-./source/HIS/app/ComponentElement/card/CardXC.cpp(326): error:  #79: expected a type specifier
-./source/HIS/app/ComponentElement/card/CardXC.cpp(326): error:  #18: expected a ")"
-./source/HIS/app/ComponentElement/card/CardXC.cpp(327): error:  #79: expected a type specifier
-./source/HIS/app/ComponentElement/card/CardXC.cpp(327): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #260-D: explicit type is missing ("int" assumed)
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(49): error:  #70: incomplete type is not allowed
+./source/HIS/app/ComponentElement/card/CardXC.cpp(49): error:  #260-D: explicit type is missing ("int" assumed)
+./source/HIS/app/ComponentElement/card/CardXC.cpp(49): error:  #130: expected a "{"
+./source/HIS/app/ComponentElement/card/CardXC.cpp(53): error:  #20: identifier "uoptLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(59): error:  #20: identifier "pcmLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(63): error:  #20: identifier "clock" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(66): error:  #20: identifier "cp1121a" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(69): error:  #20: identifier "sdhLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(77): error:  #20: identifier "ConfigData" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(85): error:  #20: identifier "stm4_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(85): error:  #20: identifier "driver" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(101): error:  #20: identifier "sdhbus_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(101): error:  #20: identifier "cp1121a" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(115): error:  #20: identifier "innere1_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(115): error:  #20: identifier "pcmLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(120): error:  #20: identifier "exte1_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(120): error:  #20: identifier "pcmLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(127): error:  #20: identifier "stbus_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(127): error:  #20: identifier "pcmLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(134): error:  #20: identifier "fe1_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(134): error:  #20: identifier "pcmLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(143): error:  #20: identifier "xclocalclock_obj" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(143): error:  #20: identifier "pcmLgc" is undefined
+./source/HIS/app/ComponentElement/card/CardXC.cpp(150): error:  #20: identifier "xcoptclock_obj" is undefined
+compiling CardCPU.cpp...
 compiling SlotXC.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #260-D: explicit type is missing ("int" assumed)
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling ObjectReference.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #283: qualified name is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #70: incomplete type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #65: expected a ";"
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/ComponentElement/compmisc/ObjectReference.cpp(36): error:  #695: the type in a dynamic_cast must be a pointer or reference to a complete class type, or void *
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling XCAlarmModule.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #283: qualified name is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #70: incomplete type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #65: expected a ";"
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(22): error:  #289: no instance of constructor "BAlarmModule::BAlarmModule" matches the argument list
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(34): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(34): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(34): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(37): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(38): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(38): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(43): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/AlarmModule/XCAlarm/XCAlarmModule.cpp(46): error:  #393: pointer to incomplete class type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling RscSDHBus.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #260-D: explicit type is missing ("int" assumed)
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling RscSDHChannel.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #260-D: explicit type is missing ("int" assumed)
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 compiling OMUWorking.cpp...
-.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #20: identifier "ChannelSabit" is undefined
-.\source\HIS\include\ComponentElement\CardXC.h(149): error:  #20: identifier "ChannelTsDcn" is undefined
+.\source\HIS\include\ComponentElement\CardXC.h(49): error:  #110: expected either a definition or a tag name
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #283: qualified name is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #18: expected a ")"
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #70: incomplete type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(51): error:  #65: expected a ";"
+.\source\HIS\include\ComponentElement\CardXC.h(52): error:  #279: invalid destructor declaration
+.\source\HIS\include\ComponentElement\CardXC.h(54): error:  #782: definition of virtual function "<unnamed>::GetCartTypeID" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(96): error:  #782: definition of virtual function "<unnamed>::resetRemoteDevice" is required here
+.\source\HIS\include\ComponentElement\CardXC.h(151): error:  #20: identifier "ChannelTsDcn" is undefined
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(73): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(78): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(105): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(105): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(108): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(108): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(111): error:  #393: pointer to incomplete class type is not allowed
+./source/HIS/app/ComponentElement/Protect/OMUWorking.cpp(114): error:  #393: pointer to incomplete class type is not allowed
+.\source\HIS\include\ComponentElement\CardXC.h(147): error:  #114: function "<unnamed>::changeToWorking" was referenced but not defined
+.\source\HIS\include\ComponentElement\CardXC.h(148): error:  #114: function "<unnamed>::changeToIdle" was referenced but not defined
 Target not created
+Build target 'LPC3250'
+compiling CLI_Debug_cmd_group.cpp...
+compiling CLI_Upgrade_cmd_group.cpp...
+compiling IsapCompFac.cpp...
+compiling CardXC.cpp...
+./source/HIS/app/ComponentElement/card/CardXC.cpp(326): error:  #70: incomplete type is not allowed
+./source/HIS/app/ComponentElement/card/CardXC.cpp(326): error:  #18: expected a ")"
+./source/HIS/app/ComponentElement/card/CardXC.cpp(327): error:  #70: incomplete type is not allowed
+./source/HIS/app/ComponentElement/card/CardXC.cpp(327): error:  #18: expected a ")"
+./source/HIS/app/ComponentElement/card/CardXC.cpp(334): error:  #167: argument of type "ChannelSabit *" is incompatible with parameter of type "NMChannel *"
+./source/HIS/app/ComponentElement/card/CardXC.cpp(335): error:  #167: argument of type "ChannelTsDcn *" is incompatible with parameter of type "NMChannel *"
+compiling SlotXC.cpp...
+compiling ObjectReference.cpp...
+compiling XCAlarmModule.cpp...
+compiling RscSDHBus.cpp...
+compiling RscSDHChannel.cpp...
+compiling OMUWorking.cpp...
+Target not created
+Build target 'LPC3250'
+compiling CardXC.cpp...
+linking...
+Program Size: Code=909128 RO-data=99848 RW-data=4520 ZI-data=6343904  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+D:\EclipseWorkspace\ISAP300>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: a4296bbe
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling SwitchCore.cpp...
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(110): error:  #116: a break statement may only be used within a loop or switch
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(116): error:  #122: a default label may only be used within a switch
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(117): error:  #116: a break statement may only be used within a loop or switch
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(119): error:  #169: expected a declaration
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(121): error:  #169: expected a declaration
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(177): error:  #169: expected a declaration
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(22): error:  #114: function "task_sw_proccess" was referenced but not defined
+./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp(23): error:  #114: function "taskCheckBroadcastFilter" was referenced but not defined
+Target not created
+Build target 'LPC3250'
+compiling SwitchCore.cpp...
+linking...
+Program Size: Code=909096 RO-data=99848 RW-data=4520 ZI-data=6343904  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+D:\EclipseWorkspace\ISAP300>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: 4c462ce6
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).

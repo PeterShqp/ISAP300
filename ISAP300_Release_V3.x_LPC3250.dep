@@ -705,7 +705,7 @@ I (.\source\HIS\include\ComponentElement\BaseChip.h)(0x5795E914)
 I (.\source\HIS\app\BusinessClockSource\ClockSourceDefine.h)(0x5795E916)
 I (.\source\HIS\include\ComponentElement\DriverPCM.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\ObjectReference.h)(0x5804788A)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\ChipCP1121A.h)(0x5795E90E)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\map)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\functional)(0x4EB18EC4)
@@ -970,7 +970,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_dispatch.h)(0x4EB18EC4)
 I (.\source\HIS\include\ComponentElement\ObjectReference.h)(0x5804788A)
 I (.\source\HIS\include\ComponentElement\CardTypeID_define.h)(0x5795E913)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\ConfigCell.h)(0x5795E911)
@@ -1936,7 +1936,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_algobase.h)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_iterator.h)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_dispatch.h)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_error.h)(0x4EB18EC6)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\EZ_types.h)(0x5795E90E)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
@@ -2109,8 +2109,8 @@ I (.\source\HIS\platform\os\include\os.h)(0x5795E916)
 I (.\source\HIS\platform\os\include\os_def.h)(0x5795E916)
 I (.\source\HIS\platform\os\include\rtl.h)(0x5795E912)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC)(0x4EB18EC6)
-F (./source/HIS/app/ComponentElement/card/CardXC.cpp)(0x5821376E)(--cpp -c --cpu ARM926EJ-S -D__RTX --fpu=vfpv2 -g -W -O0 -Otime --apcs=interwork -I.\source\HAL\include -I.\source\HAL\lib\LPC32xx\include -I.\source\HAL\lib\LPC\include -I.\source\HIS\include -I.\source\HIS\platform\os\include -I.\source\HIS\platform\filesystem -I.\source\HIS\platform\net -I.\source\HIS\platform\tools -I.\source\HIS\platform\os\RTX -I.\source\HAL\lib\SYS_API\include -I.\source\HIS\include\MidWare -I.\source\HIS\include\ComponentElement -I.\source\HAL\lib\CP1121A\inc -I.\source\HIS\app\communication\SoftSwitch -I.\source\HIS\app\communication\SNMP -I.\source\HIS\app\communication\SNMP\SNMPMib\include -I.\source\HIS\app\communication\SNMP\SNMPMib -I.\source\HIS\app\communication\SNMP\Depend -I.\source\HIS\app\communication -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup -I.\source\HIS\app\BusinessResource -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup -I.\source\HIS\app\UpDataMain -I.\source\HIS\app\BusinessClockSource -I.\source\HIS\app\communication\TopologyModule -I.\source\HIS\app\ComponentElement\compmisc\VFCommand -I.\source\HIS\app\AlarmModule\AlarmFrame -I.\source\HIS\app\AlarmModule\XCAlarm -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup -I.\source\HIS\app\AlarmModule\E1CardAlarm -I.\source\HIS\app\AlarmModule\TribSTMAlarm -I.\source\HIS\app\AlarmModule\EOSCardAlarm -I.\source\HIS\app\BusinessResource\OtherCardResource -I.\source\HIS\app\BusinessResource\XCPairResource -I.\source\HIS\app\BusinessResource\XCResource -I.\source\HIS\app\ComponentElement\Protect -I.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand -I.\source\HIS\app\AlarmModule\EmuxXCAlarm -I.\source\HIS\app\AlarmModule\FECardAlarm -I.\source\HIS\app\communication\SNMP\Trap -I.\source\HIS\app\communication\NMPort --exceptions -I D:\WorkProgram\Keil\ARM\RV31\INC -I D:\WorkProgram\Keil\ARM\CMSIS\Include -I D:\WorkProgram\Keil\ARM\Inc\Philips -DSTDIO -DEZ_DEBUG -o ".\UV4Build\OBJ\cardxc.o" --omf_browse ".\UV4Build\OBJ\cardxc.crf" --depend ".\UV4Build\OBJ\cardxc.d")
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+F (./source/HIS/app/ComponentElement/card/CardXC.cpp)(0x58240717)(--cpp -c --cpu ARM926EJ-S -D__RTX --fpu=vfpv2 -g -W -O0 -Otime --apcs=interwork -I.\source\HAL\include -I.\source\HAL\lib\LPC32xx\include -I.\source\HAL\lib\LPC\include -I.\source\HIS\include -I.\source\HIS\platform\os\include -I.\source\HIS\platform\filesystem -I.\source\HIS\platform\net -I.\source\HIS\platform\tools -I.\source\HIS\platform\os\RTX -I.\source\HAL\lib\SYS_API\include -I.\source\HIS\include\MidWare -I.\source\HIS\include\ComponentElement -I.\source\HAL\lib\CP1121A\inc -I.\source\HIS\app\communication\SoftSwitch -I.\source\HIS\app\communication\SNMP -I.\source\HIS\app\communication\SNMP\SNMPMib\include -I.\source\HIS\app\communication\SNMP\SNMPMib -I.\source\HIS\app\communication\SNMP\Depend -I.\source\HIS\app\communication -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup -I.\source\HIS\app\BusinessResource -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup -I.\source\HIS\app\UpDataMain -I.\source\HIS\app\BusinessClockSource -I.\source\HIS\app\communication\TopologyModule -I.\source\HIS\app\ComponentElement\compmisc\VFCommand -I.\source\HIS\app\AlarmModule\AlarmFrame -I.\source\HIS\app\AlarmModule\XCAlarm -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup -I.\source\HIS\app\AlarmModule\E1CardAlarm -I.\source\HIS\app\AlarmModule\TribSTMAlarm -I.\source\HIS\app\AlarmModule\EOSCardAlarm -I.\source\HIS\app\BusinessResource\OtherCardResource -I.\source\HIS\app\BusinessResource\XCPairResource -I.\source\HIS\app\BusinessResource\XCResource -I.\source\HIS\app\ComponentElement\Protect -I.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand -I.\source\HIS\app\AlarmModule\EmuxXCAlarm -I.\source\HIS\app\AlarmModule\FECardAlarm -I.\source\HIS\app\communication\SNMP\Trap -I.\source\HIS\app\communication\NMPort --exceptions -I D:\WorkProgram\Keil\ARM\RV31\INC -I D:\WorkProgram\Keil\ARM\CMSIS\Include -I D:\WorkProgram\Keil\ARM\Inc\Philips -DSTDIO -DEZ_DEBUG -o ".\UV4Build\OBJ\cardxc.o" --omf_browse ".\UV4Build\OBJ\cardxc.crf" --depend ".\UV4Build\OBJ\cardxc.d")
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\EZ_types.h)(0x5795E90E)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
@@ -2233,6 +2233,8 @@ I (.\source\HIS\app\communication\NMPort\NMPort.h)(0x5795E913)
 I (.\source\HIS\include\SwTrace.h)(0x5795E90F)
 I (.\source\HIS\app\communication\NMPort\ChannelOptDcc.h)(0x580D6076)
 I (.\source\HIS\app\communication\NMPort\NMChannel.h)(0x5795E90F)
+I (.\source\HIS\app\communication\NMPort\ChannelSabit.h)(0x5795E90F)
+I (.\source\HIS\app\communication\NMPort\ChannelTsDcn.h)(0x5795E912)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_punct.CC)(0x4EB18EC4)
@@ -2340,7 +2342,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_punct.CC)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_numeric.CC)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\ios.CC)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\ostream.CC)(0x4EB18EC6)
-F (./source/HIS/app/ComponentElement/card/CardCPU.cpp)(0x580D609A)(--cpp -c --cpu ARM926EJ-S -D__RTX --fpu=vfpv2 -g -W -O0 -Otime --apcs=interwork -I.\source\HAL\include -I.\source\HAL\lib\LPC32xx\include -I.\source\HAL\lib\LPC\include -I.\source\HIS\include -I.\source\HIS\platform\os\include -I.\source\HIS\platform\filesystem -I.\source\HIS\platform\net -I.\source\HIS\platform\tools -I.\source\HIS\platform\os\RTX -I.\source\HAL\lib\SYS_API\include -I.\source\HIS\include\MidWare -I.\source\HIS\include\ComponentElement -I.\source\HAL\lib\CP1121A\inc -I.\source\HIS\app\communication\SoftSwitch -I.\source\HIS\app\communication\SNMP -I.\source\HIS\app\communication\SNMP\SNMPMib\include -I.\source\HIS\app\communication\SNMP\SNMPMib -I.\source\HIS\app\communication\SNMP\Depend -I.\source\HIS\app\communication -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup -I.\source\HIS\app\BusinessResource -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup -I.\source\HIS\app\UpDataMain -I.\source\HIS\app\BusinessClockSource -I.\source\HIS\app\communication\TopologyModule -I.\source\HIS\app\ComponentElement\compmisc\VFCommand -I.\source\HIS\app\AlarmModule\AlarmFrame -I.\source\HIS\app\AlarmModule\XCAlarm -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup -I.\source\HIS\app\AlarmModule\E1CardAlarm -I.\source\HIS\app\AlarmModule\TribSTMAlarm -I.\source\HIS\app\AlarmModule\EOSCardAlarm -I.\source\HIS\app\BusinessResource\OtherCardResource -I.\source\HIS\app\BusinessResource\XCPairResource -I.\source\HIS\app\BusinessResource\XCResource -I.\source\HIS\app\ComponentElement\Protect -I.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand -I.\source\HIS\app\AlarmModule\EmuxXCAlarm -I.\source\HIS\app\AlarmModule\FECardAlarm -I.\source\HIS\app\communication\SNMP\Trap -I.\source\HIS\app\communication\NMPort --exceptions -I D:\WorkProgram\Keil\ARM\RV31\INC -I D:\WorkProgram\Keil\ARM\CMSIS\Include -I D:\WorkProgram\Keil\ARM\Inc\Philips -DSTDIO -DEZ_DEBUG -o ".\UV4Build\OBJ\cardcpu.o" --omf_browse ".\UV4Build\OBJ\cardcpu.crf" --depend ".\UV4Build\OBJ\cardcpu.d")
+F (./source/HIS/app/ComponentElement/card/CardCPU.cpp)(0x58240661)(--cpp -c --cpu ARM926EJ-S -D__RTX --fpu=vfpv2 -g -W -O0 -Otime --apcs=interwork -I.\source\HAL\include -I.\source\HAL\lib\LPC32xx\include -I.\source\HAL\lib\LPC\include -I.\source\HIS\include -I.\source\HIS\platform\os\include -I.\source\HIS\platform\filesystem -I.\source\HIS\platform\net -I.\source\HIS\platform\tools -I.\source\HIS\platform\os\RTX -I.\source\HAL\lib\SYS_API\include -I.\source\HIS\include\MidWare -I.\source\HIS\include\ComponentElement -I.\source\HAL\lib\CP1121A\inc -I.\source\HIS\app\communication\SoftSwitch -I.\source\HIS\app\communication\SNMP -I.\source\HIS\app\communication\SNMP\SNMPMib\include -I.\source\HIS\app\communication\SNMP\SNMPMib -I.\source\HIS\app\communication\SNMP\Depend -I.\source\HIS\app\communication -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup -I.\source\HIS\app\BusinessResource -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup -I.\source\HIS\app\UpDataMain -I.\source\HIS\app\BusinessClockSource -I.\source\HIS\app\communication\TopologyModule -I.\source\HIS\app\ComponentElement\compmisc\VFCommand -I.\source\HIS\app\AlarmModule\AlarmFrame -I.\source\HIS\app\AlarmModule\XCAlarm -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup -I.\source\HIS\app\AlarmModule\E1CardAlarm -I.\source\HIS\app\AlarmModule\TribSTMAlarm -I.\source\HIS\app\AlarmModule\EOSCardAlarm -I.\source\HIS\app\BusinessResource\OtherCardResource -I.\source\HIS\app\BusinessResource\XCPairResource -I.\source\HIS\app\BusinessResource\XCResource -I.\source\HIS\app\ComponentElement\Protect -I.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand -I.\source\HIS\app\AlarmModule\EmuxXCAlarm -I.\source\HIS\app\AlarmModule\FECardAlarm -I.\source\HIS\app\communication\SNMP\Trap -I.\source\HIS\app\communication\NMPort --exceptions -I D:\WorkProgram\Keil\ARM\RV31\INC -I D:\WorkProgram\Keil\ARM\CMSIS\Include -I D:\WorkProgram\Keil\ARM\Inc\Philips -DSTDIO -DEZ_DEBUG -o ".\UV4Build\OBJ\cardcpu.o" --omf_browse ".\UV4Build\OBJ\cardcpu.crf" --depend ".\UV4Build\OBJ\cardcpu.d")
 I (.\source\HIS\include\ComponentElement\CardCPU.h)(0x5795E918)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\iosfwd)(0x4EB18EC4)
@@ -4610,7 +4612,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_ctype.h)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_ioiter.h)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_numeric.h)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_punct.h)(0x4EB18EC6)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\ConfigCell.h)(0x5795E911)
@@ -6891,7 +6893,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB0D286)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_error.h)(0x4EB18EC6)
 I (./source/HIS/app/communication/SoftSwitch/SoftSwitch_define.h)(0x5795E916)
 I (.\source\HIS\platform\tools\EthMemory.h)(0x5795E918)
-F (./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp)(0x5795E90E)(--cpp -c --cpu ARM926EJ-S -D__RTX --fpu=vfpv2 -g -W -O0 -Otime --apcs=interwork -I.\source\HAL\include -I.\source\HAL\lib\LPC32xx\include -I.\source\HAL\lib\LPC\include -I.\source\HIS\include -I.\source\HIS\platform\os\include -I.\source\HIS\platform\filesystem -I.\source\HIS\platform\net -I.\source\HIS\platform\tools -I.\source\HIS\platform\os\RTX -I.\source\HAL\lib\SYS_API\include -I.\source\HIS\include\MidWare -I.\source\HIS\include\ComponentElement -I.\source\HAL\lib\CP1121A\inc -I.\source\HIS\app\communication\SoftSwitch -I.\source\HIS\app\communication\SNMP -I.\source\HIS\app\communication\SNMP\SNMPMib\include -I.\source\HIS\app\communication\SNMP\SNMPMib -I.\source\HIS\app\communication\SNMP\Depend -I.\source\HIS\app\communication -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup -I.\source\HIS\app\BusinessResource -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup -I.\source\HIS\app\UpDataMain -I.\source\HIS\app\BusinessClockSource -I.\source\HIS\app\communication\TopologyModule -I.\source\HIS\app\ComponentElement\compmisc\VFCommand -I.\source\HIS\app\AlarmModule\AlarmFrame -I.\source\HIS\app\AlarmModule\XCAlarm -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup -I.\source\HIS\app\AlarmModule\E1CardAlarm -I.\source\HIS\app\AlarmModule\TribSTMAlarm -I.\source\HIS\app\AlarmModule\EOSCardAlarm -I.\source\HIS\app\BusinessResource\OtherCardResource -I.\source\HIS\app\BusinessResource\XCPairResource -I.\source\HIS\app\BusinessResource\XCResource -I.\source\HIS\app\ComponentElement\Protect -I.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand -I.\source\HIS\app\AlarmModule\EmuxXCAlarm -I.\source\HIS\app\AlarmModule\FECardAlarm -I.\source\HIS\app\communication\SNMP\Trap -I.\source\HIS\app\communication\NMPort --exceptions -I D:\WorkProgram\Keil\ARM\RV31\INC -I D:\WorkProgram\Keil\ARM\CMSIS\Include -I D:\WorkProgram\Keil\ARM\Inc\Philips -DSTDIO -DEZ_DEBUG -o ".\UV4Build\OBJ\switchcore.o" --omf_browse ".\UV4Build\OBJ\switchcore.crf" --depend ".\UV4Build\OBJ\switchcore.d")
+F (./source/HIS/app/communication/SoftSwitch/SwitchCore.cpp)(0x58240A20)(--cpp -c --cpu ARM926EJ-S -D__RTX --fpu=vfpv2 -g -W -O0 -Otime --apcs=interwork -I.\source\HAL\include -I.\source\HAL\lib\LPC32xx\include -I.\source\HAL\lib\LPC\include -I.\source\HIS\include -I.\source\HIS\platform\os\include -I.\source\HIS\platform\filesystem -I.\source\HIS\platform\net -I.\source\HIS\platform\tools -I.\source\HIS\platform\os\RTX -I.\source\HAL\lib\SYS_API\include -I.\source\HIS\include\MidWare -I.\source\HIS\include\ComponentElement -I.\source\HAL\lib\CP1121A\inc -I.\source\HIS\app\communication\SoftSwitch -I.\source\HIS\app\communication\SNMP -I.\source\HIS\app\communication\SNMP\SNMPMib\include -I.\source\HIS\app\communication\SNMP\SNMPMib -I.\source\HIS\app\communication\SNMP\Depend -I.\source\HIS\app\communication -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ModuleGroup -I.\source\HIS\app\BusinessResource -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\ElementGroup -I.\source\HIS\app\UpDataMain -I.\source\HIS\app\BusinessClockSource -I.\source\HIS\app\communication\TopologyModule -I.\source\HIS\app\ComponentElement\compmisc\VFCommand -I.\source\HIS\app\AlarmModule\AlarmFrame -I.\source\HIS\app\AlarmModule\XCAlarm -I.\source\HIS\app\communication\SNMP\SNMPMib\Private\AlarmGroup -I.\source\HIS\app\AlarmModule\E1CardAlarm -I.\source\HIS\app\AlarmModule\TribSTMAlarm -I.\source\HIS\app\AlarmModule\EOSCardAlarm -I.\source\HIS\app\BusinessResource\OtherCardResource -I.\source\HIS\app\BusinessResource\XCPairResource -I.\source\HIS\app\BusinessResource\XCResource -I.\source\HIS\app\ComponentElement\Protect -I.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand -I.\source\HIS\app\AlarmModule\EmuxXCAlarm -I.\source\HIS\app\AlarmModule\FECardAlarm -I.\source\HIS\app\communication\SNMP\Trap -I.\source\HIS\app\communication\NMPort --exceptions -I D:\WorkProgram\Keil\ARM\RV31\INC -I D:\WorkProgram\Keil\ARM\CMSIS\Include -I D:\WorkProgram\Keil\ARM\Inc\Philips -DSTDIO -DEZ_DEBUG -o ".\UV4Build\OBJ\switchcore.o" --omf_browse ".\UV4Build\OBJ\switchcore.crf" --depend ".\UV4Build\OBJ\switchcore.d")
 I (./source/HIS/app/communication/SoftSwitch/SwitchCore.h)(0x5795E910)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\deque)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\limits)(0x4EB18EC4)
@@ -8548,7 +8550,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_traits.h)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\cstdio)(0x4EB0D27C)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB0D286)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_error.h)(0x4EB18EC6)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\ConfigCell.h)(0x5795E911)
@@ -11234,7 +11236,7 @@ I (.\source\HIS\platform\os\include\os_def.h)(0x5795E916)
 I (.\source\HIS\platform\os\include\rtl.h)(0x5795E912)
 I (.\source\HIS\include\EZ_types.h)(0x5795E90E)
 I (.\source\HIS\app\AlarmModule\AlarmFrame\AlarmDataDefine.h)(0x5795E912)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\CBaseSlot.h)(0x5795E90E)
@@ -13451,7 +13453,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB0D286)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_error.h)(0x4EB18EC6)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\UID.h)(0x5795E916)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\ComponentElement\CBaseSlot.h)(0x5795E90E)
 I (.\source\HIS\include\ComponentElement\ConfigCell.h)(0x5795E911)
@@ -13521,7 +13523,7 @@ I (.\source\HIS\include\EZ_types.h)(0x5795E90E)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\map)(0x4EB18EC6)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\functional)(0x4EB18EC4)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.h)(0x4EB18EC6)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\CBaseSlot.h)(0x5795E90E)
@@ -14225,7 +14227,7 @@ I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\cstdio)(0x4EB0D27C)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB0D286)
 I (D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_error.h)(0x4EB18EC6)
 I (.\source\HIS\include\ComponentElement\ObjectReference.h)(0x5804788A)
-I (.\source\HIS\include\ComponentElement\CardXC.h)(0x581FF3D3)
+I (.\source\HIS\include\ComponentElement\CardXC.h)(0x582406A8)
 I (.\source\HIS\include\ComponentElement\CBaseCard.h)(0x5795E913)
 I (.\source\HIS\include\CPPTools.h)(0x5795E911)
 I (.\source\HIS\include\ComponentElement\CBaseSlot.h)(0x5795E90E)
