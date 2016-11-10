@@ -170,7 +170,7 @@ bool ChipUOPTLogic::ifSucceed(void) {
 
 
 Chip_INIT_RESULT ChipUOPTLogic::ChipInit(void) {
-    dccInterruptEnable(false);
+//    dccInterruptEnable(false);
     return updataTwoFPGA();
 }
 

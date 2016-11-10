@@ -105,7 +105,7 @@ bool SyncFileAPI::sendAllFiles(void) {
 bool SyncFileAPI::sendUDPMassage(const char* msg_snd, const char* msg_expect, char* msg_ack) {
 
     enum { Msg_Port = 10001 };
-    if( msg_snd == 0 || msg_expect == 0 ) {
+    if( msg_snd == 0 ) {
 #ifdef EZ_DEBUG
         if( msg_ack )
             strcpy(msg_ack, "error input");
@@ -234,6 +234,16 @@ int SyncFileAPI::ifSame(const char *filename) {
     }
     os_sem_send(sem_msg);
     return rtn;
+}
+
+
+void SyncFileAPI::resetBakCard(void) {
+    sendUDPMassage("reset");
+}
+
+void SyncFileAPI::updateBakCard(void) {
+    sendUDPMassage("upmain");
+
 }
 
 uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len) {

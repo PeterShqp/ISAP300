@@ -15,6 +15,9 @@
 #include "CPPTools.h"
 #include "Lpc3250upload.h"
 #include "OMUStatus.h"
+#include "CBaseSlot.h"
+#include "SlotModule.h"
+#include "CardCPU.h"
 
 static void tftpc_notify(uint8 event);
 static uint16 udp_callback(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len);
@@ -58,9 +61,9 @@ bool SyncFileBakAPI::getFileFrom(const char* fileName, uint8* ip) {
         if( s ) {
             if( *s == "success" ) {
                 returnV = true;
-                if( strcmp("main.bit", fileName) == 0 ) {
-                    updata_main("main.bit");
-                }
+//                if( strcmp("main.bit", fileName) == 0 ) {
+//                    updata_main("main.bit");
+//                }
             }
             delete s;
         }
@@ -159,11 +162,17 @@ uint16 udp_callback(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint
         udp_send(socket, remip, remport, send_buff, strlen((char*)send_buff)+1);
     }
     else if( memcmp("reset", buf, 5) == 0 ) {
-        CBaseSlot* objpSlot = SlotModule::getSlot(index.index[1] - 1);
+        uint8* send_buff = udp_get_buf(10);
+        uint8 slotno = CardCPU::itsSlot() ? 0 : 1;
+        CBaseSlot* objpSlot = SlotModule::getSlot(slotno);
             if (objpSlot) {
+                strcpy( (char*)send_buff, "succeed" );
                 objpSlot->reset(Warm_start);
             }
-
+            else {
+                strcpy( (char*)send_buff, "failed" );
+            }
+            udp_send(socket, remip, remport, send_buff, strlen((char*)send_buff)+1);
     }
     else {//if need sync
         char fileName[30] = {0};

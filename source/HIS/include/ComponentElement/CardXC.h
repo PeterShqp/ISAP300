@@ -41,7 +41,10 @@ class XCAlarmModule;
 class XcLocalClockSource;
 class XcPCMClockSource;
 class PortFE1;
-
+class ChannelOptDcc;
+class NMPort;
+class ChannelSabit;
+class 
 
 class CardXC : public CBaseCard {
 public:
@@ -126,11 +129,11 @@ private:
     XcExtClockSource* xcextclock_obj[2];
     XcPCMClockSource* xcpcmLocal_obj;
     XcPCMClockSource* xcpcmclock_obj[8];
-    DCCSdhRcv* dccsdhrcv_obj[2];
-    DCCSdhSnd* dccsdhsnd_obj[2];
-
-    DCCXe1Rcv* dccxe1rcv_obj[4];
-    DCCXe1Snd* dccxe1snd_obj[4];
+//    DCCSdhRcv* dccsdhrcv_obj[2];
+//    DCCSdhSnd* dccsdhsnd_obj[2];
+//
+//    DCCXe1Rcv* dccxe1rcv_obj[4];
+//    DCCXe1Snd* dccxe1snd_obj[4];
 
     std::string cardversionInfo;
     ChipXCCPLD cpld;
@@ -143,6 +146,11 @@ private:
     bool staWorking;
     void changeToWorking(void);
     void changeToIdle(void);
+
+    ChannelSabit* nmch_dcc[4];
+    ChannelTsDcn* nmch_dcn[4];
+    ChannelOptDcc* nmch_optdcc[2];
+    NMPort* nmport[6];
 };
 
 #endif /* CARDXC_H_ */

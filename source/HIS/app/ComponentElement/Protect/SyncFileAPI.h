@@ -40,9 +40,11 @@ public:
     };
     int needSync( const char* filename );
     int ifSame(const char *filename);
+    void resetBakCard(void);
+    void updateBakCard(void);
 private:
     friend TASK void ProcessSyncCmd(void);
-    bool sendUDPMassage(const char* msg_snd, const char* msg_expect, char* msg_ack = 0);
+    bool sendUDPMassage(const char* msg_snd, const char* msg_expect = 0, char* msg_ack = 0);
     bool Protected;
     uint8 RemoteIP[4];
     OS_SEM sem_msg;

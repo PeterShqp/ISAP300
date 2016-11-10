@@ -84,6 +84,10 @@ CMibNodeObject* TableDevice::MakeColumn(int sn, uint32* oid, uint32 oidLen) {
 		return new TableDeviceCol_rmtreset(sn, oid, oidLen, this);
 	case device_update:
 		return new TableDeviceCol_update(sn, oid, oidLen, this);
+	case device_reset_bakcard:
+	    return new TableDeviceCol_resetbakup(sn, oid, oidLen, this);
+	case device_update_bakcard:
+        return new TableDeviceCol_updatebakup(sn, oid, oidLen, this);
 	case device_buzzer:
 	    return new TableDeviceCol_buzzer(sn, oid, oidLen, this);
 	default:
@@ -186,11 +190,13 @@ int TableDeviceCol_update::callbackSet(const index_info_T& index, uint8* fname, 
 }
 
 int TableDeviceCol_resetbakup::callbackSet( const index_info_T& index, uint32 ) {
-    return -1;
+    SyncFileAPI::instance().resetBakCard();
+    return 0x5A;
 }
 
 int TableDeviceCol_updatebakup::callbackSet( const index_info_T& index, uint32 ) {
-    return -1;
+    SyncFileAPI::instance().updateBakCard();
+    return 0x5A;
 }
 
 int TableDeviceCol_buzzer::CallbackGet(const index_info_T& index) {

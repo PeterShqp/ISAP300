@@ -56,5 +56,11 @@
 .\UV4Build\OBJ\syncfilebakapi.o: .\source\HIS\app\UpDataMain\s1l_sys.h
 .\UV4Build\OBJ\syncfilebakapi.o: .\source\HAL\lib\LPC\include\lpc_types.h
 .\UV4Build\OBJ\syncfilebakapi.o: ./source/HIS/app/ComponentElement/Protect/OMUStatus.h
+.\UV4Build\OBJ\syncfilebakapi.o: .\source\HIS\include\ComponentElement\CBaseSlot.h
+.\UV4Build\OBJ\syncfilebakapi.o: .\source\HIS\include\ComponentElement\SlotModule.h
+.\UV4Build\OBJ\syncfilebakapi.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector
+.\UV4Build\OBJ\syncfilebakapi.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_dispatch.h
+.\UV4Build\OBJ\syncfilebakapi.o: .\source\HIS\include\ComponentElement\CardCPU.h
 .\UV4Build\OBJ\syncfilebakapi.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
+.\UV4Build\OBJ\syncfilebakapi.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector.CC
 .\UV4Build\OBJ\syncfilebakapi.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\list.CC

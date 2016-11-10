@@ -64,9 +64,9 @@ Chip_INIT_RESULT ChipDXCLogic::ChipInit(void) {
     Chip_INIT_RESULT rtn = updataFPGA();
     if( rtn == succeed ) {
         uint8 stbusnumber = 64;
-        if( regAccess->readReg(VER) < 0x100a ) {
-            stbusnumber = 128;
-        }
+//        if( regAccess->readReg(VER) < 0x100a ) {
+//            stbusnumber = 128;
+//        }
         for( int i = 0; i < stbusnumber; i++ ) {
             for( int j = 0; j < 32; j++ ) {
                 uint16 reg = getCrossRegAddr(i,j);

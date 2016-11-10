@@ -751,6 +751,11 @@
               <FileType>1</FileType>
               <FilePath>./source/HIS/platform/filesystem/NandPort.c</FilePath>
             </File>
+            <File>
+              <FileName>FS_ARM_L.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>./source/HIS/platform/filesystem/FS_ARM_L.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -800,6 +805,16 @@
               <FileName>FTP_uif.c</FileName>
               <FileType>1</FileType>
               <FilePath>./source/HIS/platform/net/FTP_uif.c</FilePath>
+            </File>
+            <File>
+              <FileName>TCPD_ARM_L.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>./source/HIS/platform/net/TCPD_ARM_L.lib</FilePath>
+            </File>
+            <File>
+              <FileName>TCP_ARM_L.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>./source/HIS/platform/net/TCP_ARM_L.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -2700,6 +2715,11 @@
               <FileName>NMPort.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/communication/NMPort/NMPort.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ChannelOptDcc.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>./source/HIS/app/communication/NMPort/ChannelOptDcc.cpp</FilePath>
             </File>
           </Files>
         </Group>

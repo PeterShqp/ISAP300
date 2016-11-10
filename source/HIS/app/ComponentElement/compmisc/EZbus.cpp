@@ -8,7 +8,7 @@
 #include "EZbus.h"
 #include "GeneralLogic.h"
 #include "os.h"
-#include <iostream>
+#include <stdio.h>
 #include "bsp_interrupt.h"
 #include "EZLog.h"
 
@@ -51,8 +51,9 @@ void EZbus::writeReg(uint16 regAddr, uint16 newData, int opt, uint16 verifyBitMa
             if( (RData & verifyBitMask) == (newData & verifyBitMask) ) {
                 break;
             }
-            std::cout << "!!!Slot-"<< (int)sltSn <<" EZbus Error!!!" << std::dec << counter << " at:" << std::hex << (int)regAddr <<
-                    " Expect: "<< (int)newData << " Actual: "<< (int)RData << std::endl;
+//            std::cout << "!!!Slot-"<< (int)sltSn <<" EZbus Error!!!" << std::dec << counter << " at:" << std::hex << (int)regAddr <<
+//                    " Expect: "<< (int)newData << " Actual: "<< (int)RData << std::endl;
+            printf("!!!Slot-%d EZbus Error!!! %d at: %x Expect: %x Actual: %x\n", sltSn, counter, regAddr, newData, RData);
             *paddr = newData;
             counter--;
         }
