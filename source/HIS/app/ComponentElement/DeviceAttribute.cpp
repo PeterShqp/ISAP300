@@ -290,11 +290,15 @@ int DeviceAttribute::setBaseAttribute(Device_Attribute_ln_E ln, std::string& s) 
         setNetIP(ip, mask);
     }
         break;
-    case ln_ipgateway:
+    case ln_ipgateway: {
         if( s.size() > 15 ) {
             return -1;
         }
         strcpy(ConfigData.ipgateway, s.c_str());
+        uint8 gw[4];
+        getDeviceIPGateway(gw);
+        setNetGW(gw);
+    }
         break;
     case ln_iptrapdest:
         if( s.size() > 15 ) {

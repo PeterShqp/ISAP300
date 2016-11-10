@@ -20,7 +20,6 @@ OMUStandby::OMUStandby() : OMUStatus(200) {
 
 OMUStandby::~OMUStandby() {
     delete sync;
-    SoftWDT::instance().stopSoftWDT(); //关闭软狗
     CommunicationModule::clearStandby();
 }
 
