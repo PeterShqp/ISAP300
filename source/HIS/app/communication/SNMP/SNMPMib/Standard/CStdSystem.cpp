@@ -33,7 +33,7 @@
 
 /**********************************************************************************************************************
 ** Function name:			CStdSystem
-** Descriptions:			Àà¹¹Ôìº¯Êý
+** Descriptions:			ï¿½à¹¹ï¿½ìº¯ï¿½ï¿½
 ** input parameters:		None
 ** output parameters:		None
 ** Returned value:			None
@@ -50,7 +50,7 @@ CStdSystem::CStdSystem()
 }
 /**********************************************************************************************************************
 ** Function name:			~CStdSystem
-** Descriptions:			ÀàÎö¹¹º¯Êý
+** Descriptions:			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ** input parameters:		None
 ** output parameters:		None
 ** Returned value:			None
@@ -69,11 +69,11 @@ CStdSystem::~CStdSystem()
 
 /**********************************************************************************************************************
 ** Function name:			InitialGroup
-** Descriptions:			³õÊ¼»¯±ê×¼×éÖÐ¶ÔÏó
+** Descriptions:			ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
 ** input parameters:		None
 ** output parameters:		None
-** Returned value:			Ö´ÐÐ³É¹¦·µ»ØCErrorValueDefine::uiConstReturnSuccess;
-** 							Ö´ÐÐÊ§°Ü·µ»ØCErrorValueDefine::uiConstReturnFailed;
+** Returned value:			Ö´ï¿½Ð³É¹ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnSuccess;
+** 							Ö´ï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnFailed;
 ** Created by:				WangChangRong
 ** Created date:			2011-8-1
 **---------------------------------------------------------------------------------------------------------------------
@@ -92,13 +92,13 @@ uint32 CStdSystem::InitialGroup()
 
 /**********************************************************************************************************************
 ** Function name:			GetResponse
-** Descriptions:			GetµÄÏìÓ¦·½·¨
-** input parameters:		objpCell£º		SNMPÃüÁî¶ÔÏó
+** Descriptions:			Getï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+** input parameters:		objpCellï¿½ï¿½		SNMPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ** output parameters:		None
-** Returned value:			Ö´ÐÐ³É¹¦·µ»ØCErrorValueDefine::uiConstReturnSuccess;
-** 							Ö´ÐÐÊ§°Ü·µ»ØCErrorValueDefine::uiConstReturnFailed;
-** 							¿ÕÖ¸Õë·µ»ØCErrorValueDefine::uiConstReturnInputNULLPointer;
-** 							ÕýÔÚ´¦Àí·µ»ØCErrorValueDefine::uiConstReturnProcessing;
+** Returned value:			Ö´ï¿½Ð³É¹ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnSuccess;
+** 							Ö´ï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnFailed;
+** 							ï¿½ï¿½Ö¸ï¿½ë·µï¿½ï¿½CErrorValueDefine::uiConstReturnInputNULLPointer;
+** 							ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnProcessing;
 ** Created by:				WangChangRong
 ** Created date:			2011-08-09
 **---------------------------------------------------------------------------------------------------------------------
@@ -115,10 +115,10 @@ uint32 CStdSystem::GetResponse(CSnmpCell* objpCell)
 	CSnmpVariable* objpOID = objpCell->GetCurrentVariable();
 	uint32 uiOIDLen = 0;
 	uint32* uipInOID = objpOID->GetOIDValue(&uiOIDLen);
-	if( uiOIDLen != 9 || uipInOID[8] != 0 ){//³¤¶ÈºÍoidÐ£Ñé
+	if( uiOIDLen != 9 || uipInOID[8] != 0 ){//ï¿½ï¿½ï¿½Èºï¿½oidÐ£ï¿½ï¿½
 		return CErrorValueDefine::uiConstReturnFailed;
 	}
- 	switch( uipInOID[7] ){//·ÖÀà
+ 	switch( uipInOID[7] ){//ï¿½ï¿½ï¿½ï¿½
  	case 1://sysDescr
  		{
  			CSnmpVariable objResponse((uint8*)"ISAP100",7,CSnmpConstDefine::ucConstOctetString);
@@ -150,15 +150,13 @@ uint32 CStdSystem::GetResponse(CSnmpCell* objpCell)
 // 			objpCell->SetResponse(objpOID,&objResponse);
 // 			return CErrorValueDefine::uiConstReturnSuccess;
 // 		}
-// 	case 5://sysName
-// 		{
-// 			uint32 uiLen  =0 ;
-// 			uint8* ucBuf = CClassPointer::GetMainPointer()->GetSystemObject()->GetDeviceAttributeObject()->GetDeviceName(&uiLen);
-//
-// 			CSnmpVariable objResponse(ucBuf,uiLen,CSnmpConstDefine::ucConstOctetString);
-// 			objpCell->SetResponse(objpOID,&objResponse);
-// 			return CErrorValueDefine::uiConstReturnSuccess;
-// 		}
+ 	case 5://sysName
+ 		{
+ 			uint32 uiLen  = sizeof(ucGlbConstDeviceName)-1;
+ 			CSnmpVariable objResponse((uint8*)ucGlbConstDeviceName,uiLen,CSnmpConstDefine::ucConstOctetString);
+ 			objpCell->SetResponse(objpOID,&objResponse);
+ 			return CErrorValueDefine::uiConstReturnSuccess;
+ 		}
 // 	case 6://sysLocation
 // 		{
 // 			uint32 uiLen  =0 ;
@@ -180,13 +178,13 @@ uint32 CStdSystem::GetResponse(CSnmpCell* objpCell)
 
 /**********************************************************************************************************************
 ** Function name:			SetResponse
-** Descriptions:			SetµÄÏìÓ¦·½·¨
-** input parameters:		objpCell£º		SNMPÃüÁî¶ÔÏó
+** Descriptions:			Setï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+** input parameters:		objpCellï¿½ï¿½		SNMPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ** output parameters:		None
-** Returned value:			Ö´ÐÐ³É¹¦·µ»ØCErrorValueDefine::uiConstReturnSuccess;
-** 							Ö´ÐÐÊ§°Ü·µ»ØCErrorValueDefine::uiConstReturnFailed;
-** 							¿ÕÖ¸Õë·µ»ØCErrorValueDefine::uiConstReturnInputNULLPointer;
-** 							ÕýÔÚ´¦Àí·µ»ØCErrorValueDefine::uiConstReturnProcessing;
+** Returned value:			Ö´ï¿½Ð³É¹ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnSuccess;
+** 							Ö´ï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnFailed;
+** 							ï¿½ï¿½Ö¸ï¿½ë·µï¿½ï¿½CErrorValueDefine::uiConstReturnInputNULLPointer;
+** 							ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnProcessing;
 ** Created by:				WangChangRong
 ** Created date:			2011-08-09
 **---------------------------------------------------------------------------------------------------------------------
@@ -203,10 +201,10 @@ uint32 CStdSystem::SetResponse(CSnmpCell* objpCell)
 	CSnmpVariable* objpOID = objpCell->GetCurrentVariable();
 	uint32 uiOIDLen = 0;
 	uint32* uipInOID = objpOID->GetOIDValue(&uiOIDLen);
-	if( uiOIDLen != 9 || uipInOID[8] != 0 ){//³¤¶ÈºÍoidÐ£Ñé
+	if( uiOIDLen != 9 || uipInOID[8] != 0 ){//ï¿½ï¿½ï¿½Èºï¿½oidÐ£ï¿½ï¿½
 		return CErrorValueDefine::uiConstReturnFailed;
 	}
-	switch( uipInOID[7] ){//·ÖÀà
+	switch( uipInOID[7] ){//ï¿½ï¿½ï¿½ï¿½
 	case 1://sysDescr
 	case 2://sysObjectID
 	case 3://sysUpTime
@@ -221,7 +219,7 @@ uint32 CStdSystem::SetResponse(CSnmpCell* objpCell)
 	/*case 4://sysContact
 		{
 			CSnmpVariable* objInvalue = objpCell->GetRequestVB()->GetValueObject();
-			if( objInvalue->GetSyntax() != CSnmpConstDefine::ucConstOctetString ){//ÀàÐÍ´íÎó
+			if( objInvalue->GetSyntax() != CSnmpConstDefine::ucConstOctetString ){//ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½
 				objpCell->SetErrorResponse(objpOID,CSnmpConstDefine::ucConstSnmpErrorWrongType);
 				return CErrorValueDefine::uiConstReturnSuccess;
 			}
@@ -238,7 +236,7 @@ uint32 CStdSystem::SetResponse(CSnmpCell* objpCell)
 	case 5://sysName
 		{
 			CSnmpVariable* objInvalue = objpCell->GetRequestVB()->GetValueObject();
-			if( objInvalue->GetSyntax() != CSnmpConstDefine::ucConstOctetString ){//ÀàÐÍ´íÎó
+			if( objInvalue->GetSyntax() != CSnmpConstDefine::ucConstOctetString ){//ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½
 				objpCell->SetErrorResponse(objpOID,CSnmpConstDefine::ucConstSnmpErrorWrongType);
 				return CErrorValueDefine::uiConstReturnSuccess;
 			}
@@ -255,7 +253,7 @@ uint32 CStdSystem::SetResponse(CSnmpCell* objpCell)
 	case 6://sysLocation
 		{
 			CSnmpVariable* objInvalue = objpCell->GetRequestVB()->GetValueObject();
-			if( objInvalue->GetSyntax() != CSnmpConstDefine::ucConstOctetString ){//ÀàÐÍ´íÎó
+			if( objInvalue->GetSyntax() != CSnmpConstDefine::ucConstOctetString ){//ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½
 				objpCell->SetErrorResponse(objpOID,CSnmpConstDefine::ucConstSnmpErrorWrongType);
 				return CErrorValueDefine::uiConstReturnSuccess;
 			}
@@ -274,13 +272,13 @@ uint32 CStdSystem::SetResponse(CSnmpCell* objpCell)
 }
 /**********************************************************************************************************************
 ** Function name:			GetFirstValidOID
-** Descriptions:			GetNextµ÷ÓÃ·½·¨1£º»ñµÃµÚÒ»¸ö¶ÔÏóµÄOID
-** input parameters:		objpCell£º		SNMPÃüÁî¶ÔÏó
+** Descriptions:			GetNextï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½OID
+** input parameters:		objpCellï¿½ï¿½		SNMPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ** output parameters:		None
-** Returned value:			Ö´ÐÐ³É¹¦·µ»ØCErrorValueDefine::uiConstReturnSuccess;
-** 							Ö´ÐÐÊ§°Ü·µ»ØCErrorValueDefine::uiConstReturnFailed;
-** 							¿ÕÖ¸Õë·µ»ØCErrorValueDefine::uiConstReturnInputNULLPointer;
-** 							ÕýÔÚ´¦Àí·µ»ØCErrorValueDefine::uiConstReturnProcessing;
+** Returned value:			Ö´ï¿½Ð³É¹ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnSuccess;
+** 							Ö´ï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnFailed;
+** 							ï¿½ï¿½Ö¸ï¿½ë·µï¿½ï¿½CErrorValueDefine::uiConstReturnInputNULLPointer;
+** 							ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnProcessing;
 ** Created by:				WangChangRong
 ** Created date:			2011-08-10
 **---------------------------------------------------------------------------------------------------------------------
@@ -301,13 +299,13 @@ uint32 CStdSystem::GetFirstValidOID(CSnmpCell* objpCell)
 }
 /**********************************************************************************************************************
 ** Function name:			GetNextValidOID
-** Descriptions:			GetNextµ÷ÓÃ·½·¨2£º»ñµÃÏÂÒ»¸ö¶ÔÏóµÄOID
-** input parameters:		objpCell£º		SNMPÃüÁî¶ÔÏó
+** Descriptions:			GetNextï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½OID
+** input parameters:		objpCellï¿½ï¿½		SNMPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ** output parameters:		None
-** Returned value:			Ö´ÐÐ³É¹¦·µ»ØCErrorValueDefine::uiConstReturnSuccess;
-** 							Ö´ÐÐÊ§°Ü·µ»ØCErrorValueDefine::uiConstReturnFailed;
-** 							¿ÕÖ¸Õë·µ»ØCErrorValueDefine::uiConstReturnInputNULLPointer;
-** 							ÕýÔÚ´¦Àí·µ»ØCErrorValueDefine::uiConstReturnProcessing;
+** Returned value:			Ö´ï¿½Ð³É¹ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnSuccess;
+** 							Ö´ï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnFailed;
+** 							ï¿½ï¿½Ö¸ï¿½ë·µï¿½ï¿½CErrorValueDefine::uiConstReturnInputNULLPointer;
+** 							ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½CErrorValueDefine::uiConstReturnProcessing;
 ** Created by:				WangChangRong
 ** Created date:			2011-08-10
 **---------------------------------------------------------------------------------------------------------------------
@@ -336,7 +334,7 @@ uint32 CStdSystem::GetNextValidOID(CSnmpCell* objpCell)
 			return CErrorValueDefine::uiConstReturnFailed;
 		}
 	}
-	else{//³¤¶È´óÓÚµÈÓÚ9
+	else{//ï¿½ï¿½ï¿½È´ï¿½ï¿½Úµï¿½ï¿½ï¿½9
 		uipBaseOID[7] ++;
 		if( uipBaseOID[7] > 7 ){
 			return CErrorValueDefine::uiConstReturnFailed;

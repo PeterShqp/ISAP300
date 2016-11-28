@@ -42,6 +42,10 @@ bool SyncFileAPI::initSyncFileAPI(void) {
     os_mbx_init(mbx_sync_back, sizeof(mbx_sync_back));
     DeviceComponent::getDeviceAttribute().getProtectMCUIP(RemoteIP);
 
+#ifdef EZ_DEBUG
+    printf("\nRemoteIP:%d.%d.%d.%d\n", RemoteIP[0],RemoteIP[1],RemoteIP[2],RemoteIP[3]);
+#endif
+
     task_sync_cmd = os_tsk_create(ProcessSyncCmd, P_SYNC + 1);
     os_sem_init(sem_msg, 1);
     return true;

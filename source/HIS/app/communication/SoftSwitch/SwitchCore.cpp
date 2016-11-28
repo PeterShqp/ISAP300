@@ -20,12 +20,16 @@
 SwitchCore SwitchCore::sw;
 os_mbx_declare(mbox_sw_input, 128);
 static TASK void task_sw_proccess(void);
-static TASK void taskCheckBroadcastFilter(void);
+//static TASK void taskCheckBroadcastFilter(void);
+extern "C" void broadcastTimerOver(void);
 
 SwitchCore::SwitchCore() {
     t_sw_proccess = 0;
-    t_broad_filter = 0;
-    bcfilt = false;
+//    t_broad_filter = 0;
+//    bcfilt = false;
+    bcCount = 0;
+    MaxBroadcastPerSec = 5;
+    timer_filter_broadcast = NULL;
 }
 
 SwitchCore::~SwitchCore() {
@@ -43,7 +47,7 @@ void SwitchCore::initSwitchCore(void) {
 #endif
     os_mbx_init(mbox_sw_input, sizeof(mbox_sw_input));
     t_sw_proccess = os_tsk_create(task_sw_proccess, P_SW_Process);
-    t_broad_filter = os_tsk_create(taskCheckBroadcastFilter, P_CLI_Process-1);
+//    t_broad_filter = os_tsk_create(taskCheckBroadcastFilter, P_LED);
 #ifdef EXT_DBG
     printf("\ninitSwitchCore() end.\n");
 #endif
@@ -98,11 +102,10 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 	break;
 
 	case broadcast:{
-		if( !broadcastFilter() ) {
+		if( !broadcastFilter() ) { //计数器满，则停止转发广播
 #ifdef SW_DEBUG
         printf("broadcast\n");
 #endif
-        os_evt_set(0x0001, t_broad_filter);
         return SwitchPort::broadcastThePacket(pkt);
 		}
 	}
@@ -176,15 +179,34 @@ TASK void task_sw_proccess(void) {
     }
 }
 
-TASK void taskCheckBroadcastFilter(void) {
-    uint32 filterCount = 0;
-    uint8 MaxBroadcastPerSec = 5;
-	while(1) {
-		os_evt_wait_or(0x0001, 0xffff);
-		if( (++filterCount % 10) == 0 ) {
-            SwitchCore::instance().startFilter();
-            os_dly_wait(100);
-            SwitchCore::instance().stopFilter();
-		}
-	}
+//TASK void taskCheckBroadcastFilter(void) {
+//    uint32 filterCount = 0;
+//    uint8 MaxBroadcastPerSec = 5;
+//	while(1) {
+//		os_evt_wait_or(0x0001, 0xffff);
+//		if( (++filterCount % MaxBroadcastPerSec) == 0 ) {
+//            SwitchCore::instance().startFilter();
+//            os_dly_wait(100);
+//            SwitchCore::instance().stopFilter();
+//		}
+//	}
+//}
+bool SwitchCore::broadcastFilter(void) {
+    if( bcCount > MaxBroadcastPerSec ) {
+        return true;
+    }
+    if( timer_filter_broadcast == NULL ) { //当没有timer是创建
+        timer_filter_broadcast = os_tmr_create(100, 1);
+        if( timer_filter_broadcast == NULL ) {
+#ifdef EZ_DEBUG
+            printf("\nos_tmr_create failed!!!\n");
+#endif
+            return true; //超时timer建立失败，则停止转发广播
+        }
+    }
+    ++bcCount;
+    return false;
+}
+void broadcastTimerOver(void) {
+    SwitchCore::instance().resetBcCount(); //计时时间到，清除计数器重新计数
 }

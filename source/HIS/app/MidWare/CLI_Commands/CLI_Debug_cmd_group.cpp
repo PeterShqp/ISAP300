@@ -520,7 +520,7 @@ static CMD_ROUTE_T cmd_swtrace_cmd =
     cmd_swtrace,
     (UNS_8 *) "trace the soft switch input & output.",
     (UNS_8 *) "swtrace [operation][hex port bitmap]\r\n"
-                "\t[operation] read/clear/macport\r\n"
+                "\t[operation] read/clear/macport/maxbroadcast\r\n"
                 "\t[port] bit0~19 = port0~19.\r\n",
     cmd_swtrace_plist,
     (CMD_ROUTE_E*)NULL
@@ -1693,6 +1693,12 @@ BOOL_32 cmd_swtrace(void) {
     }
     else if( strcmp(op, "macport") == 0 ) {
         SwitchCore::instance().showMacPortMap();
+    }
+    else if( strcmp(op, "maxbroadcast") == 0 ) {
+        if( bitmap != 0 ) {
+            SwitchCore::instance().setMaxBroadcastPerSecond(bitmap);
+        }
+        printf("\nThe MAX broadcast is %d per second\n", SwitchCore::instance().getMaxBroadcastPerSecond());
     }
     return TRUE;
 }

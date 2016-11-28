@@ -114,6 +114,9 @@ CBaseCard* EmuxCompFac::makeCard(int iTypeID, CBaseSlot* slot) {
                 default:
                     return 0;
             }
+#ifdef EZ_DEBUG
+        std::cout << "Slot-" << (int)slot->GetSn() << " Card " << c->GetName() << " creat succeed." << std::endl;
+#endif
             return c;
         }
         catch(SysError& e) {

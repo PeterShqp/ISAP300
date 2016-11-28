@@ -107,6 +107,8 @@ void CommunicationModule::initWorking(void) {
     DeviceComponent::getDeviceAttribute().getDeviceIP(ip);
     DeviceComponent::getDeviceAttribute().getDeviceIPMask(mask);
     setNetIP(ip, mask);
+    DeviceComponent::getDeviceAttribute().getDeviceIPGateway(ip);
+    setNetGW(ip);
     t_snmp = os_tsk_create(snmp_init, 2);
     soc_snmp = udp_get_socket (0, UDP_OPT_SEND_CS | UDP_OPT_CHK_CS, Process_SNMP);
     if (soc_snmp != 0) {

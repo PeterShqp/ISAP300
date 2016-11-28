@@ -21,24 +21,24 @@
 #define CCOMMONDEFINE_H_
 
 #include "EZ_types.h"
-//Éè±¸Ãû³Æ
-static const uint8 ucGlbConstDeviceName[] = "ISAP300";
+//ï¿½è±¸ï¿½ï¿½ï¿½ï¿½
+static const uint8 ucGlbConstDeviceName[] = "RC3000";
 
 class CCommonDefine {
 public:
-	//Éè±¸Ë÷ÒýID¶¨Òå
+	//ï¿½è±¸ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½
 	static const uint32 uiConstDeviceIndex	= 3000;
 	static const uint32 uiConstMainBoardIndex = 100;
-	//Éè±¸ÐÍºÅÃû³Æ
+	//ï¿½è±¸ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½
 //	static const uint8 ucConstDeviceTypeName[] = ;
-	//Éè±¸ÀàÐÍ£¬0x40
+	//ï¿½è±¸ï¿½ï¿½ï¿½Í£ï¿½0x40
 	static const uint32 ucConstDeviceTypeID = 300;
-	//Éè±¸×ÓÀàÐÍ,Ê¹ÓÃÖ÷¿Ø¿¨µÄÀàÐÍ
+	//ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static const uint32 ucConstDeviceSubTypeID = 30;
 	static const uint32 uiconstSlotNumber = 10;
-//	/*		Á´±í¶¨Òå	Base  =   0x01000000  */
+//	/*		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	Base  =   0x01000000  */
 //	static const uint32 uiConstListNodeBasic = 0x01000000;
-//	/*		Á´±í½Úµã¶¨Òå	Base  =   0x01010000  */
+//	/*		ï¿½ï¿½ï¿½ï¿½Úµã¶¨ï¿½ï¿½	Base  =   0x01010000  */
 //	static const uint32 uiConstListNodeTypeBasic = uiConstListNodeBasic+0x00010000;
 //	static const uint32 uiConstListNodeTypePrivateProtocol = uiConstListNodeTypeBasic+1;
 	static const uint32 uiConstFactoryDateIndex = 30000;

@@ -13,6 +13,7 @@
 #include <LPC318x.H>                     /* LPC3180 definitions              */
 #include "lpc32xx_intc_driver.h"
 
+extern void broadcastTimerOver(void);
 /*----------------------------------------------------------------------------
  *      RTX User configuration part BEGIN
  *---------------------------------------------------------------------------*/
@@ -100,7 +101,7 @@
 //   <i> Define max. number of user timers that will run at the same time.
 //   <i> Default: 0  (User timers disabled)
 #ifndef OS_TIMERCNT
- #define OS_TIMERCNT    0
+ #define OS_TIMERCNT    1
 #endif
 
 //   <o>ISR FIFO Queue size<4=>   4 entries  <8=>   8 entries
@@ -191,6 +192,11 @@ void os_tmr_call (U16 info) {
   /* 'info' holds the value, defined when the timer was created.         */
 
   /* HERE: include optional user code to be executed on timeout. */
+    switch( info ) {
+    case 1:
+        broadcastTimerOver();
+        break;
+    }
 }
 
 

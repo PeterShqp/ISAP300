@@ -42,7 +42,6 @@
 #include "PortFE1.h"
 #include "XCAlarmDataDefine.h"
 #include "NMPort.h"
-#include "ChannelOptDcc.h"
 #include "ChannelSabit.h"
 #include "ChannelTsDcn.h"
 
@@ -339,21 +338,21 @@ void CardXC::changeToWorking(void) {
         nmport[i]->start();
     }
 
-    nminfo.subtype = subtype_dcc;
-    for (int i = 0; i < 2; ++i) {
-        nminfo.sn = i;
-        uint32 index = UID::makeUID(&nminfo);
+//     nminfo.subtype = subtype_dcc;
+//     for (int i = 0; i < 2; ++i) {
+//         nminfo.sn = i;
+//         uint32 index = UID::makeUID(&nminfo);
 
-        nmch_optdcc[i] = new ChannelOptDcc(index, pcmLgc);
+//         nmch_optdcc[i] = new ChannelOptDcc(index, pcmLgc);
 
-        nmport[i+4] = new NMPort(fe1_obj[i], &ConfigData->fe1port[i].nmportCfg);
-        if( nmport[i] == 0 || nmch_optdcc[i] == 0 ) {
-            throw SysError("!!!new object failed!!!");
-        }
+//         nmport[i+4] = new NMPort(fe1_obj[i], &ConfigData->fe1port[i].nmportCfg);
+//         if( nmport[i] == 0 || nmch_optdcc[i] == 0 ) {
+//             throw SysError("!!!new object failed!!!");
+//         }
 
-        nmport[i+4]->addNmChannel(nmch_optdcc[i]);
-        nmport[i+4]->start();
-    }
+//         nmport[i+4]->addNmChannel(nmch_optdcc[i]);
+//         nmport[i+4]->start();
+//     }
 
 
     uoptLgc.dccInterruptEnable(true);

@@ -44,22 +44,33 @@ public:
 	void setTransmitListTTL(uint16 time) {
 		finishedPkt.setTTL(time);
 	};
-	bool broadcastFilter(void) {
-		return bcfilt;
+	bool broadcastFilter(void);
+	void resetBcCount(void) {
+	    bcCount = 0;
+	    timer_filter_broadcast = NULL;
 	};
-	void startFilter(void) {
-		bcfilt = true;
+
+	void setMaxBroadcastPerSecond(uint16 data) {
+	    MaxBroadcastPerSec = data;
 	};
-	void stopFilter(void) {
-		bcfilt = false;
+	uint16 getMaxBroadcastPerSecond(void) {
+	    return MaxBroadcastPerSec;
 	};
+//	void startFilter(void) {
+//		bcfilt = true;
+//	};
+//	void stopFilter(void) {
+//		bcfilt = false;
+//	};
 private:
 	std::map<int, SwitchPort*> portMap;
 	CFinishedPacket finishedPkt;
 	MacPortMap macPortTable;
     OS_TID t_sw_proccess;
-    OS_TID t_broad_filter;
-    bool bcfilt;
+//    OS_TID t_broad_filter;
+    uint16 bcCount;
+    uint16 MaxBroadcastPerSec;
+    OS_ID timer_filter_broadcast;
 };
 
 #endif /* SWITCHCORE_H_ */
