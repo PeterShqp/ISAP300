@@ -12,6 +12,7 @@
 #include <map>
 #include "CFinishedPacket.h"
 #include "MacPortMap.h"
+#include "IpPortMap.h"
 #include "os.h"
 
 class SwitchPort;
@@ -41,6 +42,9 @@ public:
 		macPortTable.Print();
 	};
 
+	void showIpPortMap(void) {
+	    ipPortTable.Print();
+	};
 	void setTransmitListTTL(uint16 time) {
 		finishedPkt.setTTL(time);
 	};
@@ -66,6 +70,7 @@ private:
 	std::map<int, SwitchPort*> portMap;
 	CFinishedPacket finishedPkt;
 	MacPortMap macPortTable;
+	IpPortMap ipPortTable;
     OS_TID t_sw_proccess;
 //    OS_TID t_broad_filter;
     uint16 bcCount;

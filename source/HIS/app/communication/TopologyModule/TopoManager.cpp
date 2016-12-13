@@ -145,10 +145,10 @@ TASK void taskTopoAging() {
     uint8 counter = 0;
     uint8 data[4] = {0};
     while( 1 ) {
-        os_dly_wait(100);
+        os_dly_wait(300);
         counter++;
-        if( (counter % 10) == 0 ) {
-            //发送拓扑包/10s
+        if( (counter % 30) == 0 ) {
+            //发送拓扑包/30s
             TopoManager::sendTopoPkt();
         }
 

@@ -28,11 +28,14 @@ ConnectableResource::~ConnectableResource() {
 
 }
 
+/*
+ * 用于命令配置，自带排重
+ */
 bool ConnectableResource::connectFrom(ConnectableResource* f) {
 #ifdef CC_DBG
     printf("\n---start ConnectableResource %4x::connectFrom(%4x)\n", getUID(), f->getUID());
 #endif
-    if( from && (from->getUID() != f->getUID()) ) {
+    if( from ) {
 #ifdef CC_DBG
         printf("\n---have connect\n");
 #endif
@@ -49,6 +52,17 @@ bool ConnectableResource::connectFrom(ConnectableResource* f) {
 bool ConnectableResource::connectFrom(uint32 src) {
     ConnectableResource* f = getResrcInstance(src);
     return connectFrom(f);
+}
+
+bool ConnectableResource::connectFromForce(uint32 src) {
+    ConnectableResource* f = getResrcInstance(src);
+    if( f ) {
+        from = f;
+        if( getSpeedLevel() == f->getSpeedLevel() ) {
+            return setFrom(f->getHID());
+        }
+    }
+    return false;
 }
 
 bool ConnectableResource::disConnect(void) {

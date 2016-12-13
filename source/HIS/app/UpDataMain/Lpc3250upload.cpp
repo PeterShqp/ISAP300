@@ -94,14 +94,22 @@ int updata_main(char* fname) {
 }
 
 TASK void tsk_upmain(void) {
-    Dcc_interrupt_disable();
+
     int_disable_eth_real();
-    printf("\n updata_main start!\n");
+    Dcc_interrupt_disable();
     tsk_lock();
-	Lpc3250_upload up3250("main.bit");
-	up3250.startUpload();
-	tsk_unlock();
-    printf("\n updata_main end!\n");
+
+    printf("\n updata_main start at %d!\n", os_time_get());
+    try{
+        Lpc3250_upload up3250("main.bit");
+        up3250.startUpload();
+    }
+    catch(...) {
+        printf("\n updata_main failed at %d!\n", os_time_get());
+    }
+    printf("\n updata_main end at %d!\n", os_time_get());
+
+    tsk_unlock();
     if( ProtectAssistCell::instance().getOMUCurrentWorkingState() == OMU_Working ) {
         Dcc_interrupt_enable();
     }

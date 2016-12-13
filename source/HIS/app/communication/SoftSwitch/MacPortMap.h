@@ -11,6 +11,7 @@
 #include <map>
 #include <string.h>
 #include "EZ_types.h"
+#include "PortRecord.h"
 
 class PriPacket;
 class MacPortMap {
@@ -47,46 +48,6 @@ private:
 	    	return false;
 	    };
 
-	};
-
-	class PortRecord {
-		PortRecord();
-		uint8 selWeight;
-	public:
-		~PortRecord() {};
-		PortRecord(uint32 port) {
-			portSn = port;
-			AgingCounter = MacPortMap::LiveSecs;
-			selWeight = 3;
-		};
-
-		uint32 portSn;
-		uint16 AgingCounter;
-		PortRecord& operator = ( const PortRecord& t) {
-			portSn = t.portSn;
-			AgingCounter = t.AgingCounter;
-			return *this;
-		};
-
-		bool advance(void) {
-		    if( selWeight != 7 ) {
-		        ++selWeight;
-		        if( selWeight == 7 ) {
-		            return true;
-		        }
-		    }
-		    return false;
-		};
-
-		bool reduce(void) {
-		    if( selWeight != 0 ) {
-		        --selWeight;
-		        if( selWeight == 0 ) {
-		            return true;
-		        }
-		    }
-		    return false;
-		};
 	};
 
 	std::map<MACAddr, PortRecord> macPortTable;

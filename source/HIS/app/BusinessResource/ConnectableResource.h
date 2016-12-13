@@ -59,6 +59,8 @@ public:
 	bool connectFrom(uint32 src);
 	bool disConnect(void);
 
+	bool connectFromForce(uint32 src);
+
 	uint32 getConnectFrom(void) {
 	    if( from ) {
 	        return from->getUID();

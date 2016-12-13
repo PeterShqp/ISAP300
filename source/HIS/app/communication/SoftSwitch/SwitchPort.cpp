@@ -57,7 +57,9 @@ int SwitchPort::broadcastThePacket( PriPacket& pkt ) {
 	return 1;
 }
 /*
- * ���һ����ݰ����뷢�Ͷ���,�����ں˵��ô˺���
+ * 端口发包上层调用接口函数
+ * 发送成功返回1， 失败返回0
+ * 发送失败负责删除包；
  */
 int SwitchPort::outputAPacket(PriPacket& pkg) {
 #ifdef SW_DEBUG

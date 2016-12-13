@@ -27,6 +27,10 @@ public:
     void init(void);
     void startSoftWDT(void);
     void stopSoftWDT(void);
+
+    void pause(void);
+    void resume(void);
+
     void add(OS_TID, WDT_Para_T*);
     void feed(OS_TID);
 private:

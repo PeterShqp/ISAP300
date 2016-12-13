@@ -73,7 +73,7 @@ void TrapList::insertNewAlarmTrap(AlarmRecord *record) {
 }
 
 void TrapList::insertRecoveryAlarmTrap(AlarmRecord *record, uint32 timetick) {
-    makeAlarmTrapDatagram(alarm_raise, record);
+    makeAlarmTrapDatagram(alarm_clear, record);
 }
 
 

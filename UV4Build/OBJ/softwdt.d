@@ -41,5 +41,6 @@
 .\UV4Build\OBJ\softwdt.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\cstdio
 .\UV4Build\OBJ\softwdt.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\UV4Build\OBJ\softwdt.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_error.h
+.\UV4Build\OBJ\softwdt.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\UV4Build\OBJ\softwdt.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC
 .\UV4Build\OBJ\softwdt.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC

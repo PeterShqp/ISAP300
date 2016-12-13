@@ -35,6 +35,8 @@
 .\UV4Build\OBJ\switchcore.o: ./source/HIS/app/communication/SoftSwitch/Layer2Tag.h
 .\UV4Build\OBJ\switchcore.o: ./source/HIS/app/communication/SoftSwitch/MacPortMap.h
 .\UV4Build\OBJ\switchcore.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\switchcore.o: ./source/HIS/app/communication/SoftSwitch/PortRecord.h
+.\UV4Build\OBJ\switchcore.o: ./source/HIS/app/communication/SoftSwitch/IpPortMap.h
 .\UV4Build\OBJ\switchcore.o: .\source\HIS\platform\os\include\os.h
 .\UV4Build\OBJ\switchcore.o: .\source\HIS\platform\os\include\os_def.h
 .\UV4Build\OBJ\switchcore.o: .\source\HIS\platform\os\include\rtl.h

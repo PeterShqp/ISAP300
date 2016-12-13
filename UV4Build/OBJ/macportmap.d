@@ -20,6 +20,7 @@
 .\UV4Build\OBJ\macportmap.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_iterator.h
 .\UV4Build\OBJ\macportmap.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
 .\UV4Build\OBJ\macportmap.o: .\source\HIS\include\EZ_types.h
+.\UV4Build\OBJ\macportmap.o: ./source/HIS/app/communication/SoftSwitch/PortRecord.h
 .\UV4Build\OBJ\macportmap.o: ./source/HIS/app/communication/SoftSwitch/PriPacket.h
 .\UV4Build\OBJ\macportmap.o: ./source/HIS/app/communication/SoftSwitch/Layer2Tag.h
 .\UV4Build\OBJ\macportmap.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string

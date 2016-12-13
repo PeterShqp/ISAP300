@@ -117,6 +117,8 @@
 .\UV4Build\OBJ\cli_debug_cmd_group.o: .\source\HIS\app\communication\SoftSwitch\SoftSwitch_define.h
 .\UV4Build\OBJ\cli_debug_cmd_group.o: .\source\HIS\app\communication\SoftSwitch\MacPortMap.h
 .\UV4Build\OBJ\cli_debug_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\cli_debug_cmd_group.o: .\source\HIS\app\communication\SoftSwitch\PortRecord.h
+.\UV4Build\OBJ\cli_debug_cmd_group.o: .\source\HIS\app\communication\SoftSwitch\IpPortMap.h
 .\UV4Build\OBJ\cli_debug_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\cli_debug_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\vector.CC
 .\UV4Build\OBJ\cli_debug_cmd_group.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC

@@ -89,9 +89,16 @@ int CrossConnectionManager::CreatBiConnection(uint32 uiSour, uint32 uiDest) {
 //        cc[secondcc]->setCouple(cc[firstcc]);
         return firstcc;
     }
+    else {
+        deleteConnection(firstcc);
+        deleteConnection(secondcc);
+    }
     return 0;
 }
 
+/*
+ * 用于交叉连接配置恢复
+ */
 uint32 CrossConnectionManager::CreatConnection(uint32 sn, uint32 uiSour, uint32 uiDest ) {
     try {
         it = cc.find(sn);
@@ -99,7 +106,7 @@ uint32 CrossConnectionManager::CreatConnection(uint32 sn, uint32 uiSour, uint32 
             //�Ѿ��ָ���ֻдӲ��
             ConnectableResource* r = ConnectableResource::getResrcInstance(uiDest);
             if( r ) {
-                r->connectFrom(uiSour);
+                r->connectFromForce(uiSour);
             }
             else {
                 return 0;

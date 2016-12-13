@@ -78,7 +78,7 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 
 	finishedPkt.finishThePacket(pkt);
 	macPortTable.learnAddress(pkt);
-
+	ipPortTable.learnAddress(pkt);
 #ifdef SW_DEBUG
 	printf("pkt %d type is: ", pkt.getPrivateTag().sn);
 #endif
@@ -103,10 +103,25 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 
 	case broadcast:{
 		if( !broadcastFilter() ) { //计数器满，则停止转发广播
+    #ifdef SW_DEBUG
+            printf("broadcast\n");
+    #endif
+            int portsn = ipPortTable.findOutputPort(pkt); //查找是否有已学习到的ip地址
+            if( portsn < 0 ) {
+                return SwitchPort::broadcastThePacket(pkt); //无记录则广播
+            }
+            else {
+                //有记录则单播
+                SwitchPort* objPort = SwitchPort::getSwitchPort(portsn);
+                if( objPort ) {
+                    return objPort->outputAPacket(pkt);
+                }
+                else {
 #ifdef SW_DEBUG
-        printf("broadcast\n");
+        printf("no SwitchPort\n");
 #endif
-        return SwitchPort::broadcastThePacket(pkt);
+                }
+            }
 		}
 	}
 		break;
@@ -128,6 +143,7 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 void SwitchCore::aging(void) {
     finishedPkt.aging();
     macPortTable.aging();
+    ipPortTable.aging();
 }
 
 /*
@@ -162,17 +178,26 @@ TASK void task_sw_proccess(void) {
     #endif
             PriPacket* p = reinterpret_cast<PriPacket*>(amsg);
             if( p ) {
-    #ifdef SW_DEBUG
-                printf("%d start!\n", p->getPrivateTag().sn);
-    #endif
-                if( SwitchCore::instance().transmitAPacket(*p) < 0 ) {
+                if( p->ifValid() ) { //增加包类型检查，只有ARP和IP和多播包认为有效
+        #ifdef SW_DEBUG
+                    printf("%d start!\n", p->getPrivateTag().sn);
+        #endif
+                    if( SwitchCore::instance().transmitAPacket(*p) < 0 ) {
+                        p->deletePacket();
+                    }
+                }
+                else {
                     p->deletePacket();
+#ifdef SW_DEBUG
+            printf("%d invalid PriPacket!\n", p->getPrivateTag().sn);
+#endif
                 }
             }
             else {
-    #ifdef SW_DEBUG
-                printf("%d Error NULL PriPacket!\n", p->getPrivateTag().sn);
-    #endif
+        #ifdef SW_DEBUG
+                    printf("%d Error NULL PriPacket!\n", p->getPrivateTag().sn);
+        #endif
+
             }
         }
         SoftWDT::instance().feed(os_tsk_self());

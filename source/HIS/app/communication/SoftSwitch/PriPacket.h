@@ -73,6 +73,38 @@ public:
     void setRcvNMPort(NMPort* p) {
         nmport = p;
     };
+
+
+    /*
+     * function for ip layer
+     */
+    bool ifValid(void) {
+        return ifARP() || ifUDP() || (packetType()==2);
+    };
+
+    uint8* getSrcIP(void) {
+        if( ifARP() ) {
+            return &stdData[arpsenderIP];
+        }
+        else if( ifUDP() ) {
+            return &stdData[ipsrcIP];
+
+        }
+        return 0;
+    };
+    uint8* getDesIP(void) {
+        if( ifARP() ) {
+            return &stdData[arptagetIP];
+        }
+        else if( ifUDP() ) {
+            return &stdData[ipdesIP];
+
+        }
+        return 0;
+
+    };
+
+
 private:
     NMPort* nmport;
 	uint32 srcPort;
@@ -81,6 +113,20 @@ private:
 	uint16 stdDataLen;
 	LAYER2FRAME* frame;
 	uint8 refenceCounter;
+
+    enum {
+        ethType = 0x0c,
+        arpsenderIP = 0x1c,
+        arptagetIP = 0x26,
+        ipsrcIP = 0x1a,
+        ipdesIP = 0x1e,
+    };
+	bool ifARP(void) {
+	    return (stdData[ethType] == 0x08) && (stdData[ethType+1] == 0x06);
+	};
+	bool ifUDP(void) {
+        return (stdData[ethType] == 0x08) && (stdData[ethType+1] == 0x00);
+	};
 };
 
 #endif /* PRIPACKET_H_ */

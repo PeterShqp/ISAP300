@@ -7,6 +7,7 @@
 
 #include "SoftWDT.h"
 #include "GeneralLogic.h"
+#include <stdio.h>
 
 SoftWDT SoftWDT::wdt;
 
@@ -29,6 +30,14 @@ void SoftWDT::stopSoftWDT(void) {
     os_tsk_delete(task_soft_wdt);
     workingWdt.clear();
 }
+
+void SoftWDT::pause(void) {
+    GeneralLogic::instance().stopWTD();
+}
+void SoftWDT::resume(void) {
+    GeneralLogic::instance().startWTD();
+}
+
 void SoftWDT::add(OS_TID t, WDT_Para_T* d) {
     if( d ) {
         d->current_count = OUT_TIME_COUNT;
@@ -53,6 +62,9 @@ TASK void T_SoftWDT(void) {
         while( it != SoftWDT::instance().workingWdt.end() ) {
             if( it->second->current_count == 0 ) {
                 outtime = true;
+#ifdef EZ_DEBUG
+                printf("task:%d timeout\n", it->first);
+#endif
                 break;
             }
             else {

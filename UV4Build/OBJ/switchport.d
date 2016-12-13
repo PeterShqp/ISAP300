@@ -40,6 +40,8 @@
 .\UV4Build\OBJ\switchport.o: ./source/HIS/app/communication/SoftSwitch/Layer2Tag.h
 .\UV4Build\OBJ\switchport.o: ./source/HIS/app/communication/SoftSwitch/MacPortMap.h
 .\UV4Build\OBJ\switchport.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\switchport.o: ./source/HIS/app/communication/SoftSwitch/PortRecord.h
+.\UV4Build\OBJ\switchport.o: ./source/HIS/app/communication/SoftSwitch/IpPortMap.h
 .\UV4Build\OBJ\switchport.o: ./source/HIS/app/communication/SoftSwitch/PriPacket.h
 .\UV4Build\OBJ\switchport.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string
 .\UV4Build\OBJ\switchport.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\iosfwd
