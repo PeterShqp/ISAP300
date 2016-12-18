@@ -30,25 +30,17 @@
 typedef void (*pfun_led)(void);
 
 
-pfun_led led_on[] = { //	led_run_on,
+pfun_led led_on[] = {
 						led_work_on,
 						led_maj_on,
 						led_min_on,
-//						led_upe1wrk_a_on,
-//						led_upe1alm_a_on,
-//						led_upe1wrk_b_on,
-//						led_upe1alm_b_on,
 						led_sfpalm_a_on,
 						led_sfpalm_b_on};
 
-pfun_led led_off[] = {// led_run_off,
+pfun_led led_off[] = {
 						led_work_off,
 						led_maj_off,
 						led_min_off,
-//						led_upe1wrk_a_off,
-//						led_upe1alm_a_off,
-//						led_upe1wrk_b_off,
-//						led_upe1alm_b_off,
 						led_sfpalm_a_off,
 						led_sfpalm_b_off};
 
@@ -129,10 +121,6 @@ void LEDToggle(uint32 on, uint32 pin) {
 #define DEF_PIN_SFP_ALM2	1
 #define DEF_PIN_SFP_LOS1	19
 #define DEF_PIN_SFP_LOS2	17
-//#define DEF_PIN_UPE1_WRK1	7
-//#define DEF_PIN_UPE1_ALM1	6
-//#define DEF_PIN_UPE1_WRK2	13
-//#define DEF_PIN_UPE1_ALM2	15
 
 
 
