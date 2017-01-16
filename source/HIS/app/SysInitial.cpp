@@ -10,11 +10,13 @@
 #include "NAND_File.h"
 #include "ProtectAssistCell.h"
 #include "Uart1.h"
+#include "EZLog.h"
+
 int sys_init(void) {
     cli_init();
 	huartInit();
     NandFile_init();
-
+    EZLog::instance().init();
     ProtectAssistCell::instance().start();
     return 0;
 }

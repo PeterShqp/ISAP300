@@ -107,6 +107,12 @@ public:
         --topoAgingCounter;
         return topoAgingCounter == 0;
     };
+
+    //for ip port list
+    bool printIpInfo(std::string& os);
+    bool addAnIp(char* ip);
+    bool deleteAIP(char* ip);
+
 private:
     uint16 topoAgingCounter;
     std::vector<NMChannel*> useableCH;

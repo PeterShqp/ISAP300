@@ -22,6 +22,9 @@ column_info_T CMibNMPortTable::colInfo[nmport_size] = {
         {9, Mib_read_only, CSnmpConstDefine::ucConstOctetString},
         {10, Mib_read_write, CSnmpConstDefine::ucConstOctetString},
         {11, Mib_read_write, CSnmpConstDefine::ucConstInteger32},
+		{12, Mib_read_only, CSnmpConstDefine::ucConstOctetString},
+		{13, Mib_write_only, CSnmpConstDefine::ucConstOctetString},
+		{14, Mib_write_only, CSnmpConstDefine::ucConstOctetString},
 };
 
 
@@ -61,6 +64,12 @@ CMibNodeObject* CMibNMPortTable::MakeColumn(int sn, uint32* oid, uint32 oidLen) 
         return new CMibNMPortCol_description(sn, oid, oidLen, this);
     case nmport_tsmap:
         return new CMibNMPortCol_tsmap(sn, oid, oidLen, this);
+    case nmport_iplist:
+        return new CMibNMPortCol_iplist(sn, oid, oidLen, this);
+    case nmport_addip:
+        return new CMibNMPortCol_addip(sn, oid, oidLen, this);
+    case nmport_delip:
+        return new CMibNMPortCol_delip(sn, oid, oidLen, this);
     default:
         return 0;
     }
@@ -242,5 +251,40 @@ int CMibNMPortCol_tsmap::callbackSet( const index_info_T& index, uint32 value) {
         }
     }
     return -1;
+}
+
+int CMibNMPortCol_iplist::CallbackGet(const index_info_T& index, uint8* buf, uint32* len) {
+    NMPort* nmp = NMPort::getInstance(index.index[1]);
+    if( nmp ) {
+    	std::string s;
+    	if( nmp->printIpInfo(s) ) {
+    		*len = s.size();
+    		memcpy(buf, s.c_str(), s.size());
+    		return 0;
+    	}
+
+    }
+    return -1;
+
+}
+
+int CMibNMPortCol_addip::callbackSet( const index_info_T& index, uint8* buf, uint32 len) {
+    NMPort* nmp = NMPort::getInstance(index.index[1]);
+    if( nmp ) {
+    	if( nmp->addAnIp((char*)buf) ) {
+    		return 0x5A;
+    	}
+    }
+	return -1;
+}
+
+int CMibNMPortCol_delip::callbackSet( const index_info_T& index, uint8* buf, uint32 len) {
+    NMPort* nmp = NMPort::getInstance(index.index[1]);
+    if( nmp ) {
+    	if( nmp->deleteAIP((char*)buf) ) {
+    		return 0x5A;
+    	}
+    }
+	return -1;
 }
 

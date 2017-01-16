@@ -1,7 +1,7 @@
 .\UV4Build\OBJ\s1l_line_input.o: ./source/HIS/app/MidWare/s1l/s1l_line_input.c
 .\UV4Build\OBJ\s1l_line_input.o: .\source\HAL\lib\LPC\include\lpc_string.h
 .\UV4Build\OBJ\s1l_line_input.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\s1l_line_input.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\s1l_line_input.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\s1l_line_input.o: .\source\HAL\include\TerminalUart.h
 .\UV4Build\OBJ\s1l_line_input.o: .\source\HAL\lib\LPC\include\lpc_types.h
 .\UV4Build\OBJ\s1l_line_input.o: .\source\HIS\platform\os\include\os.h

@@ -238,18 +238,25 @@ uint32 ChipE1Port16Logic::getDcnTsMap(uint8 ch) {
  * 因为长度字节的值，包含自身的2字节长度。因此收包时，真实的包长度为长度字节值-2；
  */
 bool ChipE1Port16Logic::ifDcnHavePacket(uint8 ch) {
-    uint16 regv = regAccess->readReg(REG_DCN_R_STA);
-    if( (regv & ( 1 << ch )) != 0 ) {
-        regv = regAccess->readReg(REG_DCN_R_STA);
-        if( (regv & ( 1 << ch )) != 0 ) {
-            regv = regAccess->readReg(REG_DCN_R_STA);
-            if( (regv & ( 1 << ch )) != 0 ) {
-                return true;
-            }
-        }
-        else {
-            EZLog::instance().record("#REG_DCN_R_STA read error.");
-        }
+//    uint16 regv = regAccess->readReg(REG_DCN_R_STA);
+//    if( (regv & ( 1 << ch )) != 0 ) {
+//        regv = regAccess->readReg(REG_DCN_R_STA);
+//        if( (regv & ( 1 << ch )) != 0 ) {
+//            regv = regAccess->readReg(REG_DCN_R_STA);
+//            if( (regv & ( 1 << ch )) != 0 ) {
+//                return true;
+//            }
+//        }
+//        else {
+//            EZLog::instance().record("#REG_DCN_R_STA read error.");
+//        }
+//    }
+    uint16 regv = 0;
+    if( regAccess->readRegCheck(REG_DCN_R_STA, &regv) ) {
+        return (regv & (1<<ch)) != 0;
+    }
+    else {
+        EZLog::instance().record("#REG_DCN_R_STA read error.");
     }
     return false;
 }
@@ -275,14 +282,24 @@ bool ChipE1Port16Logic::getDcnPacket(uint8 ch, uint8* buff, uint16 len) {
 //    os_mut_release(mut_dcn_rcv);
     return true;
 }
+
+/*
+ * 此处容易出现通道失效问题，翻转buf指针 要确保不能多翻和漏翻
+ */
 void ChipE1Port16Logic::readDcnPacketOver(uint8 ch) {
     regAccess->writeReg(REG_DCN_MONI_SEL, ch);
-    uint16 bak = regAccess->readReg(REG_DCN_PAGE_STA) & (1<<14);
-    while( bak == (regAccess->readReg(REG_DCN_PAGE_STA) & (1<<14)) ) {
+    uint16 regv = 0; //存储页寄存器
+    while( !regAccess->readRegCheck3(REG_DCN_PAGE_STA, &regv, (1<<14)) ) {
+        EZLog::instance().record("REG_DCN_PAGE_STA read 1 error.");
+    }
+    uint16 bak = regv; //存储页指示bit
+    while( bak == regv ) {
         regAccess->writeReg(REG_DCN_R_OVER, 1<<ch);
         regAccess->writeReg(REG_DCN_R_OVER, 0);
+        while ( !regAccess->readRegCheck3(REG_DCN_PAGE_STA, &regv, (1<<14)) ){
+            EZLog::instance().record("REG_DCN_PAGE_STA read 2 error.");
+        }
     }
-
 }
 void ChipE1Port16Logic::sendDcnPacket(uint8 ch, uint8* data, uint16 len) {
     uint8 retryNum = 200;

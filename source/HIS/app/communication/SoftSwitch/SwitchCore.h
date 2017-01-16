@@ -66,6 +66,9 @@ public:
 //	void stopFilter(void) {
 //		bcfilt = false;
 //	};
+	IpPortMap& getIpPortTable(void) {
+		return ipPortTable;
+	};
 private:
 	std::map<int, SwitchPort*> portMap;
 	CFinishedPacket finishedPkt;

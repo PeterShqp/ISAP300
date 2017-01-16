@@ -86,7 +86,10 @@ void IpPortMap::aging(void) {
     os_mut_wait(mut_portip, 0xffff);
     std::map<IPAddr, PortRecord>::iterator it = ipPortTable.begin();
     while( it != ipPortTable.end() ) {
-        if( it->second.AgingCounter == 0 ) {
+    	if( it->second.AgingCounter < 0 ) {
+    		//fix ip 不老化
+    	}
+    	else if( it->second.AgingCounter == 0 ) {
             ipPortTable.erase(it++);
         }
         else{
@@ -107,4 +110,52 @@ void IpPortMap::Print(void) {
         ++it;
     }
     os_mut_release(mut_portip);
+}
+
+std::string IpPortMap::listIpsAtPort(uint8 psn) {
+	if( psn == 0 ) {
+		std::string s("NULL");
+		return s;
+	}
+    std::map<IPAddr, PortRecord>::iterator it = ipPortTable.begin();
+    std::string rts;
+    while( it != ipPortTable.end() ) {
+    	if( it->second.portSn == psn ) {
+    		std::string s(it->first.ip, 4);
+    		if( it->second.AgingCounter < 0 ) {
+    			s += "(s)";
+    		}
+    		rts += s;
+    	}
+    	it++;
+    }
+    return rts;
+}
+
+bool IpPortMap::addFixIP(uint8* ip, uint8 swport) {
+	IPAddr p(ip);
+    PortRecord r(swport);
+	r.AgingCounter = -1;
+    os_mut_wait(mut_portip, 0xffff);
+    std::map<IPAddr, PortRecord>::iterator it = ipPortTable.find(p);
+    if( it != ipPortTable.end() ) {
+    	it->second = r;
+    }
+    else {
+        ipPortTable.insert( std::pair<IPAddr, PortRecord>(p, r));
+    }
+    os_mut_release(mut_portip);
+    return true;
+}
+bool IpPortMap::deleteAnIP(uint8* ip) {
+	IPAddr p(ip);
+    std::map<IPAddr, PortRecord>::iterator it = ipPortTable.find(p);
+    if( it != ipPortTable.end() ) {
+        os_mut_wait(mut_portip, 0xffff);
+    	ipPortTable.erase(it);
+    	os_mut_release(mut_portip);
+    	return true;
+    }
+    return false;
+
 }

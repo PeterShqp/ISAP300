@@ -14,4 +14,4 @@
 .\UV4Build\OBJ\tabledevicefiles.o: .\source\HIS\platform\os\include\os.h
 .\UV4Build\OBJ\tabledevicefiles.o: .\source\HIS\platform\os\include\os_def.h
 .\UV4Build\OBJ\tabledevicefiles.o: .\source\HIS\platform\os\include\rtl.h
-.\UV4Build\OBJ\tabledevicefiles.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\tabledevicefiles.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

@@ -18,6 +18,7 @@
 #include "CBaseSlot.h"
 #include "SlotModule.h"
 #include "CardCPU.h"
+#include "EZLog.h"
 
 static void tftpc_notify(uint8 event);
 static uint16 udp_callback(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len);
@@ -174,6 +175,12 @@ uint16 udp_callback(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint
             }
             udp_send(socket, remip, remport, send_buff, strlen((char*)send_buff)+1);
     }
+    else if( memcmp("version", buf, 7) == 0 ) {
+    	std::string s = CardCPU::GetVerInfo();
+        uint8* send_buff = udp_get_buf(s.size());
+        strcpy( (char*)send_buff, s.c_str() );
+        udp_send(socket, remip, remport, send_buff, strlen((char*)send_buff)+1);
+    }
     else {//if need sync
         char fileName[30] = {0};
         uint32 UCRC = 0;
@@ -248,10 +255,14 @@ TASK void tsk_getFile(void* api) {
             std::string f = filesWaitingSync.front();
             filesWaitingSync.pop_front();
             os_mut_release(mut_syncfiles);
-            SyncFileBakAPI::getFileFrom(f.c_str());
-            if( strcmp("main.bit", f.c_str()) == 0 ||
-                    strcmp("MAIN.BIT", f.c_str()) == 0 ) {
-                updata_main("main.bit");
+            if( SyncFileBakAPI::getFileFrom(f.c_str()) ) {
+				if( strcmp("main.bit", f.c_str()) == 0 ||
+						strcmp("MAIN.BIT", f.c_str()) == 0 ) {
+					updata_main("main.bit");
+				}
+            }
+            else {
+            	EZLog::instance().record("SyncFileBakAPI::getFileFrom failed!");
             }
         }
         else {

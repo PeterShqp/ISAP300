@@ -86,9 +86,7 @@ CardDXC::CardDXC(std::string& name, CBaseSlot* slot) : CBaseCard(name, slot), fp
     am = new DXCAlarmModule(this);
     am->initModule();
 
-    cardversionInfo = \
-            CardCPU::GetVerInfo()+","\
-            +fpga.GetVerInfo();
+    cardversionInfo = fpga.GetVerInfo();
 }
 
 CardDXC::~CardDXC() {

@@ -12,6 +12,7 @@
 #include <string.h>
 #include <fstream>
 #include "CCheckData.h"
+#include "os.h"
 
 CPPTools::CPPTools() {
 	// TODO Auto-generated constructor stub
@@ -55,11 +56,16 @@ uint32 CPPTools::ezip_aton(std::string& s) {
  * �磺"192.168.100.1" ת��Ϊ  ip[] = {192, 168, 100, 1}
  */
 void CPPTools::ezip_aton(std::string& s, uint8* ip) {
+	ezip_aton(s.c_str(), ip);
+}
+
+void CPPTools::ezip_aton(const char* s, uint8* ip) {
     int p[4] = {0};
-    sscanf(s.c_str(), "%d.%d.%d.%d", &p[0], &p[1], &p[2], &p[3]);
+    sscanf(s, "%d.%d.%d.%d", &p[0], &p[1], &p[2], &p[3]);
     for( int i = 0; i < 4; i++ ) {
         ip[i] = (uint8)p[i];
     }
+
 }
 
 // uint64 CPPTools::ezmac_aton(std::string& s) {
@@ -119,4 +125,13 @@ bool CPPTools::calculateFileCRC(const char* fileName, uint32* outCRC, int endpoi
 		return true;
     }
     return false;
+}
+
+int CPPTools::getFileSize(const char* fileName) {
+    FINFO info;
+    memset(&info, 0, sizeof(info));
+    while (ffind (fileName,&info) == 0) {
+        return info.size;
+    }
+    return -1;
 }

@@ -12,6 +12,7 @@
 #include <string.h>
 #include "EZ_types.h"
 #include "PortRecord.h"
+#include <string>
 
 class PriPacket;
 class IpPortMap {
@@ -28,6 +29,10 @@ public:
     void aging(void);
 
     void Print(void);
+
+    std::string listIpsAtPort(uint8 psn);
+    bool addFixIP(uint8* ip,uint8 swport);
+    bool deleteAnIP(uint8* ip);
 private:
     class IPAddr {
     public:

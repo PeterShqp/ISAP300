@@ -21,11 +21,14 @@ public:
 	static std::string hex2string(uint32 h);
 	static uint32 ezip_aton(std::string& s);
 	static void ezip_aton(std::string& s, uint8* ip);
+	static void ezip_aton(const char* s, uint8* ip);
 // 	static uint64 ezmac_aton(std::string& s);
     static void ezmac_aton(std::string& s, uint8* mac);
 
     static bool getFileCRC(const char* fileName, uint32* outCRC, int crcpoint = -4);
     static bool calculateFileCRC(const char* fileName, uint32* outCRC, int endpoint = 4);
+
+    static int getFileSize(const char* fileName);
 
 
 };

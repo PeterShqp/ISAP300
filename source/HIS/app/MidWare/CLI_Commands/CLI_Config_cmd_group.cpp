@@ -39,6 +39,8 @@
 #include "CBaseCard.h"
 #include "SlotModule.h"
 #include <time.h>
+#include "GeneralLogic.h"
+#include "CardCPU.h"
 
 /* private functions declaration*/
 static BOOL_32 cmd_creat_dxc(void);
@@ -233,16 +235,19 @@ BOOL_32 cmd_syscfg(void) {
  	    return FALSE;
  	}
  	else if( option == 9 ) {//version
- 	    for (int i = 0; i < 10; ++i) {
-            CBaseSlot* objpSlot = SlotModule::getSlot(i);
-            if (objpSlot) {
-                CBaseCard* objpCard = objpSlot->GetCardObject();
-                if (objpCard) {
-                    std::cout << "Slot-" << i << ": " << objpCard->GetCardVerInfo() << std::endl;
-                }
+ 		std::cout << CardCPU::GetVerInfo() << std::endl;
+ 		if( GeneralLogic::instance().ifOMUWorking() ) {
+			for (int i = 0; i < 10; ++i) {
+				CBaseSlot* objpSlot = SlotModule::getSlot(i);
+				if (objpSlot) {
+					CBaseCard* objpCard = objpSlot->GetCardObject();
+					if (objpCard) {
+						std::cout << "Slot-" << i << ": " << objpCard->GetCardVerInfo() << std::endl;
+					}
 
-            }
- 	    }
+				}
+			}
+ 		}
  	    return TRUE;
 
  	}

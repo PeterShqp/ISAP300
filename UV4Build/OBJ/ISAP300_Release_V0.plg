@@ -3,18 +3,17 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-D:\EclipseWorkspace\ISAP300\ISAP300_Release_V3.x.uvproj
-Project File Date:  12/16/2016
+C:\Work\Workspace\ISAP300_Release_V3.x\ISAP300_Release_V3.x.uvproj
+Project File Date:  12/19/2016
 
 <h2>Output:</h2>
 Build target 'LPC3250'
-compiling CommunicationModule.cpp...
 linking...
-Program Size: Code=918748 RO-data=100328 RW-data=4516 ZI-data=6343952  
+Program Size: Code=922212 RO-data=100792 RW-data=4524 ZI-data=6344024  
 User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
 User command #2: addcrc.bat
-D:\EclipseWorkspace\ISAP300>AddMainCRC bin/ISAP300_Release_V0.bin 
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
 start ...
-crc result is: d192761f
+crc result is: 72b5f6a9
 Add crc successful!
 ".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).

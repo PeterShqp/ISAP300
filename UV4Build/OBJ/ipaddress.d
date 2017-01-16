@@ -8,4 +8,4 @@
 .\UV4Build\OBJ\ipaddress.o: ./source/HIS/app/communication/SNMP/Trap/OID.h
 .\UV4Build\OBJ\ipaddress.o: ./source/HIS/app/communication/SNMP/Trap/AllInOneVariable.h
 .\UV4Build\OBJ\ipaddress.o: ./source/HIS/app/communication/SNMP/Trap/SNMPDefine.h
-.\UV4Build\OBJ\ipaddress.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\ipaddress.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

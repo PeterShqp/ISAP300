@@ -42,6 +42,7 @@ public:
     int ifSame(const char *filename);
     void resetBakCard(void);
     void updateBakCard(void);
+    char* getBakMainVersion(void);
 private:
     friend TASK void ProcessSyncCmd(void);
     bool sendUDPMassage(const char* msg_snd, const char* msg_expect = 0, char* msg_ack = 0);

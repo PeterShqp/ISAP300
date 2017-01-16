@@ -14,6 +14,7 @@
 #include "SwitchPortInner.h"
 #include "UID.h"
 #include "CPPTools.h"
+#include "SwitchCore.h"
 std::map<uint32, NMPort*> NMPort::NMPortMap;
 
 #ifdef EZ_DEBUG
@@ -294,4 +295,21 @@ bool NMPort::setTsMap(uint32 map, bool save) {
         }
     }
     return false;
+}
+
+bool NMPort::printIpInfo(std::string& os) {
+	os = SwitchCore::instance().getIpPortTable().listIpsAtPort(getTopoDirection());
+	return true;
+}
+bool NMPort::addAnIp(char* ip) {
+	uint8 p[4] = {0};
+	CPPTools::ezip_aton(ip, p);
+	return SwitchCore::instance().getIpPortTable().addFixIP(p, getTopoDirection());
+
+}
+bool NMPort::deleteAIP(char* ip) {
+	uint8 p[4] = {0};
+	CPPTools::ezip_aton(ip, p);
+	return SwitchCore::instance().getIpPortTable().deleteAnIP(p);
+
 }

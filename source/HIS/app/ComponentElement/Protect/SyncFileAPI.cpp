@@ -250,6 +250,12 @@ void SyncFileAPI::updateBakCard(void) {
 
 }
 
+char* SyncFileAPI::getBakMainVersion(void) {
+	static char v[50];
+	sendUDPMassage("version", "", v);
+	return v;
+}
+
 uint16 udp_listen_ack(uint8 socket, uint8 *remip, uint16 remport, uint8 *buf, uint16 len) {
     if( remport != 10001 ) {
         return 0;

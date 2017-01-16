@@ -23,6 +23,9 @@ typedef enum {
     nmport_topo_info,
     nmport_description,
     nmport_tsmap,
+	nmport_iplist,
+	nmport_addip,
+	nmport_delip,
     nmport_size
 }Mib_E1_Port_Column_E;
 
@@ -182,5 +185,40 @@ public:
     virtual int callbackSet( const index_info_T& index, uint32 );
 };
 
+class CMibNMPortCol_iplist : public CMibTableColumn {
+	CMibNMPortCol_iplist();
+public:
+	CMibNMPortCol_iplist(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~CMibNMPortCol_iplist() {};
+
+    virtual int CallbackGet(const index_info_T& index, uint8*, uint32* len);
+};
+
+class CMibNMPortCol_addip : public CMibTableColumn {
+	CMibNMPortCol_addip();
+public:
+	CMibNMPortCol_addip(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~CMibNMPortCol_addip() {};
+
+    virtual int callbackSet( const index_info_T& index, uint8*, uint32 len);
+};
+
+class CMibNMPortCol_delip : public CMibTableColumn {
+	CMibNMPortCol_delip();
+public:
+	CMibNMPortCol_delip(int sn, uint32* oid, uint32 oidLen, CMibTable* table)
+                : CMibTableColumn(sn, oid, oidLen, table) {
+
+    };
+    virtual ~CMibNMPortCol_delip() {};
+
+    virtual int callbackSet( const index_info_T& index, uint8*, uint32 len);
+};
 
 #endif /* CMIBNMPORTTABLE_H_ */
