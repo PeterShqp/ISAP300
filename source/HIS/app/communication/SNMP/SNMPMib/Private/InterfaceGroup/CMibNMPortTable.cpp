@@ -260,7 +260,7 @@ int CMibNMPortCol_iplist::CallbackGet(const index_info_T& index, uint8* buf, uin
     	if( nmp->printIpInfo(s) ) {
     		*len = s.size();
     		memcpy(buf, s.c_str(), s.size());
-    		return 0;
+    		return 1;
     	}
 
     }

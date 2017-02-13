@@ -8,12 +8,121 @@ Project File Date:  12/19/2016
 
 <h2>Output:</h2>
 Build target 'LPC3250'
+compiling IpPortMap.cpp...
+./source/HIS/app/communication/SoftSwitch/IpPortMap.cpp(156): error:  #289: no instance of constructor "std::pair<_TypeT, _TypeU>::pair [with _TypeT=IpPortMap::IPAddr, _TypeU=PortRecord]" matches the argument list
+Target not created
+Build target 'LPC3250'
+compiling IpPortMap.cpp...
 linking...
-Program Size: Code=922212 RO-data=100792 RW-data=4524 ZI-data=6344024  
+Program Size: Code=922564 RO-data=100808 RW-data=4524 ZI-data=6344040  
 User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
 User command #2: addcrc.bat
 C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
 start ...
-crc result is: 72b5f6a9
+crc result is: d35ec6c6
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling ProtectAssistCell.cpp...
+linking...
+Program Size: Code=922548 RO-data=100808 RW-data=4524 ZI-data=6344024  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: c2ac70d3
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling IpPortMap.cpp...
+linking...
+Program Size: Code=922556 RO-data=100808 RW-data=4524 ZI-data=6344048  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: c47294ce
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling CardCPU.cpp...
+compiling IpPortMap.cpp...
+compiling ProtectAssistCell.cpp...
+compiling NMPort.cpp...
+linking...
+Program Size: Code=922140 RO-data=100808 RW-data=4524 ZI-data=6344048  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: 5b9cc5d2
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling CardCPU.cpp...
+linking...
+Program Size: Code=922140 RO-data=100808 RW-data=4524 ZI-data=6344048  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: 225e6d71
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(89): error:  #276: name followed by "::" must be a class or namespace name
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(93): error:  #276: name followed by "::" must be a class or namespace name
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(95): error:  #276: name followed by "::" must be a class or namespace name
+Target not created
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(90): error:  #276: name followed by "::" must be a class or namespace name
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(96): error:  #276: name followed by "::" must be a class or namespace name
+Target not created
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(97): error:  #276: name followed by "::" must be a class or namespace name
+Target not created
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(98): error:  #42: operand types are incompatible ("int" and "CardDXC *")
+Target not created
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+linking...
+Program Size: Code=922444 RO-data=100848 RW-data=4524 ZI-data=6344024  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: c7d0b400
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+linking...
+Program Size: Code=922452 RO-data=100856 RW-data=4524 ZI-data=6344040  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: f03a798d
+Add crc successful!
+".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC3250'
+compiling CardDXC.cpp...
+./source/HIS/app/ComponentElement/card/CardDXC.cpp(178): error:  #847: expression must have integral or enum type
+Target not created
+Build target 'LPC3250'
+compiling CardCPU.cpp...
+compiling CardDXC.cpp...
+linking...
+Program Size: Code=922460 RO-data=100856 RW-data=4524 ZI-data=6344032  
+User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
+User command #2: addcrc.bat
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+start ...
+crc result is: 5a927f03
 Add crc successful!
 ".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).

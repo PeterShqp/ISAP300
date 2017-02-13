@@ -82,6 +82,9 @@
 .\UV4Build\OBJ\carddxc.o: .\source\HIS\app\communication\NMPort\ChannelTsDcn.h
 .\UV4Build\OBJ\carddxc.o: .\source\HIS\app\communication\NMPort\NMPort.h
 .\UV4Build\OBJ\carddxc.o: .\source\HIS\include\SwTrace.h
+.\UV4Build\OBJ\carddxc.o: .\source\HIS\app\ComponentElement\Protect\SyncFileAPI.h
+.\UV4Build\OBJ\carddxc.o: .\source\HIS\include\ComponentElement\GeneralLogic.h
+.\UV4Build\OBJ\carddxc.o: .\source\HIS\include\ComponentElement\ObjectReference.h
 .\UV4Build\OBJ\carddxc.o: C:\Keil\ARM\ARMCC\bin\..\include\string.CC
 .\UV4Build\OBJ\carddxc.o: C:\Keil\ARM\ARMCC\bin\..\include\rw/_tree.CC
 .\UV4Build\OBJ\carddxc.o: C:\Keil\ARM\ARMCC\bin\..\include\vector.CC

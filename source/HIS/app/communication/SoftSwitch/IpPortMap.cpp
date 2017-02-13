@@ -9,6 +9,8 @@
 #include "PriPacket.h"
 #include <rtl.h>
 #include <stdio.h>
+#include <iostream>
+#include "CPPTools.h"
 
 OS_MUT mut_portip;
 
@@ -86,8 +88,9 @@ void IpPortMap::aging(void) {
     os_mut_wait(mut_portip, 0xffff);
     std::map<IPAddr, PortRecord>::iterator it = ipPortTable.begin();
     while( it != ipPortTable.end() ) {
-    	if( it->second.AgingCounter < 0 ) {
+    	if( it->second.AgingCounter == FLAG_FIX_IP ) {
     		//fix ip 不老化
+				++it;
     	}
     	else if( it->second.AgingCounter == 0 ) {
             ipPortTable.erase(it++);
@@ -121,10 +124,15 @@ std::string IpPortMap::listIpsAtPort(uint8 psn) {
     std::string rts;
     while( it != ipPortTable.end() ) {
     	if( it->second.portSn == psn ) {
-    		std::string s(it->first.ip, 4);
-    		if( it->second.AgingCounter < 0 ) {
+    		std::string s = CPPTools::number2string(it->first.ip[0]);
+    		for (int i = 1; i < 4; ++i) {
+    			s += ".";
+				s += CPPTools::number2string(it->first.ip[i]);
+			}
+    		if( it->second.AgingCounter == FLAG_FIX_IP ) {
     			s += "(s)";
     		}
+    		s += ",";
     		rts += s;
     	}
     	it++;
@@ -133,17 +141,20 @@ std::string IpPortMap::listIpsAtPort(uint8 psn) {
 }
 
 bool IpPortMap::addFixIP(uint8* ip, uint8 swport) {
-	IPAddr p(ip);
-    PortRecord r(swport);
-	r.AgingCounter = -1;
+	IPAddr* p =  new IPAddr(ip);
+
+    PortRecord* r = new PortRecord(swport);
+	r->AgingCounter = FLAG_FIX_IP;
     os_mut_wait(mut_portip, 0xffff);
-    std::map<IPAddr, PortRecord>::iterator it = ipPortTable.find(p);
+    std::map<IPAddr, PortRecord>::iterator it = ipPortTable.find(*p);
     if( it != ipPortTable.end() ) {
-    	it->second = r;
+    	it->second = *r;
     }
     else {
-        ipPortTable.insert( std::pair<IPAddr, PortRecord>(p, r));
+        ipPortTable.insert( std::pair<IPAddr, PortRecord>(*p, *r));
     }
+    delete r;
+    delete p;
     os_mut_release(mut_portip);
     return true;
 }

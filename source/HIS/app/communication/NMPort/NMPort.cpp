@@ -15,6 +15,8 @@
 #include "UID.h"
 #include "CPPTools.h"
 #include "SwitchCore.h"
+#include <iostream>
+
 std::map<uint32, NMPort*> NMPort::NMPortMap;
 
 #ifdef EZ_DEBUG

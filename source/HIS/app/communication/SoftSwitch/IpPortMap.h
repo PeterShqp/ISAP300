@@ -16,6 +16,7 @@
 
 class PriPacket;
 class IpPortMap {
+	const static uint16 FLAG_FIX_IP = 0xffff;
 public:
     const static uint16 LiveSecs = 3600; //ip port记录表生存时间为1小时
 

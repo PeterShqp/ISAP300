@@ -23,6 +23,9 @@
 #include "ChannelSabit.h"
 #include "ChannelTsDcn.h"
 #include "NMPort.h"
+#include "SyncFileAPI.h"
+#include "GeneralLogic.h"
+#include "ObjectReference.h"
 
 CardDXC::CardDXC(std::string& name, CBaseSlot* slot) : CBaseCard(name, slot), fpga(slot) {
 
@@ -86,7 +89,6 @@ CardDXC::CardDXC(std::string& name, CBaseSlot* slot) : CBaseCard(name, slot), fp
     am = new DXCAlarmModule(this);
     am->initModule();
 
-    cardversionInfo = fpga.GetVerInfo();
 }
 
 CardDXC::~CardDXC() {
@@ -169,6 +171,14 @@ void CardDXC::loadDefaultData(void) {
 
 /*virtual CBaseCard*/
 std::string& CardDXC::GetCardVerInfo() {
+    if( GeneralLogic::instance().ifXCWorking(getSn()) ) {
+    	cardversionInfo = CardCPU::GetVerInfo() + ",";
+    }
+    else {
+    	cardversionInfo += SyncFileAPI::instance().getBakMainVersion();
+			cardversionInfo += ","; 
+    }
+    cardversionInfo += fpga.GetVerInfo();
     return cardversionInfo;
 }
 void CardDXC::closeInterrupt(void) {
