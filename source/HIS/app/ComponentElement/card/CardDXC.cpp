@@ -89,6 +89,15 @@ CardDXC::CardDXC(std::string& name, CBaseSlot* slot) : CBaseCard(name, slot), fp
     am = new DXCAlarmModule(this);
     am->initModule();
 
+    std::string fpgaversionInfo = fpga.GetVerInfo();
+    std::string cpuversionInfo;
+    if( CardCPU::itsSlot() == getSn() ) {
+        cpuversionInfo += CardCPU::GetVerInfo();
+    }
+    else {
+        cpuversionInfo += SyncFileAPI::instance().getBakMainVersion();
+    }
+    cardversionInfo = cpuversionInfo + "," + fpgaversionInfo;
 }
 
 CardDXC::~CardDXC() {
@@ -151,9 +160,11 @@ void CardDXC::changeToIdle(void) {
         }
         if( nmch_dcn[i] ) {
             delete nmch_dcn[i];
+            nmch_dcn[i] = 0;
         }
         if( nmch_dcc[i] ) {
             delete nmch_dcc[i];
+            nmch_dcc[i] = 0;
         }
     }
 }
@@ -171,14 +182,6 @@ void CardDXC::loadDefaultData(void) {
 
 /*virtual CBaseCard*/
 std::string& CardDXC::GetCardVerInfo() {
-    if( GeneralLogic::instance().ifXCWorking(getSn()) ) {
-    	cardversionInfo = CardCPU::GetVerInfo() + ",";
-    }
-    else {
-    	cardversionInfo += SyncFileAPI::instance().getBakMainVersion();
-			cardversionInfo += ","; 
-    }
-    cardversionInfo += fpga.GetVerInfo();
     return cardversionInfo;
 }
 void CardDXC::closeInterrupt(void) {

@@ -31,9 +31,13 @@ DeviceComponent::~DeviceComponent() {
 int DeviceComponent::initDeviceComponent(void) {
 
     XCPair::instance().init(pdevattr->getDeviceSubType());
+    return 0;
+}
+
+void DeviceComponent::run(void) {
     CLoopModule::instance().start();
     SlotModule::initSlotModuleWorking();
-    return 0;
+
 }
 
 void DeviceComponent::clearDeviceCompnent(void) {

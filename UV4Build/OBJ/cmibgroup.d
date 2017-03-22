@@ -7,4 +7,4 @@
 .\UV4Build\OBJ\cmibgroup.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
 .\UV4Build\OBJ\cmibgroup.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
 .\UV4Build\OBJ\cmibgroup.o: ./source/HIS/app/communication/SNMP/SNMPMib/Mib_define.h
-.\UV4Build\OBJ\cmibgroup.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\cmibgroup.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h

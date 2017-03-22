@@ -18,6 +18,7 @@ public:
     DeviceComponent();
     virtual ~DeviceComponent();
 
+    static void run(void);
     static int initDeviceComponent(void);
     static void clearDeviceCompnent(void);
 

@@ -8,14 +8,14 @@
 #ifndef SWITCHCORE_H_
 #define SWITCHCORE_H_
 
-#include <deque>
-#include <map>
+//#include <deque>
+//#include <map>
 #include "CFinishedPacket.h"
 #include "MacPortMap.h"
 #include "IpPortMap.h"
 #include "os.h"
 
-class SwitchPort;
+//class SwitchPort;
 class PriPacket;
 class SwitchCore {
 	SwitchCore();
@@ -30,6 +30,7 @@ public:
 	};
 
 	void initSwitchCore(void);
+	void resetSwitchCore(void);
 	bool inputAPacket(PriPacket* p);
 	int transmitAPacket(PriPacket& pkt);
 
@@ -70,7 +71,7 @@ public:
 		return ipPortTable;
 	};
 private:
-	std::map<int, SwitchPort*> portMap;
+//	std::map<int, SwitchPort*> portMap;
 	CFinishedPacket finishedPkt;
 	MacPortMap macPortTable;
 	IpPortMap ipPortTable;

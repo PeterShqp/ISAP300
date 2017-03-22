@@ -8,5 +8,5 @@
 .\UV4Build\OBJ\snmppdu.o: ./source/HIS/app/communication/SNMP/Trap/AllInOneVariable.h
 .\UV4Build\OBJ\snmppdu.o: ./source/HIS/app/communication/SNMP/Trap/Integer32.h
 .\UV4Build\OBJ\snmppdu.o: ./source/HIS/app/communication/SNMP/Trap/OctetString.h
-.\UV4Build\OBJ\snmppdu.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\snmppdu.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
 .\UV4Build\OBJ\snmppdu.o: ./source/HIS/app/communication/SNMP/Trap/SNMPDefine.h

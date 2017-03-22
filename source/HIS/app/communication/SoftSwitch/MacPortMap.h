@@ -21,6 +21,8 @@ public:
 	MacPortMap();
 	virtual ~MacPortMap();
 
+	void clear(void);
+
 	void learnAddress(PriPacket&);
 
 	int findOutputPort(PriPacket&);

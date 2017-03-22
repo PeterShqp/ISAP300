@@ -7,4 +7,4 @@
 .\UV4Build\OBJ\oid.o: ./source/HIS/app/communication/SNMP/Trap/VariableBinding.h
 .\UV4Build\OBJ\oid.o: ./source/HIS/app/communication/SNMP/Trap/AllInOneVariable.h
 .\UV4Build\OBJ\oid.o: ./source/HIS/app/communication/SNMP/Trap/SNMPDefine.h
-.\UV4Build\OBJ\oid.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\oid.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h

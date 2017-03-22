@@ -8,7 +8,6 @@
 #include "ProtectAssistCell.h"
 #include "OMUStandby.h"
 #include "OMUWorking.h"
-#include "OMUIdle.h"
 #include "GeneralLogic.h"
 #include "CardCPU.h"
 #include <iostream>

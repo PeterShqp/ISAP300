@@ -22,6 +22,13 @@ MacPortMap::~MacPortMap() {
 	// TODO Auto-generated destructor stub
 }
 
+void MacPortMap::clear(void) {
+    os_mut_wait(mut_portmac, 0xffff);
+    macPortTable.clear();
+    os_mut_release(mut_portmac);
+
+}
+
 void MacPortMap::learnAddress(PriPacket& pkt) {
 	MACAddr m(pkt.getPrivateTag().srcMAC);
 	PortRecord r(pkt.getSourcePort());

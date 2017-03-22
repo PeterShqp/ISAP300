@@ -359,16 +359,16 @@ void CardXC::changeToWorking(void) {
 }
 void CardXC::changeToIdle(void) {
     uoptLgc.dccInterruptEnable(false);
-    for (int i = 0; i < 2; ++i) {
-        if( nmport[i] ) {
-            nmport[i]->stop();
-            delete nmport[i];
-            nmport[i] = 0;
-        }
-        if( nmch_optdcc[i] ) {
-            delete nmch_optdcc[i];
-        }
-    }
+//    for (int i = 0; i < 2; ++i) {
+//        if( nmport[i] ) {
+//            nmport[i]->stop();
+//            delete nmport[i];
+//            nmport[i] = 0;
+//        }
+//        if( nmch_optdcc[i] ) {
+//            delete nmch_optdcc[i];
+//        }
+//    }
 
     for (int i = 0; i < 4; ++i) {
         if( nmport[i] ) {
@@ -378,9 +378,11 @@ void CardXC::changeToIdle(void) {
         }
         if( nmch_dcn[i] ) {
             delete nmch_dcn[i];
+            nmch_dcn[i] = 0;
         }
         if( nmch_dcc[i] ) {
             delete nmch_dcc[i];
+            nmch_dcc[i] = 0;
         }
     }
 }

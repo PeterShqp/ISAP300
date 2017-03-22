@@ -3,9 +3,9 @@
 .\UV4Build\OBJ\fanpowmodule.o: .\source\HIS\include\EZ_types.h
 .\UV4Build\OBJ\fanpowmodule.o: .\source\HAL\include\Uart1.h
 .\UV4Build\OBJ\fanpowmodule.o: .\source\HAL\lib\LPC\include\LPC_TYPES.H
-.\UV4Build\OBJ\fanpowmodule.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\fanpowmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\fanpowmodule.o: .\source\HIS\app\ComponentElement\compmisc\VFCommand\VFCommand.h
 .\UV4Build\OBJ\fanpowmodule.o: .\source\HIS\include\CRC7.h
-.\UV4Build\OBJ\fanpowmodule.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
-.\UV4Build\OBJ\fanpowmodule.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\UV4Build\OBJ\fanpowmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\fanpowmodule.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\UV4Build\OBJ\fanpowmodule.o: .\source\HIS\platform\os\include\rtl.h

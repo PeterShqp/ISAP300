@@ -1,6 +1,6 @@
 .\UV4Build\OBJ\lpc_swim_image.o: ./source/HAL/lib/LPC/source/lpc_swim_image.c
 .\UV4Build\OBJ\lpc_swim_image.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\lpc_swim_image.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\lpc_swim_image.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\lpc_swim_image.o: .\source\HAL\lib\LPC\include\lpc_swim_image.h
 .\UV4Build\OBJ\lpc_swim_image.o: .\source\HAL\lib\LPC\include\lpc_types.h
 .\UV4Build\OBJ\lpc_swim_image.o: .\source\HAL\lib\LPC\include\lpc_swim.h

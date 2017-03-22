@@ -27,6 +27,8 @@ public:
 	void setTTL( uint16 time ) {
 	    agingsec = time;
 	};
+
+	void clear(void);
 private:
 
 	uint16 agingsec;//已转发包保存时间

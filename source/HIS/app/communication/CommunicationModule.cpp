@@ -142,6 +142,8 @@ void CommunicationModule::clearWorking(void) {
         soc_snmp = 0;
     }
     os_tsk_delete(t_snmp);
+
+    SwitchCore::instance().resetSwitchCore();
 #ifdef EXT_DBG
     printf("\n clearWorking() end.\n");
 #endif
@@ -165,6 +167,7 @@ void CommunicationModule::clearStandby(void) {
     printf("\n clearStandby() start.\n");
 #endif
     int_disable_eth_real();
+    SwitchCore::instance().resetSwitchCore();
 #ifdef EXT_DBG
     printf("\n clearStandby() end.\n");
 #endif

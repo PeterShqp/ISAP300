@@ -31,7 +31,7 @@ Chip_INIT_RESULT FPGAChip::updataFPGA(void) {
     if( !GeneralLogic::instance().ifColdStart() ) {
         if( ifSucceed() ) {
             std::cout << "FPGAs have been running" << std::endl;
-            display_prompt();
+//            display_prompt();
             return donothing;
         }
     }
@@ -70,12 +70,12 @@ Chip_INIT_RESULT FPGAChip::updataFPGA(void) {
             std::cout << std::endl;
             if( ifSucceed() ) {
                 std::cout << "update FPGAs succeed!" << std::endl;
-                display_prompt();
+//                display_prompt();
                 return succeed;
             }
             else {
                 std::cout << "!!!update FPGAs failed!!!" << std::endl;
-                display_prompt();
+//                display_prompt();
             }
        }
         else {

@@ -23,6 +23,12 @@ IpPortMap::~IpPortMap() {
     // TODO Auto-generated destructor stub
 }
 
+void IpPortMap::clear() {
+    os_mut_wait(mut_portip, 0xffff);
+    ipPortTable.clear();
+    os_mut_release(mut_portip);
+}
+
 void IpPortMap::learnAddress(PriPacket& pkt) {
     uint8* ip = pkt.getSrcIP();
     if( ip == 0 ) {

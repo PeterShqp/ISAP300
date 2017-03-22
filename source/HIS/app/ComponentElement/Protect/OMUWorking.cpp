@@ -43,6 +43,8 @@ OMUWorking::OMUWorking() : OMUStatus(50){
 
     lockIt(false);
     SyncFileAPI::instance().initSyncFileAPI();
+
+    DeviceComponent::run();
 }
 
 OMUWorking::~OMUWorking() {

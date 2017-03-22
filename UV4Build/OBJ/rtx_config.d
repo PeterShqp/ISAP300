@@ -1,10 +1,10 @@
 .\UV4Build\OBJ\rtx_config.o: ./source/HIS/platform/os/RTX/RTX_Config.c
 .\UV4Build\OBJ\rtx_config.o: .\source\HIS\platform\os\include\RTL.h
-.\UV4Build\OBJ\rtx_config.o: C:\Keil\ARM\Inc\Philips\LPC318x.H
+.\UV4Build\OBJ\rtx_config.o: D:\WorkProgram\Keil\ARM\Inc\Philips\LPC318x.H
 .\UV4Build\OBJ\rtx_config.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_intc_driver.h
 .\UV4Build\OBJ\rtx_config.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_intc.h
 .\UV4Build\OBJ\rtx_config.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\rtx_config.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\rtx_config.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\rtx_config.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_chip.h
 .\UV4Build\OBJ\rtx_config.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\rtx_config.o: C:\Keil\ARM\RV31\INC\RTX_lib.c
+.\UV4Build\OBJ\rtx_config.o: D:\WorkProgram\Keil\ARM\RV31\INC\RTX_lib.c

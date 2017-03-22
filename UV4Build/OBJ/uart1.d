@@ -1,7 +1,7 @@
 .\UV4Build\OBJ\uart1.o: ./source/HAL/BSP_ISAP300_V1.0/Uart1.c
 .\UV4Build\OBJ\uart1.o: .\source\HAL\include\Uart1.h
 .\UV4Build\OBJ\uart1.o: .\source\HAL\lib\LPC\include\LPC_TYPES.H
-.\UV4Build\OBJ\uart1.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\uart1.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\uart1.o: .\source\HIS\platform\os\include\os.h
 .\UV4Build\OBJ\uart1.o: .\source\HIS\platform\os\include\os_def.h
 .\UV4Build\OBJ\uart1.o: .\source\HIS\platform\os\include\rtl.h

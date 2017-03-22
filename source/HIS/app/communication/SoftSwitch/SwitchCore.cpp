@@ -53,6 +53,12 @@ void SwitchCore::initSwitchCore(void) {
 #endif
 }
 
+void SwitchCore::resetSwitchCore(void) {
+    finishedPkt.clear();
+    macPortTable.clear();
+    ipPortTable.clear();
+}
+
 /*
  * �?���ں�ת��һ����ݰ�
  * 1. ����

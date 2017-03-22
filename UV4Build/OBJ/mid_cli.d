@@ -1,6 +1,6 @@
 .\UV4Build\OBJ\mid_cli.o: ./source/HIS/app/MidWare/Mid_CLI.cpp
 .\UV4Build\OBJ\mid_cli.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\mid_cli.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\mid_cli.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\mid_cli.o: .\source\HIS\include\MidWare\Mid_CLI.h
 .\UV4Build\OBJ\mid_cli.o: .\source\HAL\lib\LPC\include\lpc_types.h
 .\UV4Build\OBJ\mid_cli.o: .\source\HIS\include\MidWare\s1l_line_input.h

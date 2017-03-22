@@ -1,7 +1,7 @@
 .\UV4Build\OBJ\lpc_swim_font.o: ./source/HAL/lib/LPC/source/lpc_swim_font.c
 .\UV4Build\OBJ\lpc_swim_font.o: .\source\HAL\lib\LPC\include\lpc_swim_font.h
 .\UV4Build\OBJ\lpc_swim_font.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\lpc_swim_font.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\lpc_swim_font.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\lpc_swim_font.o: .\source\HAL\lib\LPC\include\lpc_swim.h
 .\UV4Build\OBJ\lpc_swim_font.o: .\source\HAL\lib\LPC\include\lpc_types.h
 .\UV4Build\OBJ\lpc_swim_font.o: .\source\HAL\lib\LPC\include\lpc_fonts.h

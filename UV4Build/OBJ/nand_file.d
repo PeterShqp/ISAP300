@@ -1,8 +1,8 @@
 .\UV4Build\OBJ\nand_file.o: ./source/HIS/platform/filesystem/NAND_File.c
-.\UV4Build\OBJ\nand_file.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
-.\UV4Build\OBJ\nand_file.o: C:\Keil\ARM\ARMCC\bin\..\include\ctype.h
-.\UV4Build\OBJ\nand_file.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
-.\UV4Build\OBJ\nand_file.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\UV4Build\OBJ\nand_file.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\UV4Build\OBJ\nand_file.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\ctype.h
+.\UV4Build\OBJ\nand_file.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\nand_file.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdlib.h
 .\UV4Build\OBJ\nand_file.o: ./source/HIS/platform/filesystem/File_Config.h
 .\UV4Build\OBJ\nand_file.o: .\source\HIS\platform\os\include\RTL.h
 .\UV4Build\OBJ\nand_file.o: ./source/HIS/platform/filesystem/NAND_File.h

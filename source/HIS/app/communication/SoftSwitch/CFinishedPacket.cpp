@@ -64,3 +64,10 @@ void CFinishedPacket::aging() {
 	}
 	os_mut_release(mut_finishedpkt);
 }
+
+void CFinishedPacket::clear(void) {
+    os_mut_wait(mut_finishedpkt, 0xffff);
+    finishedTag.clear();
+    os_mut_release(mut_finishedpkt);
+}
+

@@ -23,6 +23,7 @@ public:
     IpPortMap();
     virtual ~IpPortMap();
 
+    void clear();
     void learnAddress(PriPacket&);
 
     int findOutputPort(PriPacket&);

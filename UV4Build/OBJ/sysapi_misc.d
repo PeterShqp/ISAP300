@@ -1,7 +1,7 @@
 .\UV4Build\OBJ\sysapi_misc.o: ./source/HAL/lib/SYS_API/sysapi_misc.c
 .\UV4Build\OBJ\sysapi_misc.o: .\source\HAL\lib\LPC\include\lpc_irq_fiq.h
 .\UV4Build\OBJ\sysapi_misc.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\sysapi_misc.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\sysapi_misc.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\sysapi_misc.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_intc_driver.h
 .\UV4Build\OBJ\sysapi_misc.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_intc.h
 .\UV4Build\OBJ\sysapi_misc.o: .\source\HAL\lib\LPC\include\lpc_types.h

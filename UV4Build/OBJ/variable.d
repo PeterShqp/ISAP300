@@ -11,4 +11,4 @@
 .\UV4Build\OBJ\variable.o: ./source/HIS/app/communication/SNMP/Trap/Counter64.h
 .\UV4Build\OBJ\variable.o: ./source/HIS/app/communication/SNMP/Trap/IpAddress.h
 .\UV4Build\OBJ\variable.o: ./source/HIS/app/communication/SNMP/Trap/SNMPDefine.h
-.\UV4Build\OBJ\variable.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\UV4Build\OBJ\variable.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdlib.h

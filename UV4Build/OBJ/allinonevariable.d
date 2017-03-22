@@ -15,5 +15,5 @@
 .\UV4Build\OBJ\allinonevariable.o: ./source/HIS/app/communication/SNMP/Trap/snmppdu.h
 .\UV4Build\OBJ\allinonevariable.o: ./source/HIS/app/communication/SNMP/Trap/VariableBindings.h
 .\UV4Build\OBJ\allinonevariable.o: ./source/HIS/app/communication/SNMP/Trap/VariableBinding.h
-.\UV4Build\OBJ\allinonevariable.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
-.\UV4Build\OBJ\allinonevariable.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\UV4Build\OBJ\allinonevariable.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\allinonevariable.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdlib.h
