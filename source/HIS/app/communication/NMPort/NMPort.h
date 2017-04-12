@@ -14,8 +14,6 @@
 #include <map>
 #include "FE1ConfigDataDefine.h"
 
-#define EZ_DEBUG
-
 #ifdef EZ_DEBUG
 #include "SwTrace.h"
 #endif

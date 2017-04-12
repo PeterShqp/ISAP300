@@ -16,6 +16,7 @@
 #include "TopoManager.h"
 #include "stdio.h"
 #include "SoftWDT.h"
+#include "EZLog.h"
 
 SwitchCore SwitchCore::sw;
 os_mbx_declare(mbox_sw_input, 128);
@@ -103,7 +104,10 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 #ifdef SW_DEBUG
             printf("discard the packet %d\n", pkt.getPrivateTag().sn);
 #endif
-        }
+#ifdef EZ_DEBUG
+            EZLog::instance().record("SwitchPort* p = SwitchPort::getSwitchPort() NULL");
+#endif
+       }
 	}
 	break;
 
@@ -125,6 +129,9 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
                 else {
 #ifdef SW_DEBUG
         printf("no SwitchPort\n");
+#endif
+#ifdef EZ_DEBUG
+                    EZLog::instance().record("broadcast SwitchPort* p = SwitchPort::getSwitchPort() NULL");
 #endif
                 }
             }
@@ -159,6 +166,7 @@ bool SwitchCore::inputAPacket(PriPacket* p) {
     if( os_mbx_check(mbox_sw_input) == 0 ) {
 #ifdef EZ_DEBUG
         printf("!!!SwitchCore::inputAPacket buff full!!!\n");
+        EZLog::instance().record("!!!SwitchCore::inputAPacket buff full!!!");
 #endif
         p->deletePacket();
         return false;
@@ -190,6 +198,10 @@ TASK void task_sw_proccess(void) {
         #endif
                     if( SwitchCore::instance().transmitAPacket(*p) < 0 ) {
                         p->deletePacket();
+#ifdef EZ_DEBUG
+                    EZLog::instance().record("SwitchCore::instance().transmitAPacket(*p) Failed!!");
+#endif
+
                     }
                 }
                 else {
@@ -197,13 +209,18 @@ TASK void task_sw_proccess(void) {
 #ifdef SW_DEBUG
             printf("%d invalid PriPacket!\n", p->getPrivateTag().sn);
 #endif
+#ifdef EZ_DEBUG
+                    EZLog::instance().record("p->ifValid() true");
+#endif
                 }
             }
             else {
         #ifdef SW_DEBUG
                     printf("%d Error NULL PriPacket!\n", p->getPrivateTag().sn);
         #endif
-
+#ifdef EZ_DEBUG
+                    EZLog::instance().record("PriPacket* p = reinterpret_cast<PriPacket*>(amsg) NULL");
+#endif
             }
         }
         SoftWDT::instance().feed(os_tsk_self());

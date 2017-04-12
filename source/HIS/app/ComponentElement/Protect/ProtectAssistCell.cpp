@@ -54,7 +54,7 @@ void ProtectAssistCell::start() {
     GeneralLogic::instance().FSMStart();
     DeviceComponent::initDeviceComponentCommon();
     CommunicationModule::initCommon();
-    SoftWDT::instance().startSoftWDT(); //开启软狗
+//    SoftWDT::instance().startSoftWDT(); //开启软狗
     if( getOMUWorkingStateByHardware() == OMU_Working ) {
         omu = new OMUWorking();
 #ifdef EZ_DEBUG

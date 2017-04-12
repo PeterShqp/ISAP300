@@ -4,7 +4,7 @@
 .\UV4Build\OBJ\chiplm75a.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_i2c_driver.h
 .\UV4Build\OBJ\chiplm75a.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_i2c.h
 .\UV4Build\OBJ\chiplm75a.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\chiplm75a.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\chiplm75a.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\chiplm75a.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_chip.h
 .\UV4Build\OBJ\chiplm75a.o: .\source\HAL\lib\LPC\include\lpc_types.h
 .\UV4Build\OBJ\chiplm75a.o: .\source\HIS\platform\os\include\os.h

@@ -85,10 +85,10 @@ TASK void Do_DXC_LED(void* pxc) {
             }
 
             if( ring != ringBak ) {
-                ringBak = ring;
                 FANPOWModule mod;
                 CmdRing cmd(ring);
                 if( mod.processFANCommand(cmd) == DEFErrorSuccess ) {
+                    ringBak = ring;
                     #ifdef EZ_DEBUG
                     uint8* result = cmd.getResultBuff();
                     if( result[1] != 0x5a ) {

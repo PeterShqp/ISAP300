@@ -11,11 +11,11 @@
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HIS\app\communication\SNMP\Depend\CClassPointer.h
 .\UV4Build\OBJ\csnmpcommand.o: ./source/HIS/app/communication/SNMP/CSnmpStatic.h
 .\UV4Build\OBJ\csnmpcommand.o: ./source/HIS/app/communication/SNMP/CSnmpDataInOut.h
-.\UV4Build\OBJ\csnmpcommand.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\string.h
+.\UV4Build\OBJ\csnmpcommand.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HIS\platform\os\include\rtl.h
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HAL\include\TerminalUart.h
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\csnmpcommand.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\csnmpcommand.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HIS\platform\os\include\os.h
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HIS\platform\os\include\os_def.h
 .\UV4Build\OBJ\csnmpcommand.o: .\source\HIS\app\communication\CommunicationModule.h

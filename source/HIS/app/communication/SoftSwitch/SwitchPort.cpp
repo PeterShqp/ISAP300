@@ -80,7 +80,7 @@ int SwitchPort::outputAPacket(PriPacket& pkg) {
 
 bool SwitchPort::sendAPacket(PriPacket* pkg) {
     if( (pkg->packetType() == broadcast) && ifDropThePacket(*pkg) ) {
-#ifdef SW_DEBUG
+#ifdef EZ_DEBUG
         printf("pkt %d droped at swport %d\n", pkg->getPrivateTag().sn, getPortSn());
 #endif
         return false;

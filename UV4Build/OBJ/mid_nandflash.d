@@ -2,7 +2,7 @@
 .\UV4Build\OBJ\mid_nandflash.o: ./source/HIS/app/UpDataMain/Mid_NandFlash.h
 .\UV4Build\OBJ\mid_nandflash.o: .\source\HIS\include\EZ_types.h
 .\UV4Build\OBJ\mid_nandflash.o: .\source\HAL\lib\LPC\include\lpc_types.h
-.\UV4Build\OBJ\mid_nandflash.o: D:\WorkProgram\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\UV4Build\OBJ\mid_nandflash.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\UV4Build\OBJ\mid_nandflash.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_slcnand_driver.h
 .\UV4Build\OBJ\mid_nandflash.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_dma_driver.h
 .\UV4Build\OBJ\mid_nandflash.o: .\source\HAL\lib\LPC32xx\include\lpc32xx_dmac.h

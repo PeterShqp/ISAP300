@@ -8,6 +8,9 @@
 #include "CardFAN.h"
 #include "CardTypeID_define.h"
 #include "SysError.h"
+#include "FANPOWModule.h"
+#include "CmdFanVer.h"
+#include <stdio.h>
 
 CardFAN::CardFAN(std::string& name, CBaseSlot* slot) : CBaseCard(name, slot) {
 
@@ -23,6 +26,20 @@ CardFAN::~CardFAN() {
 }
 
 std::string& CardFAN::GetCardVerInfo() {
+    FANPOWModule mod;
+    CmdFanVer cmd;
+    if( mod.processFANCommand(cmd) == DEFErrorSuccess ) {
+        cardversionInfo.clear();
+        cardversionInfo = "MCU:V";
+        uint8* rst = cmd.getResultBuff();
+        cardversionInfo += CPPTools::number2string(rst[1]);
+		cardversionInfo += ",";
+    }
+    else {
+        cardversionInfo = "MCU:V1.3,";
+        printf("\n!!!processFANCommand Error!!!");
+
+    }
     return cardversionInfo;
 }
 int CardFAN::GetCartTypeID() {

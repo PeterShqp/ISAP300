@@ -3,18 +3,17 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-D:\EclipseWorkspace\ISAP300_Release_V3.x\ISAP300_Release_V3.x.uvproj
-Project File Date:  02/15/2017
+C:\Work\Workspace\ISAP300_Release_V3.x\ISAP300_Release_V3.x.uvproj
+Project File Date:  04/07/2017
 
 <h2>Output:</h2>
 Build target 'LPC3250'
-compiling OMUWorking.cpp...
 linking...
-Program Size: Code=917880 RO-data=100748 RW-data=4524 ZI-data=6344024  
+Program Size: Code=919240 RO-data=100864 RW-data=4520 ZI-data=6344024  
 User command #1: fromelf --bin --output ./bin/ISAP300_Release_V0.bin ./UV4Build/OBJ/ISAP300_Release_V0.axf
 User command #2: addcrc.bat
-D:\EclipseWorkspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
+C:\Work\Workspace\ISAP300_Release_V3.x>AddMainCRC bin/ISAP300_Release_V0.bin 
 start ...
-crc result is: f6356458
+crc result is: 27daee4a
 Add crc successful!
 ".\UV4Build\OBJ\ISAP300_Release_V0.axf" - 0 Error(s), 0 Warning(s).

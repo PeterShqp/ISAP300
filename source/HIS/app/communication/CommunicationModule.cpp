@@ -26,7 +26,7 @@
 #include "TrapList.h"
 #include "TopoManager.h"
 #include "SoftWDT.h"
-
+#include "EZLog.h"
 
 static uint8 ip[] = {192, 168, 100, 254};
 static uint8 mask[] = {255, 255, 255, 0};
@@ -271,6 +271,11 @@ void SendFrameBySwitch(LAYER2FRAME* frame) {
 #endif
         SwitchPort::getSwitchPort(2)->inputPacket(p);
     }
+#ifdef EZ_DEBUG
+    else {
+        EZLog::instance().record("!!!SendFrameBySwitch(LAYER2FRAME* frame) frame is NULL!!!");
+    }
+#endif
 }
 
 /*--------------------------- interrupt_ethernet ----------------------------*/
@@ -323,12 +328,16 @@ INTR_HANDLER void interrupt_ethernet (void) {
                         isr_mbx_send(mbx_EMAC_input, frame); //send msg to T_Eth_Rcv
                     }
                     else {
+#ifdef EZ_DEBUG
                         printf("\n !!!interrupt_ethernet() alloc_Eth_mem(%d) failed!!!\n", RxLen);
+                        EZLog::instance().record("!!!interrupt_ethernet() alloc_Eth_mem(%d) failed!!!");
+#endif
                     }
                 }
                 else {
 #ifdef EZ_DEBUG
         printf("!!!interrupt_ethernet buff full!!!\n");
+        EZLog::instance().record("!!!interrupt_ethernet buff full!!!");
 #endif
                 }
                 rel: if (++idx == NUM_RX_FRAG)
