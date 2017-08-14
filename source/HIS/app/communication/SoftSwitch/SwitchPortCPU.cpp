@@ -40,6 +40,7 @@ SwitchPortCPU::~SwitchPortCPU() {
 int SwitchPortCPU::outputPacket(PriPacket& pkg) {
 
 	if( pkg.getSourcePort() == CPU_Port_Sn ) {
+        pkg.recordProcessInfo(181);
 		return -1;
 	}
 	uint16 RxLen = 0;
@@ -56,6 +57,7 @@ int SwitchPortCPU::outputPacket(PriPacket& pkg) {
     tsk_unlock();
 	if (frame != NULL) {
 		memcpy( &frame->data[0], RxData, RxLen);
+        pkg.recordProcessInfo(182);
 		put_in_queue(frame);
 		os_evt_set(0x0001, t_tcpTask);
 		return 1;

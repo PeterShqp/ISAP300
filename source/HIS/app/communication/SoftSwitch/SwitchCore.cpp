@@ -16,7 +16,6 @@
 #include "TopoManager.h"
 #include "stdio.h"
 #include "SoftWDT.h"
-#include "EZLog.h"
 
 SwitchCore SwitchCore::sw;
 os_mbx_declare(mbox_sw_input, 128);
@@ -70,6 +69,7 @@ void SwitchCore::resetSwitchCore(void) {
  */
 int SwitchCore::transmitAPacket(PriPacket& pkt) {
     if( pkt.packetType() == multicast ) {
+    	pkt.recordProcessInfo(141);
 #ifdef SW_DEBUG
         printf("multicast\n");
 #endif
@@ -80,7 +80,8 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 #ifdef SW_DEBUG
         printf("the packet %d has already been transmit!\n", pkt.getPrivateTag().sn);
 #endif
-		return -1;
+    	pkt.recordProcessInfo(142); //.have been finished
+        return -1;
 	}
 
 	finishedPkt.finishThePacket(pkt);
@@ -96,22 +97,25 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
 #ifdef SW_DEBUG
 	    printf("unicast\n");
 #endif
-        SwitchPort* p = SwitchPort::getSwitchPort(macPortTable.findOutputPort(pkt));
+    	pkt.recordProcessInfo(143); //.type is unicast
+
+	    SwitchPort* p = SwitchPort::getSwitchPort(macPortTable.findOutputPort(pkt));
         if( p ) {
+        	pkt.recordProcessInfo(144); //.will be output
             return p->outputAPacket(pkt);
         }
         else {
+        	pkt.recordProcessInfo(145); //.Can't find output port
+
 #ifdef SW_DEBUG
             printf("discard the packet %d\n", pkt.getPrivateTag().sn);
 #endif
-#ifdef EZ_DEBUG
-            EZLog::instance().record("SwitchPort* p = SwitchPort::getSwitchPort() NULL");
-#endif
-       }
+        }
 	}
 	break;
 
 	case broadcast:{
+    	pkt.recordProcessInfo(1412);//.type is broadcast
 		if( !broadcastFilter() ) { //计数器满，则停止转发广播
     #ifdef SW_DEBUG
             printf("broadcast\n");
@@ -129,9 +133,6 @@ int SwitchCore::transmitAPacket(PriPacket& pkt) {
                 else {
 #ifdef SW_DEBUG
         printf("no SwitchPort\n");
-#endif
-#ifdef EZ_DEBUG
-                    EZLog::instance().record("broadcast SwitchPort* p = SwitchPort::getSwitchPort() NULL");
 #endif
                 }
             }
@@ -163,15 +164,17 @@ void SwitchCore::aging(void) {
  * �κ��?���˿��յ�����ô˺������?���ں˴��?������봦����У�
  */
 bool SwitchCore::inputAPacket(PriPacket* p) {
+	p->recordProcessInfo(121);
     if( os_mbx_check(mbox_sw_input) == 0 ) {
 #ifdef EZ_DEBUG
         printf("!!!SwitchCore::inputAPacket buff full!!!\n");
-        EZLog::instance().record("!!!SwitchCore::inputAPacket buff full!!!");
 #endif
         p->deletePacket();
         return false;
     }
     os_mbx_send(mbox_sw_input, p, 0xffff);
+	p->recordProcessInfo(122);
+
     return true;
 }
 
@@ -192,16 +195,14 @@ TASK void task_sw_proccess(void) {
     #endif
             PriPacket* p = reinterpret_cast<PriPacket*>(amsg);
             if( p ) {
+            	p->recordProcessInfo(131);
                 if( p->ifValid() ) { //增加包类型检查，只有ARP和IP和多播包认为有效
+                	p->recordProcessInfo(132);
         #ifdef SW_DEBUG
                     printf("%d start!\n", p->getPrivateTag().sn);
         #endif
                     if( SwitchCore::instance().transmitAPacket(*p) < 0 ) {
                         p->deletePacket();
-#ifdef EZ_DEBUG
-                    EZLog::instance().record("SwitchCore::instance().transmitAPacket(*p) Failed!!");
-#endif
-
                     }
                 }
                 else {
@@ -209,18 +210,13 @@ TASK void task_sw_proccess(void) {
 #ifdef SW_DEBUG
             printf("%d invalid PriPacket!\n", p->getPrivateTag().sn);
 #endif
-#ifdef EZ_DEBUG
-                    EZLog::instance().record("p->ifValid() true");
-#endif
                 }
             }
             else {
         #ifdef SW_DEBUG
                     printf("%d Error NULL PriPacket!\n", p->getPrivateTag().sn);
         #endif
-#ifdef EZ_DEBUG
-                    EZLog::instance().record("PriPacket* p = reinterpret_cast<PriPacket*>(amsg) NULL");
-#endif
+
             }
         }
         SoftWDT::instance().feed(os_tsk_self());
@@ -239,21 +235,39 @@ TASK void task_sw_proccess(void) {
 //		}
 //	}
 //}
+//bool SwitchCore::broadcastFilter(void) {
+//    if( bcCount > MaxBroadcastPerSec ) {
+//        return true;
+//    }
+//    if( timer_filter_broadcast == NULL ) { //当没有timer是创建
+//        timer_filter_broadcast = os_tmr_create(100, 1);
+//        if( timer_filter_broadcast == NULL ) {
+//#ifdef EZ_DEBUG
+//            printf("\nos_tmr_create failed!!!\n");
+//#endif
+//            return true; //超时timer建立失败，则停止转发广播
+//        }
+//    }
+//    ++bcCount;
+//    return false;
+//}
+
 bool SwitchCore::broadcastFilter(void) {
-    if( bcCount > MaxBroadcastPerSec ) {
-        return true;
-    }
-    if( timer_filter_broadcast == NULL ) { //当没有timer是创建
-        timer_filter_broadcast = os_tmr_create(100, 1);
-        if( timer_filter_broadcast == NULL ) {
-#ifdef EZ_DEBUG
-            printf("\nos_tmr_create failed!!!\n");
-#endif
-            return true; //超时timer建立失败，则停止转发广播
-        }
-    }
-    ++bcCount;
-    return false;
+	static uint32 lastTicks = 0;
+	uint32 actTicks = os_time_get();
+	if( (actTicks - lastTicks) > 100 ) {
+		//已经是新的时间段，可以正常转发
+		lastTicks = actTicks; //记录新时间段的起点
+		bcCount = 0;			//新时间段广播计数复位
+	}
+	else if( bcCount > MaxBroadcastPerSec ) {
+		//本时段已经转发的广播包数量超限
+		return true;
+	}
+	else {
+		++bcCount;
+	}
+	return false;
 }
 void broadcastTimerOver(void) {
     SwitchCore::instance().resetBcCount(); //计时时间到，清除计数器重新计数

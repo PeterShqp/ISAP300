@@ -33,16 +33,12 @@ uint16 EZbus::readReg(uint16 regAddr) {
     return v;
 }
 void EZbus::writeReg(uint16 regAddr, uint16 newData, int opt, uint16 verifyBitMask) {
-    if( regAddr == 0xa0a0 ) {
-        regAddr = 0xa0a0;
-    }
     uint32 memoryAddr = 0xe3000000 + (regAddr << 1);
     os_mut_wait(mut_ezbus, 0xffff);
     /* �л�CS���ò� */
     GeneralLogic::instance().switchSlotTo(sltSn);
     uint16* paddr = (uint16*)memoryAddr;
 
-//    *((uint16*)memoryAddr) = newData;
     *paddr = newData;
     if( opt ) {
         int counter = 10;

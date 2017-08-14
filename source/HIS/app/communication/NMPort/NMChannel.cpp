@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "NMPort.h"
 #include "SwitchPortInner.h"
+#include "SysError.h"
 
 NMChannel::NMChannel(uint32 uid) : Resource(uid) {
     // TODO Auto-generated constructor stub
@@ -45,19 +46,25 @@ bool NMChannel::receivData(void) {
             delete []dp;
             PriPacket* p = new PriPacket(tag, belongPort->getInnerPort()->getPortSn(),frame);
             if( p ) {
+            	p->recordProcessInfo(21);
 #ifdef SW_DEBUG
                 printf("NMChannel::receivData at %4d, len %d\n", p->getPrivateTag().sn, frame->length);
 #endif
                 p->setRcvNMPort(belongPort); //for topo
-                belongPort->getInnerPort()->inputPacket(p);
-                flag = true;
+                if( belongPort->getInnerPort()->inputPacket(p) >= 0 ) {
+                	flag = true;
+                }
             }
             else {
                 printf("\nPriPacket alloc error\n");
+//                discardPacket();
+//                throw ErrorNullPointer();
             }
         }
         else {
             printf("\nLAYER2FRAME alloc error\n");
+//            discardPacket();
+//            throw ErrorEthMemFull();
         }
         discardPacket();
     }

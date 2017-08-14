@@ -439,12 +439,13 @@ ARM Macro Assembler    Page 7
               4000C000 
               40010000 
               00000000 
-Command Line: --debug --xref --cpu=ARM926EJ-S --fpu=VFPv2 --apcs=interwork --de
-pend=.\UV4Build\OBJ\lpc32xx_vectors.d -o.\UV4Build\OBJ\lpc32xx_vectors.o -ID:\W
-orkProgram\Keil\ARM\RV31\INC -ID:\WorkProgram\Keil\ARM\CMSIS\Include -ID:\WorkP
-rogram\Keil\ARM\Inc\Philips --predefine="__RTX SETA 1" --predefine="RAM_INTVEC 
-SETA 1" --predefine="REMAP SETA 1" --list=.\UV4Build\LST\lpc32xx_vectors.lst ./
-source/HAL/lib/LPC32xx/source/lpc32xx_vectors.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM926EJ-S --fpu=VFPv2 
+--apcs=interwork --depend=.\uv4build\obj\lpc32xx_vectors.d -o.\uv4build\obj\lpc
+32xx_vectors.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Ke
+il_v5\ARM\INC\Philips --predefine="__RTX SETA 1" --predefine="__UVISION_VERSION
+ SETA 524" --predefine="RAM_INTVEC SETA 1" --predefine="REMAP SETA 1" --list=.\
+uv4build\lst\lpc32xx_vectors.lst ./source/HAL/lib/LPC32xx/source/lpc32xx_vector
+s.s
 
 
 
@@ -703,4 +704,4 @@ Symbol: irq_func_ptrs
       At line 280 in file ./source/HAL/lib/LPC32xx/source/lpc32xx_vectors.s
 Comment: irq_func_ptrs used once
 1 symbol
-362 symbols in table
+363 symbols in table

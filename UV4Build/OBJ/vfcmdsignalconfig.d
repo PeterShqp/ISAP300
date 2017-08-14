@@ -1,4 +1,4 @@
-.\UV4Build\OBJ\vfcmdsignalconfig.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalConfig.cpp
-.\UV4Build\OBJ\vfcmdsignalconfig.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalConfig.h
-.\UV4Build\OBJ\vfcmdsignalconfig.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.h
-.\UV4Build\OBJ\vfcmdsignalconfig.o: .\source\HIS\include\EZ_types.h
+.\uv4build\obj\vfcmdsignalconfig.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalConfig.cpp
+.\uv4build\obj\vfcmdsignalconfig.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdSignalConfig.h
+.\uv4build\obj\vfcmdsignalconfig.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.h
+.\uv4build\obj\vfcmdsignalconfig.o: .\source\HIS\include\EZ_types.h

@@ -46,6 +46,8 @@ TASK void Do_DXC_LED(void* pxc) {
     DXCAlarmModule* xc = (DXCAlarmModule*)pxc;
     uint8 ring = 0;
     uint8 ringBak = 0;
+    xc->turnLedMajOn(false);
+    xc->turnLedMinOn(false);
     while(1) {
         os_dly_wait(300);
         bool maj = false;

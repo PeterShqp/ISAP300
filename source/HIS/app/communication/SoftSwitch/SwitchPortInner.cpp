@@ -43,6 +43,7 @@ int SwitchPortInner::outputPacket(PriPacket& pkg) {
         return -1;
     }
     memcpy( ch+4, stdd, len);
+	pkg.recordProcessInfo(182);
     std::map<uint32, NMPort*>::iterator it = nmport.begin();
     while( it != nmport.end() ) {
         if( pkg.getRcvNMPort()->getUID() != it->second->getUID() ) {

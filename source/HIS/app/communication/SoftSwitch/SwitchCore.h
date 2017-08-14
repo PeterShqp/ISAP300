@@ -35,9 +35,9 @@ public:
 	int transmitAPacket(PriPacket& pkt);
 
 	void aging(void);
-	void finishedAPacket(PriPacket& p) {
-	    finishedPkt.finishThePacket(p);
-	};
+//	void finishedAPacket(PriPacket& p) {
+//	    finishedPkt.finishThePacket(p);
+//	};
 
 	void showMacPortMap(void) {
 		macPortTable.Print();

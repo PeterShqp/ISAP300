@@ -44,6 +44,7 @@
 #include "NMPort.h"
 #include "ChannelSabit.h"
 #include "ChannelTsDcn.h"
+#include "ChannelDcc.h"
 
 /* 数组下标sdhbus，数组元素，对应槽位 */
 int shdbusSlotMapping[] = {0,0,2,2,3,3,5,5,6,6};
@@ -321,70 +322,69 @@ void CardXC::changeToWorking(void) {
     nminfo.slot = getSn();
 
     nminfo.subtype = subtype_sabit;
-    for (int i = 0; i < 4; ++i) {
-        nminfo.sn = i;
-        uint32 index = UID::makeUID(&nminfo);
+//    for (int i = 0; i < 4; ++i) {
+//        nminfo.sn = i;
+//        uint32 index = UID::makeUID(&nminfo);
+//
+//        nmch_dcc[i] = new ChannelSabit(index, pcmLgc);
+//
+//        nmport[i] = new NMPort(fe1_obj[i], &ConfigData->fe1port[i].nmportCfg);
+//        if( nmport[i] == 0 || nmch_dcc[i] == 0 /*|| nmch_dcn[i] == 0*/ ) {
+//            throw SysError("!!!new object failed!!!");
+//        }
+//
+//        nmport[i]->addNmChannel(nmch_dcc[i]);
+////        nmport[i]->addNmChannel(nmch_dcn[i]);
+//        nmport[i]->start();
+//    }
 
-        nmch_dcc[i] = new ChannelSabit(index, pcmLgc);
-        nmch_dcn[i] = new ChannelTsDcn(index, pcmLgc);
+     nminfo.subtype = subtype_dcc;
+     for (int i = 0; i < 2; ++i) {
+         nminfo.sn = i;
+         uint32 index = UID::makeUID(&nminfo);
 
-        nmport[i] = new NMPort(fe1_obj[i], &ConfigData->fe1port[i].nmportCfg);
-        if( nmport[i] == 0 || nmch_dcc[i] == 0 || nmch_dcn[i] == 0 ) {
-            throw SysError("!!!new object failed!!!");
-        }
+         nmch_optdcc[i] = new ChannelDcc(index, pcmLgc);
 
-        nmport[i]->addNmChannel(nmch_dcc[i]);
-        nmport[i]->addNmChannel(nmch_dcn[i]);
-        nmport[i]->start();
-    }
+         nmport[i+4] = new NMPort(fe1_obj[i], &ConfigData->fe1port[i].nmportCfg);
+         if( nmport[i+4] == 0 || nmch_optdcc[i] == 0 ) {
+             throw SysError("!!!new object failed!!!");
+         }
 
-//     nminfo.subtype = subtype_dcc;
-//     for (int i = 0; i < 2; ++i) {
-//         nminfo.sn = i;
-//         uint32 index = UID::makeUID(&nminfo);
-
-//         nmch_optdcc[i] = new ChannelOptDcc(index, pcmLgc);
-
-//         nmport[i+4] = new NMPort(fe1_obj[i], &ConfigData->fe1port[i].nmportCfg);
-//         if( nmport[i] == 0 || nmch_optdcc[i] == 0 ) {
-//             throw SysError("!!!new object failed!!!");
-//         }
-
-//         nmport[i+4]->addNmChannel(nmch_optdcc[i]);
-//         nmport[i+4]->start();
-//     }
+         nmport[i+4]->addNmChannel(nmch_optdcc[i]);
+         nmport[i+4]->start();
+     }
 
 
     uoptLgc.dccInterruptEnable(true);
 }
 void CardXC::changeToIdle(void) {
     uoptLgc.dccInterruptEnable(false);
-//    for (int i = 0; i < 2; ++i) {
-//        if( nmport[i] ) {
-//            nmport[i]->stop();
-//            delete nmport[i];
-//            nmport[i] = 0;
-//        }
-//        if( nmch_optdcc[i] ) {
-//            delete nmch_optdcc[i];
-//        }
-//    }
-
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < 2; ++i) {
         if( nmport[i] ) {
             nmport[i]->stop();
             delete nmport[i];
             nmport[i] = 0;
         }
-        if( nmch_dcn[i] ) {
-            delete nmch_dcn[i];
-            nmch_dcn[i] = 0;
-        }
-        if( nmch_dcc[i] ) {
-            delete nmch_dcc[i];
-            nmch_dcc[i] = 0;
+        if( nmch_optdcc[i] ) {
+            delete nmch_optdcc[i];
         }
     }
+
+//    for (int i = 0; i < 4; ++i) {
+//        if( nmport[i] ) {
+//            nmport[i]->stop();
+//            delete nmport[i];
+//            nmport[i] = 0;
+//        }
+//        if( nmch_dcn[i] ) {
+//            delete nmch_dcn[i];
+//            nmch_dcn[i] = 0;
+//        }
+//        if( nmch_dcc[i] ) {
+//            delete nmch_dcc[i];
+//            nmch_dcc[i] = 0;
+//        }
+//    }
 }
 
 

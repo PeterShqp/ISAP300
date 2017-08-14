@@ -12,8 +12,9 @@
 #include <vector>
 
 typedef enum {
-    dcc,
-    dcn
+    sabit,
+    dcn,
+	dcc
 }NM_Port_Mode_E;
 
 class NMPort;

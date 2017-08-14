@@ -2657,12 +2657,12 @@ e)
               00000800 
               00400000 
               00000000 
-Command Line: --debug --xref --cpu=ARM926EJ-S --fpu=VFPv2 --apcs=interwork --de
-pend=.\UV4Build\OBJ\LPC32x0_arm.d -o.\UV4Build\OBJ\LPC32x0_arm.o -ID:\WorkProgr
-am\Keil\ARM\RV31\INC -ID:\WorkProgram\Keil\ARM\CMSIS\Include -ID:\WorkProgram\K
-eil\ARM\Inc\Philips --predefine="__RTX SETA 1" --predefine="RAM_INTVEC SETA 1" 
---predefine="REMAP SETA 1" --list=.\UV4Build\LST\LPC32x0_arm.lst ./source/HAL/B
-SP_ISAP300_V1.0/LPC32x0_arm.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM926EJ-S --fpu=VFPv2 
+--apcs=interwork --depend=.\uv4build\obj\lpc32x0_arm.d -o.\uv4build\obj\lpc32x0
+_arm.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\AR
+M\INC\Philips --predefine="__RTX SETA 1" --predefine="__UVISION_VERSION SETA 52
+4" --predefine="RAM_INTVEC SETA 1" --predefine="REMAP SETA 1" --list=.\uv4build
+\lst\lpc32x0_arm.lst ./source/HAL/BSP_ISAP300_V1.0/LPC32x0_arm.s
 
 
 
@@ -5139,4 +5139,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 4 symbols
-637 symbols in table
+638 symbols in table

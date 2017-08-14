@@ -3,10 +3,10 @@
  *----------------------------------------------------------------------------
  *      Name:    FILE_CONFIG.H 
  *      Purpose: Common Definitions
- *      Rev.:    V4.54
+ *      Rev.:    V4.74
  *----------------------------------------------------------------------------
  *      This code is part of the RealView Run-Time Library.
- *      Copyright (c) 2004-2011 KEIL - An ARM Company. All rights reserved.
+ *      Copyright (c) 2004-2014 KEIL - An ARM Company. All rights reserved.
  *---------------------------------------------------------------------------*/
 
 #ifndef __FILE_CONFIG_H__
@@ -34,8 +34,10 @@
 #define ALL_SEND_CID     2              /* Send Card CID number       MMC,SD */
 #define SET_REL_ADDR     3              /* Set Relative Address       MMC,SD */
 #define SET_BUS_WIDTH    6              /* Set Bus Width 1bit/4bits   ---,SD */
+#define MMC_SWITCH       6              /* Switch command             MMC,-- */
 #define SELECT_CARD      7              /* Select/Deselect the Card   MMC,SD */
 #define SEND_IF_COND     8              /* Send Interface Condition   ---,SD */
+#define SEND_EXT_CSD     8              /* Send Extended CSD register MMC,-- */
 #define SEND_CSD         9              /* Send Card Specific Data    MMC,SD */
 #define SEND_CID         10             /* Send Card Identificat.Data MMC,SD */
 #define STOP_TRANS       12             /* Stop Read or Write transm. MMC,SD */
@@ -151,11 +153,12 @@ typedef enum {
 
 /* File Control Block structure */
 typedef struct iob {
+  void *vol;                            /* Volume Information [FAT,EF]       */
   U16  flags;                           /* File status flags                 */
   U32  fsize;                           /* File Size                         */
   U32  fcsz;                            /* Current File Size                 */
   U32  fpos;                            /* FAT File Position Indicator       */
-  void *vi;                             /* Volume Information [FAT,EF]       */
+  
   union {
     struct {                            /* Embedded Flash variables          */
       U16 fileID;                       /* File Identification Number        */
@@ -166,12 +169,12 @@ typedef struct iob {
       U32 ftop;                         /* Flash Block free space top        */
     } efs;
     struct {                            /* FAT variables                     */
-      U8  attrib;                       /* Attribute Flags                   */
-      U8  currDatSect;                  /* Curr Data Sect Offs in Cluster    */
-      U16 lastEntOffs;                  /* Entry (last) Record Offset        */
-      U32 currDatClus;                  /* Current Data Cluster              */
-      U32 firstClus;                    /* First Data Cluster                */
-      U32 lastEntClus;                  /* Entry (last) Cluster              */
+      U32 first_clus;                   /* First data cluster                */
+      U32 current_clus;                 /* Current data cluster              */
+      U32 short_ent_clus;               /* SFN: Short entry cluster number   */
+      U16 short_ent_offs;               /* SFN: Short entry sector offset    */
+      U8  current_sect;                 /* Current data sector               */
+      U8  rsvd;                         /* Reserved value */
     } fat;
   };
 } IOB;
@@ -212,7 +215,7 @@ typedef struct fcache {
   U32 sect;                             /* Cached FAT sector number          */
   U8  *buf;                             /* FAT sector cache buffer           */
   BIT dirty;                            /* FAT table content modified        */
-  U8  cfat;                             /* Current FAT 						 */
+  U8  cfat;                             /* Current FAT                       */
 } FCACHE;
 
 /* Data Sector Caching structure */
@@ -263,7 +266,7 @@ typedef struct {
 } NAND_PG_LAY;
 
 /* NAND Flash Geometry and Layout */
-typedef struct {  
+typedef struct _NAND_DRV_CFG {
   NAND_PG_LAY *PgLay;                   /* Page Layout Definitions           */
   U16 NumBlocks;                        /* Number of blocks per device       */
   U16 NumPages;                         /* Number of pages per block         */
@@ -278,7 +281,7 @@ typedef struct {
 /* NAND Configuration structure */
 typedef struct {
   /* NAND Flash Geometry */
-  NAND_DRV_CFG DrvCfg;
+  struct _NAND_DRV_CFG DrvCfg;
   /* Block Translation Table Space */
   U16 BttStartBn;                       /* First Physical Block              */
   U16 BttEndBn;                         /* Last Physical Block               */
@@ -322,17 +325,13 @@ typedef struct {
   U8    PNM[6];                         /* Product name                      */
 } CID_REG;
 
-/* FAT Drive Local variables */
-typedef struct {
-  U32  free_clus;                       /* Number of free clusters in FAT32  */
-  U32  top_clus;                        /* The first free cluster in FAT 32  */
-  U32  startDirClus;                    /* Starting cluster of directory     */
-  U32  firstEntClus;                    /* First long-name entry cluster     */
-  U16  firstEntOffs;                    /* Directory entry record index      */
-  U8   numOfEntries;                    /* Number of entries for a long-name */
-  BIT  in_root_1x;                      /* Root folder in FAT12/FAT16        */
-  char name_buf[260];                   /* Long file-name buffer             */
-} FATVAR;
+/* FAT Name Cache Configuration */
+typedef struct fat_nca_cfg {
+  U8   MaxPathDepth;                    /* Maximum path depth                */
+  U8   ControlBlockCnt;                 /* Number of control blocks          */
+  U32  NameMemPoolSize;                 /* Name cache memory pool size       */
+  U32 *NameMemPool;                     /* Name cache memory pool            */
+} const FAT_NCACHE_CFG;
 
 /* Embedded Flash Device driver */
 typedef struct {
@@ -405,9 +404,11 @@ typedef struct {
 typedef struct {
   U8    CardType;                       /* Memory Card Type                  */
   U8    TranSpeed;                      /* Maximum data transfer rate        */
-  U8    CmdClass;                       /* Card command class                */
+  U8    Property;                       /* Device properties                 */
   U16   CardRCA;                        /* Relative Card Address             */
   U32   SerNum;                         /* Serial Number of Memory Card      */
+  U32   SectorCount;                    /* Total number of device sectors    */
+  U8   *ExtCsd;                         /* Extended CSD buffer pointer       */
   MCI_DRV *drv;                         /* Registered MCI driver             */
 } MCI_DEV;
 
@@ -467,7 +468,9 @@ typedef struct {
   FATINFO cfg;                          /* FAT Volume configuration          */
   FCACHE  fat;                          /* FAT table cache control           */
   DCACHE  ca;                           /* Data cache control                */
-  FATVAR  lv;                           /* Local instance of FAT variables   */
+  U32     free_clus_cnt;                /* FAT32: Number of free clusters    */
+  U32     free_clus;                    /* FAT32: First free cluster         */
+  U32     elink_id;                     /* Name cache drive id               */
 } FAT_VI;
 
 /* Embedded Flash Volume Info Control block */
@@ -504,19 +507,18 @@ extern long __sys_flen (int handle);
 #define __flushbuf  __sys_ensure
 #define __get_flen  __sys_flen
 
-/* fs_fat.c module */
-extern int  fat_init (FAT_VI *vi);
-extern BOOL fat_find (const char *fn, IOB *fcb);
-extern BOOL fat_seek (IOB *fcb, U32 pos);
-extern U32  fat_read (IOB *fcb, U8 *buf, U32 len);
-extern BOOL fat_write (IOB *fcb, const U8 *buf, U32 len);
-extern U64  fat_free (FAT_VI *vi);
-extern BOOL fat_delete (const char *fn, IOB *fcb);
-extern BOOL fat_wclose (IOB *fcb);
-extern BOOL fat_rename (const char *old, const char *newn, IOB *fcb);
-extern BOOL fat_create (const char *fn, IOB *fcb);
-extern BOOL fat_format (FAT_VI *vi, const char *label);
-extern BOOL fat_ffind  (const char *fn, FINFO *info, IOB *fcb);
+/* FAT exported functions */
+extern int  fat_init  (FAT_VI *vi);
+extern int  fat_open  (IOB *fcb, const char *name, int openmode);
+extern int  fat_close (IOB *fcb);
+extern int  fat_read  (IOB *fcb, U8 *buf, U32 len);
+extern int  fat_write (IOB *fcb, const U8 *buf, U32 len);
+extern int  fat_seek  (IOB *fcb, U32 pos);
+extern int  fat_delete(const char *fn, FAT_VI *vi);
+extern int  fat_ffind (const char *fn, FINFO *info, FAT_VI *vi);
+extern int  fat_rename(const char *path, const char *newname, FAT_VI *vi);
+extern U64  fat_free  (FAT_VI *vi);
+extern int  fat_format(FAT_VI *vi, const char *param);
 
 extern BOOL fat_jour_init (FAT_VI *vi);
 extern BOOL fat_jour_prep (FAT_VI *vi);

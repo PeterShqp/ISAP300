@@ -1,4 +1,4 @@
-.\UV4Build\OBJ\vfcmdcardinit.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdCardInit.cpp
-.\UV4Build\OBJ\vfcmdcardinit.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdCardInit.h
-.\UV4Build\OBJ\vfcmdcardinit.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.h
-.\UV4Build\OBJ\vfcmdcardinit.o: .\source\HIS\include\EZ_types.h
+.\uv4build\obj\vfcmdcardinit.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdCardInit.cpp
+.\uv4build\obj\vfcmdcardinit.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCmdCardInit.h
+.\uv4build\obj\vfcmdcardinit.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.h
+.\uv4build\obj\vfcmdcardinit.o: .\source\HIS\include\EZ_types.h

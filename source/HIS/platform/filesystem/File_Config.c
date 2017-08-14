@@ -23,9 +23,24 @@
 //   <i>Default: 8
 #define N_FILES     8
 
+//   <o>FAT Name Cache Size <0-1000000>
+//   <i>Define number of cached FAT file or directory names.
+//   <i>48 bytes of RAM is required for each cached name.
+#define FAT_NAME_CACNT   0
+
+//   <e>Relocate FAT Name Cache Buffer
+//   <i>Locate Cache Buffer at a specific address.
+#define FAT_NAME_RELOC   0
+
+//   <o>Base address <0x0000-0xFFFFFE00:0x200>
+//   <i>Define the Cache buffer base address.
+#define FAT_NAME_CADR    0x60000000
+
+//   </e>
 //   <o>CPU Clock Frequency [Hz]<0-1000000000>
 //   <i>Define the CPU Clock frequency used for
 //   <i>flash programming and erasing.
+
 #define CPU_CLK     208000000
 
 // </h>

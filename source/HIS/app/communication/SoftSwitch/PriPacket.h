@@ -12,6 +12,7 @@
 #include <string>
 #include "SoftSwitch_define.h"
 #include "EthMemory.h"
+#include <map>
 
 typedef enum {
 	unicast,
@@ -26,6 +27,14 @@ class NMPort;
 class PriPacket {
 	PriPacket();
 	virtual ~PriPacket() {};
+	static void calculateLifeTime(uint32 start, uint32 end);
+	static uint32 MIN_DURATION;       	//最长生存时间
+	static uint32 MAX_DURATION;			//最长生存时间
+	static uint32 AVR_DURATION;			//总平均生存时间
+	static uint32 RECT_AVR_DURATION;	//最近20次平均生存时间
+	static uint32 TOTAL_TIMES;			//总包数
+
+	static int TRACE;
 public:
 	const static uint8 multicastAddress[6];
 	const static uint8 broadcastAddress[6];
@@ -104,7 +113,27 @@ public:
 
     };
 
-
+    static void printTotalLifeTimeInfo(void);
+    static void openTraceContinue(void) {
+    	TRACE = -1;
+    };
+    static void closeTrace(void) {
+    	TRACE = 0;
+    };
+    static void openTraceNLoop(uint16 x) {
+    	TRACE = x;
+    };
+//    void recordProcessInfo(std::string& info) {
+//    	processinfo = info;
+//    };
+//    void recordProcessInfo(const char* s) {
+//    	std::string info(s);
+//    	recordProcessInfo(info);
+//    };
+    void recordProcessInfo(int cnt) {
+    	processLastCnt = cnt;
+    };
+    void printLivingInfo(void);
 private:
     NMPort* nmport;
 	uint32 srcPort;
@@ -113,6 +142,11 @@ private:
 	uint16 stdDataLen;
 	LAYER2FRAME* frame;
 	uint8 refenceCounter;
+
+	uint32 TicksOfbirth;
+	uint32 TicksOfDeath;
+	std::string processinfo;
+	int processLastCnt;
 
     enum {
         ethType = 0x0c,
@@ -127,6 +161,7 @@ private:
 	bool ifUDP(void) {
         return (stdData[ethType] == 0x08) && (stdData[ethType+1] == 0x00);
 	};
+
 };
 
 #endif /* PRIPACKET_H_ */

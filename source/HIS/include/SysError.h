@@ -16,4 +16,19 @@ public:
     SysError(const std::string& msg = "") : runtime_error(msg) {};
 };
 
+class ErrorNullPointer : public SysError {
+public:
+	ErrorNullPointer() : SysError("Null pointer") {};
+};
+
+class ErrorTooFast : public SysError {
+public:
+	ErrorTooFast() : SysError("Too fast") {};
+};
+
+class ErrorEthMemFull : public SysError {
+public:
+	ErrorEthMemFull() : SysError("Eth memory full") {};
+
+};
 #endif /* SYSERROR_H_ */

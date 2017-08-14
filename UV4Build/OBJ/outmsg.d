@@ -1,2 +1,2 @@
-.\UV4Build\OBJ\outmsg.o: ./source/HIS/Tools/OutMsg.cpp
-.\UV4Build\OBJ\outmsg.o: ./source/HIS/Tools/OutMsg.h
+.\uv4build\obj\outmsg.o: ./source/HIS/Tools/OutMsg.cpp
+.\uv4build\obj\outmsg.o: ./source/HIS/Tools/OutMsg.h

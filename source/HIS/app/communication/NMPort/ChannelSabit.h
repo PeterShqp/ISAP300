@@ -18,7 +18,7 @@ public:
     virtual ~ChannelSabit();
 
     virtual NM_Port_Mode_E getMode(void) {
-        return dcc;
+        return sabit;
     };
 
     virtual uint16 getMTU(void) {

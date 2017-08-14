@@ -81,12 +81,12 @@ ARM Macro Assembler    Page 2
    49 0000002C         SWI_End
    50 0000002C         
    51 0000002C                 END
-Command Line: --debug --xref --cpu=ARM926EJ-S --fpu=VFPv2 --apcs=interwork --de
-pend=.\UV4Build\OBJ\SWI_Table.d -o.\UV4Build\OBJ\SWI_Table.o -ID:\WorkProgram\K
-eil\ARM\RV31\INC -ID:\WorkProgram\Keil\ARM\CMSIS\Include -ID:\WorkProgram\Keil\
-ARM\Inc\Philips --predefine="__RTX SETA 1" --predefine="RAM_INTVEC SETA 1" --pr
-edefine="REMAP SETA 1" --list=.\UV4Build\LST\SWI_Table.lst ./source/HAL/BSP_ISA
-P300_V1.0/SWI_Table.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM926EJ-S --fpu=VFPv2 
+--apcs=interwork --depend=.\uv4build\obj\swi_table.d -o.\uv4build\obj\swi_table
+.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\IN
+C\Philips --predefine="__RTX SETA 1" --predefine="__UVISION_VERSION SETA 524" -
+-predefine="RAM_INTVEC SETA 1" --predefine="REMAP SETA 1" --list=.\uv4build\lst
+\swi_table.lst ./source/HAL/BSP_ISAP300_V1.0/SWI_Table.s
 
 
 
@@ -235,4 +235,4 @@ Symbol: __SWI_9
       At line 47 in file ./source/HAL/BSP_ISAP300_V1.0/SWI_Table.s
 Comment: __SWI_9 used once
 10 symbols
-348 symbols in table
+349 symbols in table

@@ -1,8 +1,8 @@
-.\UV4Build\OBJ\cmibentry.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibEntry.cpp
-.\UV4Build\OBJ\cmibentry.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibEntry.h
-.\UV4Build\OBJ\cmibentry.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibNodeObject.h
-.\UV4Build\OBJ\cmibentry.o: .\source\HIS\app\communication\SNMP\CSnmpVariable.h
-.\UV4Build\OBJ\cmibentry.o: .\source\HIS\include\EZ_types.h
-.\UV4Build\OBJ\cmibentry.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
-.\UV4Build\OBJ\cmibentry.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
-.\UV4Build\OBJ\cmibentry.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\uv4build\obj\cmibentry.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibEntry.cpp
+.\uv4build\obj\cmibentry.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibEntry.h
+.\uv4build\obj\cmibentry.o: ./source/HIS/app/communication/SNMP/SNMPMib/CMibNodeObject.h
+.\uv4build\obj\cmibentry.o: .\source\HIS\app\communication\SNMP\CSnmpVariable.h
+.\uv4build\obj\cmibentry.o: .\source\HIS\include\EZ_types.h
+.\uv4build\obj\cmibentry.o: .\source\HIS\app\communication\SNMP\Depend\CSnmpConstDefine.h
+.\uv4build\obj\cmibentry.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\uv4build\obj\cmibentry.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

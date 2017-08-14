@@ -103,12 +103,12 @@ ARM Macro Assembler    Page 2
    72 00000064         
    73 00000064                 END
               00000000 
-Command Line: --debug --xref --cpu=ARM926EJ-S --fpu=VFPv2 --apcs=interwork --de
-pend=.\UV4Build\OBJ\sys_except.d -o.\UV4Build\OBJ\sys_except.o -ID:\WorkProgram
-\Keil\ARM\RV31\INC -ID:\WorkProgram\Keil\ARM\CMSIS\Include -ID:\WorkProgram\Kei
-l\ARM\Inc\Philips --predefine="__RTX SETA 1" --predefine="RAM_INTVEC SETA 1" --
-predefine="REMAP SETA 1" --list=.\UV4Build\LST\sys_except.lst ./source/HAL/lib/
-SYS_API/sys_except.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM926EJ-S --fpu=VFPv2 
+--apcs=interwork --depend=.\uv4build\obj\sys_except.d -o.\uv4build\obj\sys_exce
+pt.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\
+INC\Philips --predefine="__RTX SETA 1" --predefine="__UVISION_VERSION SETA 524"
+ --predefine="RAM_INTVEC SETA 1" --predefine="REMAP SETA 1" --list=.\uv4build\l
+st\sys_except.lst ./source/HAL/lib/SYS_API/sys_except.s
 
 
 
@@ -186,4 +186,4 @@ Symbol: trap_exception
       At line 71 in file ./source/HAL/lib/SYS_API/sys_except.s
 Comment: trap_exception used once
 2 symbols
-343 symbols in table
+344 symbols in table

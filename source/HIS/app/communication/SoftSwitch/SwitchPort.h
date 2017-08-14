@@ -23,7 +23,7 @@ public:
 	virtual ~SwitchPort();
 
 	/* �����˿ڰ��շ�API */
-	int inputPacket(PriPacket* f);
+	static int inputPacket(PriPacket* f);
 	int outputAPacket(PriPacket& pkg);
 	uint32 getPortSn(void) {
 		return sn;

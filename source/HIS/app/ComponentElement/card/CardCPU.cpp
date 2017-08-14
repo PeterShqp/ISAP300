@@ -11,8 +11,8 @@
 #include "CPPTools.h"
 
 static const uint8 MainVerNumberX = 3;
-static const uint8 MainVerNumberY = 255;//1;
-static const uint8 MainVerNumberZ = 8;//16;
+static const uint8 MainVerNumberY = 1;//255;//1;
+static const uint8 MainVerNumberZ = 18;//10;//16;
 
 CardCPU::CardCPU() {
 }

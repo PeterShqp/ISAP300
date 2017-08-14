@@ -10,8 +10,6 @@
 
 #include <string>
 #include "EZ_types.h"
-#include <vector>
-#include "os.h"
 
 class EZLog {
     EZLog() {};
@@ -26,15 +24,6 @@ public:
     void record(std::string& txt);
     void record(const char* s);
 
-    bool bufFull(void) {
-    	if( bp >= MAX_BUF_SIZE ) {
-    		return true;
-    	}
-    	return false;
-    };
-    void saveToFile(void);
-
-    OS_TID task_save;
 private:
     uint32 MAX_SIZE;
     const char* curFile;
@@ -42,9 +31,6 @@ private:
     bool ifFileExist(const char* f);
     void findActiveFile(void);
     void switchCurrFile(void);
-    std::vector<std::string> BufOfLog;
-    int bp;
-    const static int MAX_BUF_SIZE = 10;
 };
 
 #endif /* SOURCE_HIS_TOOLS_EZLOG_H_ */

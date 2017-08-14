@@ -2571,6 +2571,11 @@
               <FileType>8</FileType>
               <FilePath>./source/HIS/app/ComponentElement/compmisc/FANPOWCommand/CmdFanCtrl.cpp</FilePath>
             </File>
+            <File>
+              <FileName>CmdFanVer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\source\HIS\app\ComponentElement\compmisc\FANPOWCommand\CmdFanVer.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

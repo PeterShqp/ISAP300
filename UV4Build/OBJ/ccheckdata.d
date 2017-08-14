@@ -1,4 +1,4 @@
-.\UV4Build\OBJ\ccheckdata.o: ./source/HIS/Tools/CCheckData.cpp
-.\UV4Build\OBJ\ccheckdata.o: .\source\HIS\include\CCheckData.h
-.\UV4Build\OBJ\ccheckdata.o: .\source\HIS\include\EZ_types.h
-.\UV4Build\OBJ\ccheckdata.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h
+.\uv4build\obj\ccheckdata.o: ./source/HIS/Tools/CCheckData.cpp
+.\uv4build\obj\ccheckdata.o: .\source\HIS\include\CCheckData.h
+.\uv4build\obj\ccheckdata.o: .\source\HIS\include\EZ_types.h
+.\uv4build\obj\ccheckdata.o: .\source\HIS\app\communication\SNMP\Depend\CErrorValueDefine.h

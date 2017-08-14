@@ -16,7 +16,6 @@
 #include <iostream>
 #include "NMPort.h"
 #include "SoftWDT.h"
-#include "EZLog.h"
 
 extern "C" INTR_HANDLER void IntHandler_DCC(void);
 
@@ -128,12 +127,9 @@ TASK void rcvInnerNmPaket(void) {
             }
 
             /*��ѯ��ɺ���ж�*/
-#ifdef EZ_DEBUG
             if( !result ) {
-                EZLog::instance().record("!!!No DCCChannelRcv, please reset device!!!");
                 printf("\n!!!No DCCChannelRcv, please reset device!!!\n");
             }
-#endif
             InnerDCCManager::instance().start();
         }
         SoftWDT::instance().feed(os_tsk_self());

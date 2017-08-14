@@ -54,6 +54,8 @@
 #include "CardDXC.h"
 #include "SwTrace.h"
 #include "SwitchCore.h"
+
+#include "PriPacket.h"
 //void out_trace( Trace_T * trace, uint8* sbuf);
 
 static BOOL_32 cmd_bread(void);
@@ -520,7 +522,8 @@ static CMD_ROUTE_T cmd_swtrace_cmd =
     cmd_swtrace,
     (UNS_8 *) "trace the soft switch input & output.",
     (UNS_8 *) "swtrace [operation][hex port bitmap]\r\n"
-                "\t[operation] read/clear/macport/ipport/maxbroadcast\r\n"
+                "\t[operation] read/clear/reset/macport/ipport/maxbroadcast\r\n"
+                "\t            sysclk/totalinfo/actinfo\r\n"
                 "\t[port] bit0~19 = port0~19.\r\n",
     cmd_swtrace_plist,
     (CMD_ROUTE_E*)NULL
@@ -1691,6 +1694,10 @@ BOOL_32 cmd_swtrace(void) {
             }
         }
     }
+    else if( strcmp(op, "reset") == 0 ) {
+    	SwitchCore::instance().resetSwitchCore();
+    	printf("\nSwitchCore reset over\n");
+    }
     else if( strcmp(op, "macport") == 0 ) {
         SwitchCore::instance().showMacPortMap();
     }
@@ -1703,6 +1710,17 @@ BOOL_32 cmd_swtrace(void) {
         }
         printf("\nThe MAX broadcast is %d per second\n", SwitchCore::instance().getMaxBroadcastPerSecond());
     }
+    else if( strcmp(op, "sysclk") == 0 ) {
+    	printf("\nThe system clock is: %d", os_time_get());
+    }
+    else if( strcmp(op, "totalinfo") == 0 ) {
+    	PriPacket::printTotalLifeTimeInfo();
+    }
+    else if( strcmp(op, "actinfo") == 0 ) {
+    	PriPacket::openTraceNLoop(bitmap);
+    }
+
+
     return TRUE;
 }
 /***********************************************************************

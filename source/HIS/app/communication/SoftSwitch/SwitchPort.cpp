@@ -39,23 +39,25 @@ int SwitchPort::inputPacket(PriPacket* f) {
 #ifdef SW_DEBUG
     printf("port inputPacket %d at %d\n", f->getPrivateTag().sn, getPortSn());
 #endif
-        return SwitchCore::instance().inputAPacket(f);
+		if (SwitchCore::instance().inputAPacket(f)) {
+			return 1;
+		}
     }
     return -1;
 }
 
 int SwitchPort::broadcastThePacket( PriPacket& pkt ) {
-    if( portGroup.size() == 0 ) {
-        return -1;
+        if( portGroup.size() == 0 ) {
+            return -1;
+        }
+        pkt.setRefenceCounter(portGroup.size());
+    	std::map<uint32, SwitchPort*>::iterator it = portGroup.begin();
+    	while( it != portGroup.end() ) {
+            it->second->outputAPacket(pkt);
+    		it++;
+    	}
+    	return 1;
     }
-    pkt.setRefenceCounter(portGroup.size());
-	std::map<uint32, SwitchPort*>::iterator it = portGroup.begin();
-	while( it != portGroup.end() ) {
-        it->second->outputAPacket(pkt);
-		it++;
-	}
-	return 1;
-}
 /*
  * 端口发包上层调用接口函数
  * 发送成功返回1， 失败返回0
@@ -66,9 +68,12 @@ int SwitchPort::outputAPacket(PriPacket& pkg) {
     printf("port outputAPacket %d at %d\n", pkg.getPrivateTag().sn, getPortSn());
 #endif
     if( os_mbx_check(&mbx_send) != 0 ) {
+    	pkg.recordProcessInfo(151);
         os_mbx_send(&mbx_send, &pkg, 0xffff);
     }
     else {
+    	pkg.recordProcessInfo(152);
+
 #ifdef SW_DEBUG
         printf("port %d output buf is full\n", getPortSn());
 #endif
@@ -80,9 +85,10 @@ int SwitchPort::outputAPacket(PriPacket& pkg) {
 
 bool SwitchPort::sendAPacket(PriPacket* pkg) {
     if( (pkg->packetType() == broadcast) && ifDropThePacket(*pkg) ) {
-#ifdef EZ_DEBUG
+#ifdef SW_DEBUG
         printf("pkt %d droped at swport %d\n", pkg->getPrivateTag().sn, getPortSn());
 #endif
+        pkg->recordProcessInfo(171);
         return false;
     }
     int rtn = outputPacket(*pkg);
@@ -96,6 +102,7 @@ bool SwitchPort::sendAPacket(PriPacket* pkg) {
     }
 #endif
     if( rtn < 0 ) {
+        pkg->recordProcessInfo(172);
         return false;
     }
     return true;
@@ -111,6 +118,7 @@ TASK void taskPortSend(void* p) {
         if( rst != OS_R_TMO ) {
             PriPacket* p = reinterpret_cast<PriPacket*>(msg);
             if( p ) {
+            	p->recordProcessInfo(161);
                 port->sendAPacket( p );
                 p->deletePacket();
             }

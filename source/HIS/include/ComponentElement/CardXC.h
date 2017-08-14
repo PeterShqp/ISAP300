@@ -41,7 +41,7 @@ class XCAlarmModule;
 class XcLocalClockSource;
 class XcPCMClockSource;
 class PortFE1;
-class ChannelOptDcc;
+class ChannelDcc;
 class NMPort;
 class ChannelSabit;
 class ChannelTsDcn;
@@ -149,7 +149,7 @@ private:
 
     ChannelSabit* nmch_dcc[4];
     ChannelTsDcn* nmch_dcn[4];
-    ChannelOptDcc* nmch_optdcc[2];
+    ChannelDcc* nmch_optdcc[2];
     NMPort* nmport[6];
 };
 

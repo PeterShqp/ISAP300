@@ -1,1 +1,1 @@
-.\UV4Build\OBJ\net_lib.o: ./source/HIS/platform/net/Net_lib.c
+.\uv4build\obj\net_lib.o: ./source/HIS/platform/net/Net_lib.c

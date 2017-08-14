@@ -1,4 +1,4 @@
-.\UV4Build\OBJ\vfcommand.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.cpp
-.\UV4Build\OBJ\vfcommand.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.h
-.\UV4Build\OBJ\vfcommand.o: .\source\HIS\include\EZ_types.h
-.\UV4Build\OBJ\vfcommand.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\uv4build\obj\vfcommand.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.cpp
+.\uv4build\obj\vfcommand.o: ./source/HIS/app/ComponentElement/compmisc/VFCommand/VFCommand.h
+.\uv4build\obj\vfcommand.o: .\source\HIS\include\EZ_types.h
+.\uv4build\obj\vfcommand.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
